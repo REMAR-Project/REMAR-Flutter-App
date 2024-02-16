@@ -40,9 +40,9 @@ class Strings {
 
   // screen 2 (select year) For both full and simple version. For both versions of crabs
 
-  static const observe_instruction="When did you observe andada? Touch screen, move finger and tap to choose current year";
+  static const choose_year_instruction="When did you observe andada? Touch screen, move finger and tap to choose current year you observed the andada";
 
-  var years = const [
+  static var years = const [
     "2016",
     "2017",
     "2018",
@@ -59,7 +59,7 @@ class Strings {
 
   static const choose_month_instruction="Touch screen and move finger to choose correct month.  In case you saw two andadas this month (one around new moon and one around full moon), please run the app for each andada separately";
 
-  var months = const [
+  static var months = const [
     "January",
     "February",
     "March",
@@ -88,7 +88,7 @@ class Strings {
 
   static const intensity="How do you estimate the intensity of the observed andada:";
 
-  var intensity_level = const [
+  static var intensity_level = const [
     "Very Low",
     "Low",
     "Medium",
@@ -109,7 +109,7 @@ class Strings {
 
   static const ovigerous_instruction="Did you see berried (ovigerous) females? Touch correct answer with finger";
 
-  var ovigerous_list = const [
+  static var ovigerous_list = const [
     "Yes, I saw berried females",
     "No, there were no berried females",
     "I did not look"
@@ -119,7 +119,7 @@ class Strings {
 
   static const habitat_instructions="In which habitat did you observe the andada? Touch correct answer with finger. You can chose more than one option";
 
-  var ucides_cordatus_habitat_list = const [
+  static var ucides_cordatus_habitat_list = const [
     "Mangrove",
     "Forest",
     "Beach",
@@ -127,7 +127,7 @@ class Strings {
     "Other"
   ];
 
-  var cardisoma_guanhumi_habitat = const [
+  static var cardisoma_guanhumi_habitat = const [
     "Mangrove",
     "Saltmarsh",
     "Forest",
@@ -142,7 +142,7 @@ class Strings {
 
   static const state_instruction="Touch screen, move with finger and tap to select the state where you made your observation";
 
-  var state_list = const [
+ static var state_list = const [
     "Alagoas",
     "Amapá",
     "Bahia",
@@ -175,7 +175,7 @@ class Strings {
   // screen 13 (what do you do) for advanced. Screen 9 for basic
   static const user_role_instruction="Please can you let us know what you do? Touch screen and move finger to select";
 
-  var user_role_list = const [
+  static var user_role_list = const [
     "I catch crabs and depend on them for my living",
     "I catch crabs only occasionally for my own consumption",
     "I work with crab meat processing",
