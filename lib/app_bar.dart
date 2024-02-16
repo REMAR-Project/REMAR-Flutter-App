@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppBar({super.key});
+
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight + 10.0);
 
@@ -15,21 +17,33 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               text: 'REMAR',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 28,
+                fontSize: 20,
               ),
             ),
             TextSpan(
               text: '_CITIZEN',
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 14,
               ),
             ),
           ],
         ),
       ),
       actions: <Widget>[
-        Image.network('assets/raster_logo_ufsb.png'),
-        Image.network('assets/raster_logo_napier.png'),
+
+        Image.asset(
+          'assets/raster_logo_ufsb.png',
+          height: 125,
+          width: 125,
+        ),
+        Image.asset(
+          'assets/raster_logo_napier.png',
+          height: 125,
+          width: 125,
+        )
+
+        //Image.asset('assets/raster_logo_napier.png'),
+
       ],
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(10.0),
