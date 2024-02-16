@@ -39,11 +39,24 @@ class MyApp extends StatelessWidget {
               style: TextStyle(fontSize: 15),
               )
             ),
-          ],
-        ),
+            SizedBox(
+              width: 350,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: Strings.years.map((year) {
+                  return ListTile(
+                    title: Text(year),
+                  );
+                }).toList(),
+            ),
 
+
+        ),
+  ]
       ),
-    );
+
+    ));
+
 
   }
 }
