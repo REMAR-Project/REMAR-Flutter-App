@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:remar_flutter_app/list_years.dart';
 import 'app_bar.dart';
 import 'bottom_navigation_bar.dart';
 import 'Strings_english.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         appBar: const CustomAppBar(),
         bottomNavigationBar: const CustomBottomNavigationBar(),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -39,20 +40,13 @@ class MyApp extends StatelessWidget {
               style: TextStyle(fontSize: 15),
               )
             ),
-            SizedBox(
-              width: 350,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: Strings.years.map((year) {
-                  return ListTile(
-                    title: Text(year),
-                  );
-                }).toList(),
-            ),
+            const SizedBox(
+              height: 400,
+              child: ListYears()
 
-
-        ),
+            )
   ]
+
       ),
 
     ));
