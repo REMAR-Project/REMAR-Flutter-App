@@ -42,7 +42,7 @@ class Strings {
 
   static const choose_year_instruction="When did you observe andada? Touch screen, move finger and tap to choose current year you observed the andada";
 
-  static var years = const [
+  static var list_years = const [
     "2016",
     "2017",
     "2018",
@@ -59,7 +59,7 @@ class Strings {
 
   static const choose_month_instruction="Touch screen and move finger to choose correct month.  In case you saw two andadas this month (one around new moon and one around full moon), please run the app for each andada separately";
 
-  static var months = const [
+  static var list_months = const [
     "January",
     "February",
     "March",
@@ -88,7 +88,7 @@ class Strings {
 
   static const intensity="How do you estimate the intensity of the observed andada:";
 
-  static var intensity_level = const [
+  static var list_intensity_level = const [
     "Very Low",
     "Low",
     "Medium",
@@ -109,7 +109,7 @@ class Strings {
 
   static const ovigerous_instruction="Did you see berried (ovigerous) females? Touch correct answer with finger";
 
-  static var ovigerous_list = const [
+  static var list_ovigerous = const [
     "Yes, I saw berried females",
     "No, there were no berried females",
     "I did not look"
@@ -119,7 +119,7 @@ class Strings {
 
   static const habitat_instructions="In which habitat did you observe the andada? Touch correct answer with finger. You can chose more than one option";
 
-  static var ucides_cordatus_habitat_list = const [
+  static var list_ucides_cordatus_habitat= const [
     "Mangrove",
     "Forest",
     "Beach",
@@ -127,7 +127,7 @@ class Strings {
     "Other"
   ];
 
-  static var cardisoma_guanhumi_habitat = const [
+  static var list_cardisoma_guanhumi_habitat = const [
     "Mangrove",
     "Saltmarsh",
     "Forest",
@@ -142,7 +142,7 @@ class Strings {
 
   static const state_instruction="Touch screen, move with finger and tap to select the state where you made your observation";
 
- static var state_list = const [
+ static var list_states = const [
     "Alagoas",
     "Amapá",
     "Bahia",
@@ -175,7 +175,7 @@ class Strings {
   // screen 13 (what do you do) for advanced. Screen 9 for basic
   static const user_role_instruction="Please can you let us know what you do? Touch screen and move finger to select";
 
-  static var user_role_list = const [
+  static var list_user_role = const [
     "I catch crabs and depend on them for my living",
     "I catch crabs only occasionally for my own consumption",
     "I work with crab meat processing",

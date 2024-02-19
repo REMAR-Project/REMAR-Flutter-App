@@ -4,6 +4,9 @@ import 'app_bar.dart';
 import 'bottom_navigation_bar.dart';
 import 'Strings_english.dart';
 
+List<String> arrayList = Strings.list_months;
+
+
 void main() {
   runApp(const MyApp());
 }
@@ -42,7 +45,7 @@ class MyApp extends StatelessWidget {
             ),
             const SizedBox(
               height: 400,
-              child: ListYears()
+              child: DisplayList(arrayList: [],)
 
             )
   ]
@@ -55,4 +58,13 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
+void _getList(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => DisplayList(
+          arrayList: arrayList,
+      ),
+    ),
+  );
+}

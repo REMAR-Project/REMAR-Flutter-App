@@ -1,16 +1,16 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:remar_flutter_app/dipslaylist.dart';
 import 'Strings_english.dart';
 
-class ListYears extends StatefulWidget {
-  const ListYears({super.key});
+class DisplayList extends StatefulWidget {
+  const DisplayList({super.key, required List<String> arrayList});
 
   @override
-  _ListYears createState() => _ListYears();
+  _DisplayList createState() => _DisplayList();
 }
 
-class _ListYears extends State<ListYears> {
-  List<String> items = Strings.years;
+class  _DisplayList  extends State<DisplayList> {
+  List<String> items = arrayList;
   int selectedIndex =-1;
 
   @override
@@ -22,7 +22,6 @@ class _ListYears extends State<ListYears> {
 
           return ListTile(
             title: Text(
-
               items[index],
               style: TextStyle(
                 color: index == selectedIndex ? Colors.green : Colors.black,
