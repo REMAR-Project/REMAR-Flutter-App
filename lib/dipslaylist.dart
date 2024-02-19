@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:remar_flutter_app/list_years.dart';
 import 'app_bar.dart';
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
               )
             ),
             const SizedBox(
-              height: 400,
+              height: 575,
               child: DisplayList(arrayList: [],)
 
             )
