@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppBar({super.key});
+
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight + 10.0);
 
@@ -10,7 +12,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: RichText(
         text: TextSpan(
           style: DefaultTextStyle.of(context).style,
-          children: const  <TextSpan>[
+          children: const <TextSpan>[
             TextSpan(
               text: 'REMAR',
               style: TextStyle(
