@@ -46,7 +46,10 @@ class MyApp extends StatelessWidget {
             ),
             const SizedBox(
               height: 575,
-              child: DisplayList(arrayList: [],)
+              child: Scrollbar(
+                  child: DisplayList(arrayList: [],),
+              ),
+
 
             )
   ]
