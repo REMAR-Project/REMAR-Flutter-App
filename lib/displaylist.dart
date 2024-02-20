@@ -1,17 +1,29 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:remar_flutter_app/getYear.dart';
-import 'Strings_english.dart';
 
 class DisplayList extends StatefulWidget {
-  const DisplayList({super.key, required List<String> arrayList});
+  const DisplayList(fileName, {Key? key}) : super(key: key);
 
   @override
-  _DisplayList createState() => _DisplayList();
+  _DisplayListState createState() => _DisplayListState();
 }
 
-class  _DisplayList  extends State<DisplayList> {
-  List<String> items = arrayList;
-  int selectedIndex =-1;
+class _DisplayListState extends State<DisplayList> {
+  List<String> items = [];
+  int selectedIndex = -1;
+
+  @override
+  void initState() {
+    super.initState();
+    loadJson(fileName).then((List<String> data) {
+      setState(() {
+        items = data;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +31,12 @@ class  _DisplayList  extends State<DisplayList> {
       body: ListView.builder(
         itemCount: items.length,
         itemBuilder: (context, index) {
-
           return ListTile(
             title: Text(
               items[index],
               style: TextStyle(
                 color: index == selectedIndex ? Colors.green : Colors.black,
               ),
-
             ),
             onTap: () {
               setState(() {
@@ -40,3 +50,8 @@ class  _DisplayList  extends State<DisplayList> {
   }
 }
 
+Future<List<String>> loadJson(String fileName) async {
+  final String json = await rootBundle.loadString(fileName);
+  final List<dynamic> data = jsonDecode(json);
+  return data.cast<String>();
+}
