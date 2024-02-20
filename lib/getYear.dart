@@ -6,8 +6,6 @@ import 'Strings_english.dart';
 
 String fileName='assets/raw_eng/ovigerious.json';
 
-//List<String> arrayList = Strings.list_months;
-
 
 void main() {
   runApp(const MyApp());
@@ -64,18 +62,3 @@ class MyApp extends StatelessWidget {
 
   }
 }
-
-// void _getList(BuildContext context) {
-//   Navigator.push(
-//     context,
-//     MaterialPageRoute(
-//       builder: (context) => DisplayList(
-//           arrayList: arrayList,
-//       ),
-//     ),
-//   );
-// }
-
-// loadJson() async {
-//   String data = await rootBundle.loadString('assets/')
-// }
