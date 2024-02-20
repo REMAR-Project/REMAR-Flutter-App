@@ -4,7 +4,7 @@ import 'app_bar.dart';
 import 'bottom_navigation_bar.dart';
 import 'Strings_english.dart';
 
-String fileName='assets/raw_eng/ovigerious.json';
+String fileName='assets/raw_eng/yes_no.json';
 
 
 void main() {
