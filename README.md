@@ -1,2 +1,7 @@
-# REMAR-Flutter-App
-Flutter implementation of the REMAR_Citizen App
+# remar_web
+
+Website for remar citizen
+
+## Getting Started
+
+This project is a starting point for a Flutter application.
