@@ -3,21 +3,21 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class DisplayList extends StatefulWidget {
+class DisplayQuestions extends StatefulWidget {
   final String fileName;
   final int number;
   final String value;
 
-  const DisplayList(this.fileName, this.number, this.value, {Key? key})
+  const DisplayQuestions(this.fileName, this.number, this.value, {Key? key})
       : super(key: key);
 
   @override
-  _DisplayListState createState() => _DisplayListState();
+  _DisplayQuestionsState  createState() => _DisplayQuestionsState();
 }
 
-class _DisplayListState extends State<DisplayList> {
+class _DisplayQuestionsState extends State<DisplayQuestions> {
   List<String> items = [];
-  int selectedIndex = -1;
+
 
   @override
   void initState() {
@@ -39,15 +39,10 @@ class _DisplayListState extends State<DisplayList> {
           return ListTile(
             title: Text(
               items[index],
-              style: TextStyle(
-                color: index == selectedIndex ? Colors.green : Colors.black,
+              style: const TextStyle(
               ),
             ),
-            onTap: () {
-              setState(() {
-                selectedIndex = index;
-              });
-            },
+
           );
         },
       ),

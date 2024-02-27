@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:remar_flutter_app/displaylist.dart';
+import 'package:remar_flutter_app/questions.dart';
 import 'app_bar.dart';
 import 'bottom_navigation_bar.dart';
-import 'Strings_english.dart';
+import 'package:remar_flutter_app/GetYearMonth.dart';
 
-String fileName='assets/raw_eng/questions.json';
+String fileName_questions='assets/raw_eng/questions.json';
 
 
 
@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DisplayList(fileName);
     return MaterialApp(
       home: Scaffold(
         appBar: const CustomAppBar(),
@@ -36,26 +35,27 @@ class MyApp extends StatelessWidget {
                   height: 75,
                 ),
                 const Text(
-                  Strings.monitoring_Cardisoma_guanhumi,
+                  "Cardisoma_guanhumi",
                   style: TextStyle(fontSize: 20),
                 ),
               ],
             ),
-            const SizedBox(
-              width: 350,
-                child: Text(Strings.choose_year_instruction,
-              style: TextStyle(fontSize: 15),
-              )
-            ),
             SizedBox(
-              height: 575,
+              width: 350,
+              height: 100,
+              child:  DisplayQuestions(fileName_questions,3,'questionText'),
+
+            ),
+            const SizedBox(
+              width: 500,
+              height: 500,
               child: Scrollbar(
-                  child:  DisplayList(fileName),
-              ),
+                child: DisplayMonthYear("Year"),
+              )
 
+            ),
 
-            )
-  ]
+      ]
 
       ),
 

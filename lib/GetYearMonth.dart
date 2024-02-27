@@ -3,26 +3,25 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class DisplayList extends StatefulWidget {
-  final String fileName;
-  final int number;
-  final String value;
+class DisplayMonthYear extends StatefulWidget {
+  final String type;
 
-  const DisplayList(this.fileName, this.number, this.value, {Key? key})
+
+  const DisplayMonthYear(this.type, {Key? key})
       : super(key: key);
 
   @override
-  _DisplayListState createState() => _DisplayListState();
+  _DisplayMonthYearState createState() => _DisplayMonthYearState();
 }
 
-class _DisplayListState extends State<DisplayList> {
+class _DisplayMonthYearState extends State<DisplayMonthYear> {
   List<String> items = [];
   int selectedIndex = -1;
 
   @override
   void initState() {
     super.initState();
-    loadQuestionData(widget.fileName, widget.number, widget.value)
+    loadMontYear(widget.type)
         .then((List<String> data) {
       setState(() {
         items = data;
@@ -55,15 +54,26 @@ class _DisplayListState extends State<DisplayList> {
   }
 }
 
-Future<List<String>> loadQuestionData(String fileName, int number, String value) async {
+Future<List<String>> loadMontYear(String type) async {
+
+
+
+  String fileName='';
+  if(type=="Year") {
+    fileName='assets/raw_eng/years.json';
+  }
+  else if(type=="Month") {
+    fileName='assets/raw_eng/months.json';
+  }
+
+  print(fileName);
+
   final String json = await rootBundle.loadString(fileName);
   final List<dynamic> data = jsonDecode(json);
   List<String> items = [];
 
   for (var item in data) {
-    if (item['questionNumber'] == number) {
-      items.add(item[value].toString());
+      items.add(item);
     }
-  }
   return items;
-}
+  }
