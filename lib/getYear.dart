@@ -4,7 +4,8 @@ import 'app_bar.dart';
 import 'bottom_navigation_bar.dart';
 import 'Strings_english.dart';
 
-String fileName='assets/raw_eng/yes_no.json';
+String fileName='assets/raw_eng/questions.json';
+
 
 
 void main() {
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DisplayList(fileName);
     return MaterialApp(
       home: Scaffold(
         appBar: const CustomAppBar(),
@@ -48,7 +50,7 @@ class MyApp extends StatelessWidget {
             SizedBox(
               height: 575,
               child: Scrollbar(
-                  child: DisplayList(fileName),
+                  child:  DisplayList(fileName),
               ),
 
 
