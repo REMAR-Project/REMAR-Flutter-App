@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
-  const CustomBottomNavigationBar({super.key});
+  final VoidCallback onNext;
+  final VoidCallback onPrevious;
+  int currentPage;
+  int totalPages;
+
+  CustomBottomNavigationBar({
+    required this.onNext, 
+    required this.onPrevious, 
+    required this.currentPage, 
+    required this.totalPages
+  });
+
 
   @override
   Widget build(BuildContext context) {
@@ -11,16 +22,12 @@ class CustomBottomNavigationBar extends StatelessWidget {
         children: <Widget>[
           IconButton(
             icon: const Icon(Icons.arrow_back),
-            onPressed: () {
-              //left
-            },
+            onPressed: onPrevious,
           ),
-          Text('Page 1 of 10'),
+          Text('Page $currentPage of $totalPages'),
           IconButton(
             icon: const Icon(Icons.arrow_forward),
-            onPressed: () {
-              //right
-            },
+            onPressed: onNext,
           ),
         ],
       ),
