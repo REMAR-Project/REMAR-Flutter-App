@@ -63,6 +63,14 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
+
+  assets:
+    - assets/raster_logo_ufsb.png
+    - assets/raster_logo_napier.png
+    - assets/raster_q0_0.png
+    - assets/raster_q0_1.png
+
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
