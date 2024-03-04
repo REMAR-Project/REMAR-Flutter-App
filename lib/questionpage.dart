@@ -1,3 +1,4 @@
+// DIsplays widgets based on the information gathered from the question.json file
 import 'package:flutter/material.dart';
 import 'package:remar_flutter_app/imports/question.dart';
 import 'package:remar_flutter_app/imports/widgetImports.dart';
@@ -25,14 +26,15 @@ class _QuestionPageState extends State<QuestionPage> {
             Question currentQuestion = questions.firstWhere((question) => question.questionNumber == currentQuestionNumber);
             Widget questionWidget;
             switch (currentQuestion.questionType) {
-              case 'YearChoice':
+              // TODO: Add all possible question types
+              case 'MoonCalendar':
                 questionWidget = const MoonCalendar();
                 break;
-              case 'MonthChoice':
-                questionWidget = const MoonCalendar();
+              case 'ListSelection':
+                questionWidget = const ListSelection(question.jsonInput);
                 break;
               default:
-                questionWidget = MoonCalendar();
+                questionWidget = const Text('Question type not found');
             }
             return Column(
               children: [
