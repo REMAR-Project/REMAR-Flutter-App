@@ -5,35 +5,37 @@ class MoonCalendar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-        crossAxisCount: 7,
-        children: List.generate(30, (index) {
-          bool shouldDisplayImage = (index + 1 == 3 || index + 1 == 6);
-          return Center(
-            child: AspectRatio(
-              aspectRatio: 1.0,
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 1.0,
+    return Expanded(
+      child: GridView.count(
+          crossAxisCount: 7,
+          children: List.generate(30, (index) {
+            bool shouldDisplayImage = (index + 1 == 3 || index + 1 == 6);
+            return Center(
+              child: AspectRatio(
+                aspectRatio: 1.0,
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.black,
+                      width: 1.0,
+                    ),
+                  ),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: <Widget>[
+                      if (shouldDisplayImage)
+                        Image.network('assets/images/moon_calendar/moon.png'),
+                      Text(
+                        '${index + 1}',
+                        style: const TextStyle(fontSize: 24, color: Colors.black),
+                      ),
+                    ],
                   ),
                 ),
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: <Widget>[
-                    if (shouldDisplayImage)
-                      Image.network('https://example.com/image.jpg'),
-                    Text(
-                      '${index + 1}',
-                      style: const TextStyle(fontSize: 24, color: Colors.black),
-                    ),
-                  ],
-                ),
               ),
-            ),
-          );
-        }),
+            );
+          }),
+      ),
     );
   }
 }
