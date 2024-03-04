@@ -23,15 +23,23 @@ class _QuestionPageState extends State<QuestionPage> {
           if (snapshot.hasData) {
             questions = snapshot.data!;
             Question currentQuestion = questions.firstWhere((question) => question.questionNumber == currentQuestionNumber);
-            // TODO: Add other question types properly
+            Widget questionWidget;
             switch (currentQuestion.questionType) {
               case 'YearChoice':
-                return const MoonCalendar();
+                questionWidget = const MoonCalendar();
+                break;
               case 'MonthChoice':
-                return const MoonCalendar();
+                questionWidget = const MoonCalendar();
+                break;
               default:
-                return MoonCalendar();
+                questionWidget = MoonCalendar();
             }
+            return Column(
+              children: [
+                Text(currentQuestion.questionText),
+                questionWidget,
+              ],
+            );
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else {
