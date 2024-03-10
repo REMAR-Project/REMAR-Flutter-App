@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 
 class QuestionAnswerPage extends StatefulWidget {
@@ -6,7 +7,30 @@ class QuestionAnswerPage extends StatefulWidget {
 }
 
 class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
-  String selectedAnswer = '';
+  List<String> selectedAnswer = [];
+  List<String> answers = [];
+  String questionText = '';
+
+  @override
+  void initState() {
+    super.initState();
+    loadQuestions();
+  }
+
+  void loadQuestions() async {
+    // Load the JSON data from the file
+    String jsonString = await DefaultAssetBundle.of(context)
+        .loadString('assets/raw_eng/questions2Modified.json');
+    // Parse the JSON string into a list of objects
+    List<dynamic> jsonData = jsonDecode(jsonString);
+    // Extract data from the first question
+    Map<String, dynamic> firstQuestionData = jsonData.first;
+    // Set question text and answers list
+    setState(() {
+      questionText = firstQuestionData['question'];
+      answers = List<String>.from(firstQuestionData['answers']);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,32 +70,13 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
           ),
           SizedBox(height: 20.0),
           Text(
-            "Please can you let us know what you do? Touch screen and move finger to select.",
+            questionText,
             style: TextStyle(
               fontSize: 16.0,
             ),
           ),
           SizedBox(height: 20.0),
-          for (var answer in [
-            "• I catch crabs and depend on them for my living",
-            "• I catch crabs only occasionally for my own consumption",
-            "• I work with crab meat processing",
-            "• I work with crab commercialization",
-            "• I am a local villager and do not normally catch mangrove crabs",
-            "• I work for ICMBio and observed the andada myself",
-            "• I work for ICMBio and report results of a crab fisher",
-            "• I work for IBAMA and observed the andada myself",
-            "• I work for IBAMA and report results of a crab fisher",
-            "• I work in the city hall and observed the andada myself",
-            "• I work in the city hall and report results of a crab fisher",
-            "• I am a researcher and observed the andada myself",
-            "• I am a researcher and report results of a crab fisher",
-            "• I am a tourist",
-            "• I work in tourism",
-            "• Other",
-            "• I do not want to specify"
-          ])
-            buildAnswerButton(answer),
+          for (var answer in answers) buildAnswerButton(answer),
         ],
       ),
     );
@@ -83,13 +88,11 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
     return GestureDetector(
       onTap: () {
         setState(() {
-          selectedAnswer = answer;
+          selectedAnswer = answer as List<String>;
         });
       },
       child: Container(
-        color: isSelected
-            ? Colors.green
-            : null, // Apply green background if selected
+        color: isSelected ? Colors.green : null,
         padding: EdgeInsets.all(12.0),
         margin: EdgeInsets.symmetric(vertical: 8.0),
         child: Text(
