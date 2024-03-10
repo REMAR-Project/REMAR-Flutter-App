@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 
-class CustomBottomNavigationBar extends StatefulWidget {
-  const CustomBottomNavigationBar({Key? key}) : super(key: key);
+class CustomBottomNavigationBar extends StatelessWidget {
+  final int currentPageIndex;
+  final Function(int) onPageChanged;
 
-  @override
-  _CustomBottomNavigationBarState createState() =>
-      _CustomBottomNavigationBarState();
-}
-
-class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
-  int _currentPage = 1; // Current page number
-  int _totalPages = 10; // Total number of pages
+  const CustomBottomNavigationBar({
+    Key? key,
+    required this.currentPageIndex,
+    required this.onPageChanged,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,24 +19,14 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              // Move to the previous page
-              setState(() {
-                if (_currentPage > 1) {
-                  _currentPage--;
-                }
-              });
+              onPageChanged(currentPageIndex - 1); // Go to previous page
             },
           ),
-          Text('Page $_currentPage of $_totalPages'),
+          Text('Page ${currentPageIndex + 1} of 2'),
           IconButton(
             icon: const Icon(Icons.arrow_forward),
             onPressed: () {
-              // Move to the next page
-              setState(() {
-                if (_currentPage < _totalPages) {
-                  _currentPage++;
-                }
-              });
+              onPageChanged(currentPageIndex + 1); // Go to next page
             },
           ),
         ],
