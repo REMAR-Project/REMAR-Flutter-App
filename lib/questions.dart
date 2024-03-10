@@ -23,13 +23,23 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
         .loadString('assets/raw_eng/questions2Modified.json');
     // Parse the JSON string into a list of objects
     List<dynamic> jsonData = jsonDecode(jsonString);
-    // Extract data from the first question
-    Map<String, dynamic> firstQuestionData = jsonData.first;
-    // Set question text and answers list
-    setState(() {
-      questionText = firstQuestionData['question'];
-      answers = List<String>.from(firstQuestionData['answers']);
-    });
+    // Extract data from the question with questionNumber 10
+    Map<String, dynamic>? question10Data = jsonData.firstWhere(
+        (question) => question['questionNumber'] == 10,
+        orElse: () => null);
+
+    if (question10Data != null) {
+      // Extract question and answers
+      String? question = question10Data['question_10'];
+      List<dynamic>? answersList = question10Data['answers_10'];
+
+      if (question != null && answersList != null) {
+        setState(() {
+          questionText = question;
+          answers = answersList.cast<String>(); // Cast answers to String list
+        });
+      }
+    }
   }
 
   @override
@@ -83,12 +93,17 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   }
 
   Widget buildAnswerButton(String answer) {
-    bool isSelected = answer == selectedAnswer;
+    bool isSelected = selectedAnswer.contains(answer);
 
     return GestureDetector(
       onTap: () {
         setState(() {
-          selectedAnswer = answer as List<String>;
+          if (isSelected) {
+            selectedAnswer.remove(answer);
+          } else {
+            selectedAnswer.clear();
+            selectedAnswer.add(answer);
+          }
         });
       },
       child: Container(

@@ -15,8 +15,8 @@
   {
     "questionNumber": 10,
     "questionType": "ListSelect",
-    "question": "Please can you let us know what you do? Touch screen and move finger to select.",
-    "answers": [
+    "question_10": "Please can you let us know what you do? Touch screen and move finger to select.",
+    "answers_10": [
       "• I catch crabs and depend on them for my living",
       "• I catch crabs only occasionally for my own consumption",
       "• I work with crab meat processing",
