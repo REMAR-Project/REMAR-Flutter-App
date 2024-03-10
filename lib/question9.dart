@@ -27,23 +27,19 @@ class _QuestionAnswerPageState extends State<QuestionAnswer9Page> {
         .loadString('assets/raw_eng/questions2Modified.json');
     // Parse the JSON string into a list of objects
     List<dynamic> jsonData = jsonDecode(jsonString);
-    // Extract data from the first question
-    Map<String, dynamic> secondQuestionData = jsonData[1];
+    // Extract data from the first question (question number 9)
+    Map<String, dynamic> firstQuestionData = jsonData[0];
     // Set question text and answers list
     setState(() {
-      questionText = secondQuestionData['question'];
-      answers = secondQuestionData['answers'].cast<String>();
-    });
-
-    // Extract data from the second question
-    Map<String, dynamic> firstQuestionData = jsonData[0];
-    setState(() {
+      questionText = firstQuestionData['question'];
       extraDetailText = firstQuestionData['extraDetailText'];
-      areas = (firstQuestionData['answers'] as Map<String, dynamic>)
+      // Extract areas from the answers map
+      List<dynamic> areasList = firstQuestionData['answers']
           .values
-          .expand((dynamic areaList) => (areaList as List<dynamic>)
-              .map((dynamic item) => item.toString()))
+          .expand((areaList) => areaList as List<dynamic>)
           .toList();
+      // Cast areas to List<String>
+      areas = areasList.map((area) => area.toString()).toList();
     });
   }
 
