@@ -20,7 +20,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
               Expanded(
                 flex: 1,
                 child: Image.asset(
-                  'assets/raster_q0_0.png',
+                  'assets/images/raster_q0_0.png',
                   height: 200,
                   width: 200,
                 ),
