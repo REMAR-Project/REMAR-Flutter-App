@@ -1,5 +1,13 @@
 [
   {
+    "questionNumber": 3,
+    "questionType": "YearChoice",
+    "questionPicture": "raster_q0_(2:0)",
+    "questionTitle": "crab_title_(2:0)",
+    "questionText": "When did you observe andada? Touch screen, move finger and tap to choose the correct year.",
+    "answers": ["2016","2027","2018","2019","2020","2021","2022","2023","2024","2025","2025","2026"]
+  },
+  {
     "questionNumber": 9,
     "questionType": "YesNoExtra",
     "questionPicture": "raster_q0_(2:0)",
