@@ -1,18 +1,16 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'app_bar.dart';
-
-class QuestionAnswer3Page extends StatefulWidget {
+class QuestionAnswer8Page extends StatefulWidget {
   @override
-  _QuestionAnswerPage3State createState() => _QuestionAnswerPage3State();
+  _QuestionAnswerPage8State createState() => _QuestionAnswerPage8State();
 }
 
-class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
+class _QuestionAnswerPage8State extends State<QuestionAnswer8Page> {
   String selectedArea = '';
   List<String> answers = [];
   String questionText = '';
+  String state ='Alagoas';
 
   @override
   void initState() {
@@ -21,28 +19,37 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
   }
 
   void loadQuestions() async {
-     // Load the JSON data from the file
-      String jsonString = await DefaultAssetBundle.of(context)
-          .loadString('assets/raw_eng/questions2Modified.json');
+    // Load the JSON data from the file
+    String jsonString = await DefaultAssetBundle.of(context)
+        .loadString('assets/raw_eng/questions2Modified.json');
 
-      // Parse the JSON string into a list of objects
-      List<dynamic> jsonData = jsonDecode(jsonString);
+    // Parse the JSON string into a list of objects
+    List<dynamic> jsonData = jsonDecode(jsonString);
 
-      // Extract data from the first question (question number 9)
-      Map<String, dynamic> firstQuestionData = jsonData[0];
+    // Extract data from the first question (question number 9)
+    Map<String, dynamic> firstQuestionData = jsonData[3];
 
 
-      // Set question text and answers list
-      setState(() {
-        questionText = firstQuestionData['questionText'];
+    // Set question text and answers list
+    setState(() {
+      questionText = firstQuestionData['description'];
 
-        // Extract answers from the answers map
-        List<dynamic> answerList = firstQuestionData['answers'];
+      // Extract answers from the answers map
+      List<dynamic> answerList = firstQuestionData['answers'];
+      List<String> answers = [];
 
-        // Cast answers to List<String>
-        answers = answerList.map((answer) => answer.toString()).toList();
-      });
+      for (var item in answers) {
+        if(item==state) {
+          answers.add(item);
+
+      }
+
     }
+
+      // Cast answers to List<String>
+      answers = answerList.map((answer) => answer.toString()).toList();
+    });
+  }
 
 
   @override
@@ -113,5 +120,3 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
     );
   }
 }
-
-
