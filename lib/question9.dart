@@ -28,7 +28,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswer9Page> {
     // Parse the JSON string into a list of objects
     List<dynamic> jsonData = jsonDecode(jsonString);
     // Extract data from the first question (question number 9)
-    Map<String, dynamic> firstQuestionData = jsonData[0];
+    Map<String, dynamic> firstQuestionData = jsonData[1];
     // Set question text and answers list
     setState(() {
       questionText = firstQuestionData['question'];

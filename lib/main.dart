@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:remar_flutter_app/question9.dart';
 import 'package:remar_flutter_app/questions.dart';
+import 'package:remar_flutter_app/questions3.dart';
 import 'app_bar.dart';
 import 'bottom_navigation_bar.dart';
 
@@ -17,6 +18,7 @@ class _MyAppState extends State<MyApp> {
   int _currentPageIndex = 0; // Current page index
 
   final List<Widget> _pages = [
+    QuestionAnswer3Page(),
     QuestionAnswer9Page(), // Page 1
     QuestionAnswerPage(), // Page 2
   ];
