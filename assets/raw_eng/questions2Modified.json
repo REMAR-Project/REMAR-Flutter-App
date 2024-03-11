@@ -8,6 +8,14 @@
     "answers": ["2016","2027","2018","2019","2020","2021","2022","2023","2024","2025","2025","2026"]
   },
   {
+    "questionNumber": 4,
+    "questionType": "MonthChoice",
+    "questionPicture": "raster_q0_(2:0)",
+    "questionTitle": "crab_title_(2:0)",
+    "questionText": "Touch screen and move finger to choose correct month. In case you saw two andadas this month (one around new moon and one around full moon), please run the app for each andada seperately.",
+    "answers": ["January","February","March","April","May","June","July","August","September","October","November","December"]
+  },
+  {
     "questionNumber": 9,
     "questionType": "YesNoExtra",
     "questionPicture": "raster_q0_(2:0)",

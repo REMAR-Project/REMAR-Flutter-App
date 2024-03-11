@@ -22,7 +22,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
               onPageChanged(currentPageIndex - 1); // Go to previous page
             },
           ),
-          Text('Page ${currentPageIndex + 1} of 3'),
+          Text('Page ${currentPageIndex + 1} of 4'),
           IconButton(
             icon: const Icon(Icons.arrow_forward),
             onPressed: () {
