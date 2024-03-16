@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:remar_web/pages/about_us.dart';
 import 'package:remar_web/pages/quiz_main.dart';
 import 'package:remar_web/pages/splash_page.dart';
 import 'package:remar_web/providers/bottom_state_provider.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         routes: {
           '/home': (context) => const SplashPage(),
           '/quiz': (context) => const HomePage(),
+          '/about_us': (context) => const AboutUs(),
         },
       ),
     );
