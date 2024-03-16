@@ -81,7 +81,7 @@ class _QuizQuesPageState extends State<QuizQuesPage> {
                           height: 250,
                           width: 250,
                           decoration: BoxDecoration(
-                              color: hoveredBox1 ? const Color(0xFFFFC107): const Color(0xFF4CAF50),
+                              color: hoveredBox1 || isSelected1 ? const Color(0xFFFFC107): const Color(0xFF4CAF50),
                               borderRadius:
                               BorderRadius.circular(hoveredBox1 ? 35 : 25),
                               boxShadow: [
@@ -140,7 +140,7 @@ class _QuizQuesPageState extends State<QuizQuesPage> {
                           height: 250,
                           width: 250,
                           decoration: BoxDecoration(
-                              color: hoveredBox2 ? const Color(0xFFFFC107): const Color(0xFF4CAF50),
+                              color: hoveredBox2 || isSelected2 ? const Color(0xFFFFC107): const Color(0xFF4CAF50),
                               borderRadius:
                               BorderRadius.circular(hoveredBox2 ? 35 : 25),
                               boxShadow: [

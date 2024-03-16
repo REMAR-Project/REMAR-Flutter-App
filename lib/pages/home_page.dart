@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:remar_web/pages/about_us.dart';
 import 'package:remar_web/pages/quiz_main.dart';
 import 'package:remar_web/widgets/app_bar.dart';
 
@@ -43,7 +44,7 @@ class _HomePageState extends State<HomePage> {
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => const QuizMain(totalQues: 10),
+                      builder: (context) => const QuizMain(totalQues: 14),
                     ),
                   );
                 },
@@ -204,7 +205,9 @@ class _HomePageState extends State<HomePage> {
                 height: 20,
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, AboutUs.route);
+                },
                 child: MouseRegion(
                   cursor: SystemMouseCursors.click,
                   child: Container(
