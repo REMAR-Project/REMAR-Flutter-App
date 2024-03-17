@@ -30,8 +30,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       actions: <Widget>[
-        Image.network('assets/raster_logo_ufsb.png'),
-        Image.network('assets/raster_logo_napier.png'),
+        Image.asset('assets/images/raster_logo_ufsb.png'),
+        Image.asset('assets/images/raster_logo_napier.png'),
       ],
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(10.0),

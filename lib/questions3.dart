@@ -58,28 +58,32 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
                 Image.asset(
                   'assets/images/raster_q0_0.png',
                   width: 100,
-                  height: 75,
+                  height: 125,
                 ),
                 const Text(
                   "Cardisoma_guanhumi",
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 24),
                 ),
               ],
             ),
             SizedBox(
-              width: 350,
-              height: 100,
-              child: Text(questionText),
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: MediaQuery.of(context).size.height * 0.1,
+              child: Text(questionText,
+                  style: const TextStyle(fontSize: 18),
+              ),
             ),
             SizedBox(
-              width: 500,
-              height: 350,
+              height: MediaQuery.of(context).size.height *0.55,
+              width: MediaQuery.of(context).size.width * 0.8,
               child: Scrollbar(
-                child: ListView.builder(
+                child: ListView.separated(
                   itemCount: answers.length,
                   itemBuilder: (BuildContext context, int index) {
                     return buildAnswerButton(answers[index]);
-                  },
+                  }, separatorBuilder: (BuildContext context, int index) {
+                    return const Divider();
+                },
                 ),
               ),
             ),
@@ -100,8 +104,8 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
       },
       child: Container(
         color: isSelected ? Colors.green : null,
-        padding: const EdgeInsets.all(12.0),
-        margin: const EdgeInsets.symmetric(vertical: 8.0),
+        padding: const EdgeInsets.all(1.0),
+        margin: const EdgeInsets.symmetric(vertical: 1.0),
         child: Text(
           answer,
           style: TextStyle(

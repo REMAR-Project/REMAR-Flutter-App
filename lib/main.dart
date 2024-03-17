@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: CustomAppBar(),
+        appBar: const CustomAppBar(),
         bottomNavigationBar: CustomBottomNavigationBar(
           currentPageIndex: _currentPageIndex,
           onPageChanged: _onPageChanged,
