@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
   int _currentPageIndex = 0; // Current page index
 
   final List<Widget> _pages = [
-    QuestionAnswer3Page(),
+    QuestionAnswer3Page(image: crabImage, name: crabName),
     QuestionAnswer4Page(),
     QuestionAnswer7Page(),
     QuestionAnswer8Page(state:"Piauí", image: crabImage, name: crabName),
