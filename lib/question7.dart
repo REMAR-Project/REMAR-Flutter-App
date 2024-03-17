@@ -1,10 +1,20 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'app_bar.dart';
 
 class QuestionAnswer7Page extends StatefulWidget {
+
+  final String name;
+  final String image;
+
+  const QuestionAnswer7Page({
+    Key? key,
+    required this.name,
+    required this.image,
+  }) : super(key: key);
+
+
   @override
   _QuestionAnswerPage7State createState() => _QuestionAnswerPage7State();
 }
@@ -12,7 +22,7 @@ class QuestionAnswer7Page extends StatefulWidget {
 class _QuestionAnswerPage7State extends State<QuestionAnswer7Page> {
   String selectedArea = '';
   List<String> answers = [];
-  String descriptionText = '';
+  String questionText = '';
 
   @override
   void initState() {
@@ -34,7 +44,7 @@ class _QuestionAnswerPage7State extends State<QuestionAnswer7Page> {
 
     // Set question text and answers list
     setState(() {
-      descriptionText = firstQuestionData['description'];
+      questionText = firstQuestionData['description'];
 
       // Extract answers from the answers map
       List<dynamic> answerList = firstQuestionData['answers'];
@@ -56,25 +66,25 @@ class _QuestionAnswerPage7State extends State<QuestionAnswer7Page> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Image.asset(
-                  'assets/images/raster_q0_0.png',
+                  widget.image,
                   width: 100,
                   height: 125,
                 ),
-                const Text(
-                  "Cardisoma_guanhumi",
-                  style: TextStyle(fontSize: 24),
+                Text(
+                  widget.name,
+                  style: const TextStyle(fontSize: 24),
                 ),
               ],
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
-              height: MediaQuery.of(context).size.height * 0.1,
-              child: Text(descriptionText,
-                style: const TextStyle(fontSize: 18),
+              height: MediaQuery.of(context).size.height * 0.15,
+              child: Text(questionText,
+                style: const TextStyle(fontSize: 16),
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height *0.55,
+              height: MediaQuery.of(context).size.height *0.5,
               width: MediaQuery.of(context).size.width * 0.8,
               child: Scrollbar(
                 child: ListView.separated(
