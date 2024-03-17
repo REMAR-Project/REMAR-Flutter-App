@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
 
   final List<Widget> _pages = [
     QuestionAnswer3Page(image: crabImage, name: crabName),
-    QuestionAnswer4Page(),
+    QuestionAnswer4Page(image: crabImage, name: crabName),
     QuestionAnswer7Page(),
     QuestionAnswer8Page(state:"Piauí", image: crabImage, name: crabName),
     QuestionAnswer9Page(), // Page 1

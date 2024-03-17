@@ -1,10 +1,20 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'app_bar.dart';
 
 class QuestionAnswer4Page extends StatefulWidget {
+
+  final String name;
+  final String image;
+
+  const QuestionAnswer4Page({
+    Key? key,
+    required this.name,
+    required this.image,
+  }) : super(key: key);
+
+
   @override
   _QuestionAnswerPage4State createState() => _QuestionAnswerPage4State();
 }
@@ -56,13 +66,13 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Image.asset(
-                  'assets/images/raster_q0_0.png',
+                  widget.image,
                   width: 100,
                   height: 125,
                 ),
-                const Text(
-                  "Cardisoma_guanhumi",
-                  style: TextStyle(fontSize: 24),
+                Text(
+                  widget.name,
+                  style: const TextStyle(fontSize: 24),
                 ),
               ],
             ),
