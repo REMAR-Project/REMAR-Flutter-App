@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:remar_flutter_app/question7.dart';
 import 'package:remar_flutter_app/question9.dart';
 import 'package:remar_flutter_app/questions.dart';
 import 'package:remar_flutter_app/questions3.dart';
@@ -21,6 +22,7 @@ class _MyAppState extends State<MyApp> {
   final List<Widget> _pages = [
     QuestionAnswer3Page(),
     QuestionAnswer4Page(),
+    QuestionAnswer7Page(),
     QuestionAnswer9Page(), // Page 1
     QuestionAnswerPage(), // Page 2
   ];
