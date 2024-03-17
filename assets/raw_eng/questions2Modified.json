@@ -5,7 +5,7 @@
     "questionPicture": "raster_q0_(2:0)",
     "questionTitle": "crab_title_(2:0)",
     "questionText": "When did you observe andada? Touch screen, move finger and tap to choose the correct year.",
-    "answers": ["2016","2027","2018","2019","2020","2021","2022","2023","2024","2025","2025","2026"]
+    "answers": ["2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"]
   },
   {
     "questionNumber": 4,
@@ -14,6 +14,16 @@
     "questionTitle": "crab_title_(2:0)",
     "questionText": "Touch screen and move finger to choose correct month. In case you saw two andadas this month (one around new moon and one around full moon), please run the app for each andada seperately.",
     "answers": ["January","February","March","April","May","June","July","August","September","October","November","December"]
+  },
+  {
+    "questionNumber": 7,
+    "questionType": "ListSelect",
+    "questionPicture": "raster_q0_(2:0)",
+    "questionTitle": "crab_title_(2:0)",
+    "description": "Touch screen, move with finger and tap to select the state where you made your observation.",
+    "jsonInput": "regions.json",
+    "disableCustom": "true",
+    "answers": ["Alagoas","Amapá","Bahia","Ceará","Espírito Santo","Maranhão","Pará","Paraíba","Paraná","Pernambuco","Piauí", "Rio de Janeiro","Rio Grande do Norte","Santa Catarina","São Paulo","Sergipe"]
   },
   {
     "questionNumber": 9,
@@ -53,3 +63,4 @@
     "disableCustom": "true"
   }
 ]
+
