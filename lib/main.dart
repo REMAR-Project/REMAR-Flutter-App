@@ -14,8 +14,11 @@ void main() {
 
 class MyApp extends StatefulWidget {
   @override
-  _MyAppState createState() => _MyAppState();
-}
+  _MyAppState createState() => _MyAppState();}
+
+String crabName="Uncides coordatus";
+String crabImage='assets/images/raster_q0_0.png';
+bool longVersion=true;
 
 class _MyAppState extends State<MyApp> {
   int _currentPageIndex = 0; // Current page index
@@ -24,7 +27,7 @@ class _MyAppState extends State<MyApp> {
     QuestionAnswer3Page(),
     QuestionAnswer4Page(),
     QuestionAnswer7Page(),
-    QuestionAnswer8Page(),
+    QuestionAnswer8Page(state:"Piauí", image: crabImage, name: crabName),
     QuestionAnswer9Page(), // Page 1
     QuestionAnswerPage(), // Page 2
   ];
