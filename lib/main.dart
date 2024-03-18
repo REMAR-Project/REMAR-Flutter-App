@@ -3,10 +3,12 @@ import 'widgets/app_bar.dart';
 import 'questionpage.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,10 +20,10 @@ class MyApp extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => QuestionPage()),
+                  MaterialPageRoute(builder: (context) => const QuestionPage()),
                 );
               },
-              child: Text('Go to QuestionPage'),
+              child: const Text('Go to QuestionPage'),
             ),
           ),
         ),
