@@ -3,15 +3,17 @@ import 'package:flutter/material.dart';
 class CustomBottomNavigationBar extends StatelessWidget {
   final VoidCallback onNext;
   final VoidCallback onPrevious;
-  int currentPage;
-  int totalPages;
+  final int currentPage;
+  final int totalPages;
 
-  CustomBottomNavigationBar({
+  const CustomBottomNavigationBar({
+    Key? key, 
     required this.onNext, 
     required this.onPrevious, 
     required this.currentPage, 
     required this.totalPages
-  });
+  }) : super(key: key);
+
 
 
   @override
