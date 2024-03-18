@@ -6,6 +6,8 @@ import 'package:remar_flutter_app/widgets/app_bar.dart';
 import 'package:remar_flutter_app/widgets/bottom_navigation_bar.dart';
 
 class QuestionPage extends StatefulWidget {
+  const QuestionPage({super.key});
+
   @override
   _QuestionPageState createState() => _QuestionPageState();
 }
@@ -15,58 +17,69 @@ class _QuestionPageState extends State<QuestionPage> {
   List<Question> questions = [];
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CustomAppBar(),
-      body: FutureBuilder<List<Question>>(
-        future: fetchQuestions(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            questions = snapshot.data!;
-            Question currentQuestion = questions.firstWhere((question) => question.questionNumber == currentQuestionNumber);
-            Widget questionWidget;
-            switch (currentQuestion.questionType) {
-              // TODO: Add all possible question types
-              case 'MoonCalendar':
-                questionWidget = const MoonCalendar();
-                break;
-              case 'ListSelection':
-                questionWidget = const ListSelection(question.jsonInput);
-                break;
-              default:
-                questionWidget = const Text('Question type not found');
-            }
-            return Column(
-              children: [
-                Text(currentQuestion.questionText),
-                questionWidget,
-              ],
-            );
-          } else if (snapshot.hasError) {
-            return Text('Error: ${snapshot.error}');
-          } else {
-            return const CircularProgressIndicator();
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: const CustomAppBar(),
+    body: FutureBuilder<List<Question>>(
+      future: fetchQuestions(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          questions = snapshot.data!;
+          Question currentQuestion = questions.firstWhere((question) => question.questionNumber == currentQuestionNumber);
+          Widget questionWidget;
+          switch (currentQuestion.questionType) {
+            // TODO: Add all possible question types
+            case 'MoonCalendar':
+              questionWidget = const MoonCalendar();
+              break;
+            case 'ListSelect':
+              questionWidget = ListSelection(fileName: currentQuestion.jsonInput);
+              break;
+            case 'YearChoice':
+              questionWidget = const YearMonthSelection(type: 'Year');
+              break;
+            case 'MonthChoice':
+              questionWidget = const YearMonthSelection(type: 'Month', year: 2021);
+              break;
+            default:
+              questionWidget = const Text('QUESTION TYPE YET TO BE COMPLETED');
           }
-        },
-      ),
-      bottomNavigationBar: questions != null ? CustomBottomNavigationBar(
-        onNext: () {
-          if (currentQuestionNumber < questions.length) {
-            setState(() {
-              currentQuestionNumber++;
-            });
-          }
-        },
-        onPrevious: () {
-          if (currentQuestionNumber > 1) {
-            setState(() {
-              currentQuestionNumber--;
-            });
-          }
-        },
-        currentPage: currentQuestionNumber,
-        totalPages: questions.length,
-      ) : null,
-    );
-  }
+          return Column(
+            children: [
+              Text(currentQuestion.questionText),
+              Expanded(
+                child: questionWidget,
+              ),
+              CustomBottomNavigationBar(
+                onNext: () async {
+                  if (currentQuestionNumber < questions.length) {
+                    var result = await Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ListSelection(fileName: currentQuestion.jsonInput)),
+                    );
+                    print('Received from ListSelection: $result');
+                    // Use the result here
+                  }
+                },
+                onPrevious: () {
+                  if (currentQuestionNumber > 1) {
+                    setState(() {
+                      currentQuestionNumber--;
+                    });
+                  }
+                },
+                currentPage: currentQuestionNumber,
+                totalPages: questions.length,
+              ),
+            ],
+          );
+        } else if (snapshot.hasError) {
+          return Text('Error: ${snapshot.error}');
+        } else {
+          return const CircularProgressIndicator();
+        }
+      },
+    ),
+  );
+}
 }
