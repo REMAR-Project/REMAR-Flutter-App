@@ -45,7 +45,6 @@ class _QuestionPageState extends State<QuestionPage> {
     if (questions.isEmpty) {
       return const CircularProgressIndicator();
     } else {
-      Question currentQuestion = questions.firstWhere((question) => question.questionNumber == currentQuestionNumber);
       return Scaffold(
         appBar: const CustomAppBar(),
         body: FutureBuilder<List<Question>>(
