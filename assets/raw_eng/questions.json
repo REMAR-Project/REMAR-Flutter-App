@@ -171,19 +171,5 @@
     "description": "If you want to contact REMAR, find out about ways to engage more with this research, ask or suggest something, please send a message to <b><a href=\"mailto:remar.quest@gmail.com?subject=Question for REMAR\">remar.quest@gmail.com</a></b>",
     "choiceOneText": "I WANT TO SUBMIT MY ANSWERS",
     "choiceTwoText": "I WANT TO GO BACK TO CHANGE ANSWERS"
-  },
-  {
-    "questionType": "Done",
-    "questionPicture": "raster_q0_(2:0)",
-    "questionTitle": "crab_title_(2:0)",
-    "hideBackNext": true
-  },
-  {
-    "questionType": "Return",
-    "questionPicture": "raster_q0_(2:0)",
-    "questionTitle": "crab_title_(2:0)",
-    "description": "To view analyses of the information we receive from you and other citizen scientists, please see the REMAR website at<br><a href=\"https://ufsb.edu.br/remar/o-remar-cidadao\">https://ufsb.edu.br/remar/o-remar-cidadao</a><br>OR<br><a href=\"http://crabdata.napier.ac.uk/public/\">http://crabdata.napier.ac.uk/public/</a><br>",
-    "choiceOneText": "I want to close the app",
-    "choiceTwoText": "I want to return to first page"
   }
 ]

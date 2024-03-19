@@ -4,8 +4,9 @@ import 'package:flutter/services.dart';
 
 class ListSelection extends StatefulWidget {
   final String fileName;
+  final Function onSelection;
 
-  const ListSelection({super.key, required this.fileName});
+  const ListSelection({super.key, required this.fileName, required this.onSelection});
 
   @override
   _ListSelectionState createState() => _ListSelectionState();
@@ -21,6 +22,7 @@ class _ListSelectionState extends State<ListSelection> {
   }
 
 void readJson() async {
+  print('Loading asset: assets/raw_eng/${widget.fileName}');
   final String response = await rootBundle.loadString('assets/raw_eng/${widget.fileName}');
   final data = await json.decode(response);
   print('Parsed data: $data');
@@ -42,7 +44,7 @@ void readJson() async {
               ),
               onTap: () {
                 print('Item clicked: ${items[index]}');
-                Navigator.pop(context, items[index]); // pass data back
+                widget.onSelection(items[index]);
               },
             ),
           );

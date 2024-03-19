@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class YearMonthSelection extends StatefulWidget {
   final String type;
   final int? year;
+  final Function onSelection;
 
-  const YearMonthSelection({Key? key, required this.type, this.year}) : super(key: key);
+  const YearMonthSelection({Key? key, required this.type, this.year, required this.onSelection}) : super(key: key);
 
   @override
   _YearMonthSelectionState createState() => _YearMonthSelectionState();
@@ -55,7 +56,7 @@ class _YearMonthSelectionState extends State<YearMonthSelection> {
               ),
               onTap: () {
                 print('Item clicked: ${items[index]}');
-                // Add your logic here for when the item is clicked
+                widget.onSelection(items[index]);
               },
             ),
           );
