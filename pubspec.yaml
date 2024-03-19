@@ -57,6 +57,10 @@ flutter:
 
   assets:
     - assets/raw_eng/
+    - assets/raw_portuguese/
+    - assets/images/
+    - assets/images/appBar/
+    - assets/moons/
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
