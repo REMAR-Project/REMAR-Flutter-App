@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:remar_flutter_app/question7.dart';
-import 'package:remar_flutter_app/question8.dart';
-import 'package:remar_flutter_app/question9.dart';
-import 'package:remar_flutter_app/questions.dart';
-import 'package:remar_flutter_app/questions3.dart';
-import 'package:remar_flutter_app/questions4.dart';
+
+
+import 'Screens/question11.dart';
+import 'Screens/question12.dart';
+import 'Screens/question3.dart';
+import 'Screens/question4.dart';
+import 'Screens/question13.dart';
 import 'app_bar.dart';
 import 'bottom_navigation_bar.dart';
 
@@ -26,10 +27,10 @@ class _MyAppState extends State<MyApp> {
   final List<Widget> _pages = [
     QuestionAnswer3Page(image: crabImage, name: crabName),
     QuestionAnswer4Page(image: crabImage, name: crabName),
-    QuestionAnswer7Page(image: crabImage, name: crabName),
-    QuestionAnswer8Page(state:"Piauí", image: crabImage, name: crabName),
-    QuestionAnswer9Page(), // Page 1
-    QuestionAnswerPage(), // Page 2
+    QuestionAnswer11Page(image: crabImage, name: crabName),
+    QuestionAnswer12Page(state:"Piauí", image: crabImage, name: crabName),
+    QuestionAnswer13Page()
+
   ];
 
   void _onPageChanged(int index) {

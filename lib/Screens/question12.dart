@@ -1,28 +1,27 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 
-import 'app_bar.dart';
-
-class QuestionAnswer7Page extends StatefulWidget {
-
+class QuestionAnswer12Page extends StatefulWidget {
+  final String state;
   final String name;
   final String image;
 
-  const QuestionAnswer7Page({
+  const QuestionAnswer12Page({
     Key? key,
+    required this.state,
     required this.name,
     required this.image,
   }) : super(key: key);
 
-
   @override
-  _QuestionAnswerPage7State createState() => _QuestionAnswerPage7State();
+  _QuestionAnswerPage12State createState() => _QuestionAnswerPage12State();
 }
 
-class _QuestionAnswerPage7State extends State<QuestionAnswer7Page> {
+class _QuestionAnswerPage12State extends State<QuestionAnswer12Page> {
   String selectedArea = '';
   List<String> answers = [];
-  String questionText = '';
+  String descriptionText = '';
+
 
   @override
   void initState() {
@@ -39,21 +38,21 @@ class _QuestionAnswerPage7State extends State<QuestionAnswer7Page> {
     List<dynamic> jsonData = jsonDecode(jsonString);
 
     // Extract data from the first question (question number 9)
-    Map<String, dynamic> firstQuestionData = jsonData[2];
-
+    Map<String, dynamic> firstQuestionData = jsonData[11];
 
     // Set question text and answers list
     setState(() {
-      questionText = firstQuestionData['description'];
+      descriptionText = firstQuestionData['description'];
 
-      // Extract answers from the answers map
-      List<dynamic> answerList = firstQuestionData['answers'];
+      // Extract answers from the answers map based on the selected state
+      Map<String, dynamic> answerMap = firstQuestionData['answers'];
+      List<dynamic> stateList = answerMap[widget.state];
+
 
       // Cast answers to List<String>
-      answers = answerList.map((answer) => answer.toString()).toList();
+      answers = stateList.map((answer) => answer.toString()).toList();
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -66,41 +65,43 @@ class _QuestionAnswerPage7State extends State<QuestionAnswer7Page> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Image.asset(
-                  widget.image,
+                  widget.image, // Use the provided image
                   width: 100,
                   height: 125,
                 ),
                 Text(
                   widget.name,
-                  style: const TextStyle(fontSize: 24),
+                  style: TextStyle(fontSize: 24),
                 ),
               ],
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
-              height: MediaQuery.of(context).size.height * 0.15,
-              child: Text(questionText,
-                style: const TextStyle(fontSize: 16),
+              height: MediaQuery.of(context).size.height * 0.1,
+              child: Text(
+                descriptionText,
+                style: const TextStyle(fontSize: 18),
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height *0.5,
+              height: MediaQuery.of(context).size.height * 0.55,
               width: MediaQuery.of(context).size.width * 0.8,
               child: Scrollbar(
                 child: ListView.separated(
                   itemCount: answers.length,
                   itemBuilder: (BuildContext context, int index) {
                     return buildAnswerButton(answers[index]);
-                  }, separatorBuilder: (BuildContext context, int index) {
-                  return const Divider();
-                },
+                  },
+                  separatorBuilder: (BuildContext context, int index) {
+                    return const Divider();
+                  },
                 ),
               ),
             ),
-          ], // Column children
-        ), // Column
-      ), // Scaffold
-    ); // MaterialApp
+          ],
+        ),
+      ),
+    );
   }
 
   Widget buildAnswerButton(String answer) {
