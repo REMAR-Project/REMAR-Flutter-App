@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 class QuestionAnswerPage extends StatefulWidget {
+  const QuestionAnswerPage({super.key});
+
   @override
   _QuestionAnswerPageState createState() => _QuestionAnswerPageState();
 }
@@ -46,7 +48,7 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,8 +61,8 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
                   width: 200,
                 ),
               ),
-              SizedBox(width: 20.0),
-              Expanded(
+              const SizedBox(width: 20.0),
+              const Expanded(
                 flex: 2,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,14 +80,14 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
               ),
             ],
           ),
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
           Text(
             questionText,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16.0,
             ),
           ),
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
           for (var answer in answers) buildAnswerButton(answer),
         ],
       ),
@@ -108,8 +110,8 @@ class _QuestionAnswerPageState extends State<QuestionAnswerPage> {
       },
       child: Container(
         color: isSelected ? Colors.green : null,
-        padding: EdgeInsets.all(12.0),
-        margin: EdgeInsets.symmetric(vertical: 8.0),
+        padding: const EdgeInsets.all(12.0),
+        margin: const EdgeInsets.symmetric(vertical: 8.0),
         child: Text(
           answer,
           style: TextStyle(

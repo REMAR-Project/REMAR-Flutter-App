@@ -71,7 +71,7 @@ class _QuestionAnswerPage12State extends State<QuestionAnswer12Page> {
                 ),
                 Text(
                   widget.name,
-                  style: TextStyle(fontSize: 24),
+                  style: const TextStyle(fontSize: 24),
                 ),
               ],
             ),
