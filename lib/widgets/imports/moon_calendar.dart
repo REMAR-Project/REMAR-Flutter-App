@@ -65,7 +65,7 @@ class _MoonCalendarState extends State<MoonCalendar> {
       line = line.replaceAll('\r', '');
 
       // Use the CSV parser to parse the individual line.
-      var row = CsvToListConverter().convert(line).first;
+      var row = const CsvToListConverter().convert(line).first;
       rows.add(row);
     }
     return rows;

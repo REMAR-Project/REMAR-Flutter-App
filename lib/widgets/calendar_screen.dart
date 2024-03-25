@@ -23,11 +23,11 @@ class CalendarScreen extends StatelessWidget {
           ),
           Padding(
             padding: padding,
-            child: MoonPhaseKey(),
+            child: const MoonPhaseKey(),
           ),
           Padding(
             padding: padding,
-            child: DayOfWeekHeaders(),
+            child: const DayOfWeekHeaders(),
           ),
           Expanded(
             child: Padding(

@@ -10,12 +10,14 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Text('$month $year', style: TextStyle(fontSize: 24)),
+      child: Text('$month $year', style: const TextStyle(fontSize: 24)),
     );
   }
 }
 
 class MoonPhaseKey extends StatelessWidget {
+  const MoonPhaseKey({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const Row(
@@ -32,7 +34,9 @@ class MoonPhaseKey extends StatelessWidget {
 }
 
 class DayOfWeekHeaders extends StatelessWidget {
-  final List<String> daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  static const List<String> daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+  const DayOfWeekHeaders({super.key});
 
   @override
   Widget build(BuildContext context) {
