@@ -1,7 +1,7 @@
 // DIsplays widgets based on the information gathered from the question.json file
 import 'package:flutter/material.dart';
 import 'package:remar_flutter_app/imports/question.dart';
-import 'package:remar_flutter_app/imports/widgetImports.dart';
+import 'package:remar_flutter_app/imports/widget_imports.dart';
 import 'package:remar_flutter_app/widgets/app_bar.dart';
 import 'package:remar_flutter_app/widgets/bottom_navigation_bar.dart';
 
@@ -56,7 +56,7 @@ class _QuestionPageState extends State<QuestionPage> {
               Widget questionWidget;
               switch (currentQuestion.questionType) {
                 case 'DateRange':
-                  questionWidget = MoonCalendar(key: Key(currentQuestionNumber.toString()));
+                  questionWidget = CalendarScreen(key: Key(currentQuestionNumber.toString()), month: answers[currentQuestion.questionNumber-1], year: answers[currentQuestion.questionNumber-2]);
                   break;
                 case 'ListSelect':
                   questionWidget = ListSelection(key: Key(currentQuestionNumber.toString()), fileName: currentQuestion.jsonInput, onSelection: handleSelection);
