@@ -55,7 +55,6 @@ class _YearMonthSelectionState extends State<YearMonthSelection> {
                 child: Text(items[index]),
               ),
               onTap: () {
-                print('Item clicked: ${items[index]}');
                 widget.onSelection(items[index]);
               },
             ),
