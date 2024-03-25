@@ -117,11 +117,6 @@ class _MoonCalendarState extends State<MoonCalendar> {
     int yearInt = int.parse(widget.year);
     int monthInt = _getMonthInt(widget.month);
     DateTime firstOfMonth = DateTime(yearInt, monthInt, 1);
-
-    // Transform so that 0 corresponds to Sunday.
-    // Dart's DateTime class treats Monday as 1.
-    // If the first day of the month is Sunday (7), it should return 0,
-    // otherwise, it returns the weekday directly.
     return (firstOfMonth.weekday % 7);
   }
 
@@ -139,7 +134,6 @@ class _MoonCalendarState extends State<MoonCalendar> {
     int daysInPreviousMonth = DateUtils.getDaysInMonth(previousYear, previousMonth);
     
     // If the first day of the month is a Sunday, no trailing dates are needed.
-    // Otherwise, calculate how many days to include from the previous month.
     int daysFromLastMonth = firstDayOfWeek;
     trailingDates = List.generate(daysFromLastMonth, (index) {
       return DateTime(previousYear, previousMonth, daysInPreviousMonth - (daysFromLastMonth - index - 1));
@@ -211,7 +205,7 @@ class _MoonCalendarState extends State<MoonCalendar> {
           alignment: Alignment.center,
           children: <Widget>[
             Text(
-              DateFormat('d').format(currentDate), // Show day number only
+              DateFormat('d').format(currentDate),
               style: textStyle,
             ),
             // Show moon phase icons if it's a current month date and has a phase
