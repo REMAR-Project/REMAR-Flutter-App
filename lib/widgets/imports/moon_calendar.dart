@@ -8,11 +8,15 @@ import 'package:intl/intl.dart';
 class MoonCalendar extends StatefulWidget {
   final String month;
   final String year;
+  final List<DateTime>? selectableDates;
+  final Function onSelection;
 
   const MoonCalendar({
     Key? key,
     required this.month,
     required this.year,
+    required this.onSelection,
+    this.selectableDates,
   }) : super(key: key);
 
   @override
@@ -38,19 +42,13 @@ class _MoonCalendarState extends State<MoonCalendar> {
   }
   Future<void> _loadMoonPhases() async {
     // Load and parse the new moons CSV.
-    print("Loading new moon phases");
     final newMoonCsvData = await _loadCsvData('assets/moons/moons_new.csv');
-    print("Loading full moon phases");
     final fullMoonCsvData = await _loadCsvData('assets/moons/moons_full.csv');
-    print("Finished converting CSV data");
 
     setState(() {
       newMoonDates = _parseMoonCsv(newMoonCsvData);
-      print("New Moon Date Processed");
       fullMoonDates = _parseMoonCsv(fullMoonCsvData);
-      print("Full Moon Date Processed");
     });
-    print("States Set");
   }
 
   Future<List<List<dynamic>>> _loadCsvData(String path) async {
@@ -75,18 +73,16 @@ class _MoonCalendarState extends State<MoonCalendar> {
 
   List<DateTime> _parseMoonCsv(List<List<dynamic>> csvData) {
     List<DateTime> moonDates = [];
-    print("Parsing CSV data");
 
     for (var data in csvData) {
       try {
-        print("Parsing data: $data");
         // Trim the strings to remove any leading/trailing whitespace.
         int day = int.parse(data[0].toString().trim());
         int month = int.parse(data[1].toString().trim());
         int year = int.parse(data[2].toString().trim());
         moonDates.add(DateTime(year, month, day));
       } catch (e) {
-        print("Error parsing data $data: $e");
+        print('Error parsing moon phase data: $e');
       }
     }
 
@@ -185,23 +181,27 @@ class _MoonCalendarState extends State<MoonCalendar> {
     bool isNewPhase = newMoonDates.contains(currentDate);
     bool isFullPhase = fullMoonDates.contains(currentDate);
 
-    // Modify the style based on whether the date is in the current month.
-    TextStyle textStyle = isCurrentMonthDate
-        ? const TextStyle(fontSize: 24, color: Colors.black)
-        : const TextStyle(fontSize: 24, color: Colors.grey);
+    bool isSelectable = _isDateSelectable(currentDate);
+    bool isSelected = selectedDates.contains(currentDate);
+
+    TextStyle textStyle = TextStyle(
+      fontSize: 24,
+      color: isSelectable && isCurrentMonthDate ? Colors.black : Colors.grey,
+    );
 
     return GestureDetector(
-      onTap: isCurrentMonthDate
+      onTap: isSelectable
           ? () {
               setState(() {
-                if (selectedDates.contains(currentDate)) {
+                if (isSelected) {
                   selectedDates.remove(currentDate);
                 } else {
                   selectedDates.add(currentDate);
                 }
+                widget.onSelection(selectedDates, nextQuestion: false);
               });
             }
-          : null, // Disable interaction for trailing and leading dates.
+          : null,
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(color: Colors.black, width: 1.0),
@@ -255,4 +255,9 @@ class _MoonCalendarState extends State<MoonCalendar> {
       ),
     );
   }
+
+  bool _isDateSelectable(DateTime date) {
+    return widget.selectableDates == null || widget.selectableDates!.contains(date);
+  }
+
 }
