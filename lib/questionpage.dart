@@ -27,15 +27,15 @@ class _QuestionPageState extends State<QuestionPage> {
     });
   }
 
-  void handleSelection(dynamic value) {
+  void handleSelection(dynamic value, {bool nextQuestion = true}) {
   setState(() {
     answers[currentQuestionNumber] = value;
-    print(currentQuestionNumber);
-    print(value);
-    if (currentQuestionNumber < questions.length) {
-      currentQuestionNumber++;
-    } else {
-      // show submit page
+    if (nextQuestion){
+      if (currentQuestionNumber < questions.length) {
+        currentQuestionNumber++;
+      } else {
+        // show submit page
+      }
     }
   });
 }
@@ -56,7 +56,10 @@ class _QuestionPageState extends State<QuestionPage> {
               Widget questionWidget;
               switch (currentQuestion.questionType) {
                 case 'DateRange':
-                  questionWidget = CalendarScreen(key: Key(currentQuestionNumber.toString()), month: answers[currentQuestion.questionNumber-1], year: answers[currentQuestion.questionNumber-2]);
+                  questionWidget = CalendarScreen(key: Key(currentQuestionNumber.toString()), month: answers[currentQuestion.questionNumber-1], year: answers[currentQuestion.questionNumber-2], onSelection: handleSelection);
+                  break;
+                case 'DateRangeSelect':
+                  questionWidget = CalendarScreen(key: Key(currentQuestionNumber.toString()), month: answers[currentQuestion.questionNumber-2], year: answers[currentQuestion.questionNumber-3], selectableDates: answers[currentQuestion.questionNumber-1], onSelection: handleSelection);
                   break;
                 case 'ListSelect':
                   questionWidget = ListSelection(key: Key(currentQuestionNumber.toString()), fileName: currentQuestion.jsonInput, onSelection: handleSelection);
