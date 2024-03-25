@@ -61,12 +61,14 @@
   },
   {
     "questionNumber": 6,
-    "questionType": "ListSelect",
+    "questionType": "DateRangeSelect",
     "questionPicture": "raster_q0_(2:0)",
     "questionTitle": "crab_title_(2:0)",
-    "description": "How do you estimate the intensity of the observed Andada:",
-    "jsonInput": "number_of_crabs.json",
-    "disableCustom": "true"
+    "description": "<b>Touch the day with the STRONGEST andada activity.<br>If you don’t know, you can proceed without selecting a date.<br><br></b>",
+    "month": "(4:0)",
+    "year": "(3:0)",
+    "filterOnQuestion": -1,
+    "optional": true
   },
   {
     "questionNumber": 7,
