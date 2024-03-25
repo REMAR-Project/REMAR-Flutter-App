@@ -5,9 +5,11 @@ import 'package:remar_flutter_app/widgets/imports/moon_calendar.dart';
 class CalendarScreen extends StatelessWidget {
   final String month;
   final String year;
+  final List<DateTime>? selectableDates;
   final EdgeInsets padding;
+  final Function onSelection;
 
-  const CalendarScreen({Key? key, required this.month, required this.year, this.padding = const EdgeInsets.fromLTRB(30.0, 15.0, 30.0, 15.0)})
+  const CalendarScreen({Key? key, required this.month, required this.year, this.selectableDates, required this.onSelection, this.padding = const EdgeInsets.fromLTRB(30.0, 15.0, 30.0, 15.0)})
       : super(key: key);
 
   @override
@@ -33,6 +35,8 @@ class CalendarScreen extends StatelessWidget {
               child: MoonCalendar(
                 month: month,
                 year: year,
+                selectableDates: selectableDates,
+                onSelection: onSelection,
               ),
             ),
           ),
