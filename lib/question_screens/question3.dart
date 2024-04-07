@@ -85,7 +85,7 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height *0.55,
-              width: MediaQuery.of(context).size.width * 0.8,
+              width: MediaQuery.of(context).size.width * 0.7,
               child: Scrollbar(
                 child: ListView.separated(
                   itemCount: answers.length,
