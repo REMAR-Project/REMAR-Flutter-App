@@ -6,11 +6,13 @@ class QuestionAnswer4Page extends StatefulWidget {
 
   final String name;
   final String image;
+  final String month;
+  final Function(String) onMonthSelected;
 
   const QuestionAnswer4Page({
     Key? key,
     required this.name,
-    required this.image,
+    required this.image, required this.month, required this.onMonthSelected,
   }) : super(key: key);
 
 
@@ -22,6 +24,7 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
   String selectedArea = '';
   List<String> answers = [];
   String questionText = '';
+  String month='';
 
   @override
   void initState() {
@@ -109,6 +112,8 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
       onTap: () {
         setState(() {
           selectedArea = answer;
+          month = answer;
+          widget.onMonthSelected(month);
         });
       },
       child: Container(
