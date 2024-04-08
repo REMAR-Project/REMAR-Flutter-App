@@ -1,17 +1,22 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 
+List<String> yearList = []; // Declaration of yearList
 
 
 class QuestionAnswer3Page extends StatefulWidget {
 
   final String name;
   final String image;
+  final String year;
+  final Function(String) onYearSelected;
+
 
   const QuestionAnswer3Page({
     Key? key,
     required this.name,
     required this.image,
+    required this.year, required this.onYearSelected,
   }) : super(key: key);
 
 
@@ -21,38 +26,34 @@ class QuestionAnswer3Page extends StatefulWidget {
 
 class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
   String selectedArea = '';
-  List<String> answers = [];
   String questionText = '';
+  String year='';
 
   @override
   void initState() {
     super.initState();
+    getYearList();
     loadQuestions();
   }
 
   void loadQuestions() async {
-     // Load the JSON data from the file
-      String jsonString = await DefaultAssetBundle.of(context)
-          .loadString('assets/raw_eng/questions2Modified.json');
+    // Load the JSON data from the file
+    String jsonString = await DefaultAssetBundle.of(context)
+        .loadString('assets/raw_eng/questions2Modified.json');
 
-      // Parse the JSON string into a list of objects
-      List<dynamic> jsonData = jsonDecode(jsonString);
+    // Parse the JSON string into a list of objects
+    List<dynamic> jsonData = jsonDecode(jsonString);
 
-      // Extract data from the first question (question number 9)
-      Map<String, dynamic> firstQuestionData = jsonData[2];
+    // Extract data from the first question (question number 9)
+    Map<String, dynamic> firstQuestionData = jsonData[2];
 
 
-      // Set question text and answers list
-      setState(() {
-        questionText = firstQuestionData['questionText'];
+    // Set question text and answers list
+    setState(() {
+      questionText = firstQuestionData['questionText'];
 
-        // Extract answers from the answers map
-        List<dynamic> answerList = firstQuestionData['answers'];
-
-        // Cast answers to List<String>
-        answers = answerList.map((answer) => answer.toString()).toList();
-      });
-    }
+    });
+  }
 
 
   @override
@@ -80,19 +81,19 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
               width: MediaQuery.of(context).size.width * 0.8,
               height: MediaQuery.of(context).size.height * 0.1,
               child: Text(questionText,
-                  style: const TextStyle(fontSize: 18),
+                style: const TextStyle(fontSize: 18),
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height *0.55,
-              width: MediaQuery.of(context).size.width * 0.7,
+              height: MediaQuery.of(context).size.height *0.4,
+              width: MediaQuery.of(context).size.width * 0.6,
               child: Scrollbar(
                 child: ListView.separated(
-                  itemCount: answers.length,
+                  itemCount: yearList.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return buildAnswerButton(answers[index]);
+                    return buildAnswerButton(yearList[index]);
                   }, separatorBuilder: (BuildContext context, int index) {
-                    return const Divider();
+                  return const Divider();
                 },
                 ),
               ),
@@ -110,8 +111,10 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
       onTap: () {
         setState(() {
           selectedArea = answer;
+          year = answer;
+          widget.onYearSelected(year);
         });
-      },
+        },
       child: Container(
         color: isSelected ? Colors.green : null,
         padding: const EdgeInsets.all(1.0),
@@ -126,6 +129,19 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
       ),
     );
   }
+
 }
 
+void getYearList() {
 
+  var currentDate = DateTime.now();
+  var currentYear = currentDate.year;
+  var startYear = currentYear - 10;
+
+  for (var yearCount = 0; yearCount < 10; yearCount++) {
+    startYear = startYear + 1;
+    String getYear = startYear.toString();
+    yearList.add(getYear);
+  }
+
+}
