@@ -86,8 +86,8 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height *0.5,
-              width: MediaQuery.of(context).size.width * 0.8,
+              height: MediaQuery.of(context).size.height *0.4,
+              width: MediaQuery.of(context).size.width * 0.6,
               child: Scrollbar(
                 child: ListView.separated(
                   itemCount: answers.length,
