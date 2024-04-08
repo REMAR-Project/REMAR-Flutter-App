@@ -4,6 +4,7 @@ import 'package:remar_flutter_app/question_screens/question12.dart';
 import 'package:remar_flutter_app/question_screens/question13.dart';
 import 'package:remar_flutter_app/question_screens/question3.dart';
 import 'package:remar_flutter_app/question_screens/question4.dart';
+import 'package:remar_flutter_app/question_screens/question6.dart';
 
 
 // const String crabName = "Uncides coordatus";
@@ -20,6 +21,7 @@ String year = '';
 String month = '';
 String state = '';
 String county = '';
+String intensity ='';
 
 // Define callback functions for updating the properties
 void onYearSelected(String selectedYear) {
@@ -28,6 +30,10 @@ void onYearSelected(String selectedYear) {
 
 void onMonthSelected(String selectedMonth) {
   month = selectedMonth;
+}
+
+void onIntensitySelected(String selectedIntensity) {
+  intensity = selectedIntensity;
 }
 
 void onStateSelected(String selectedState) {
@@ -53,6 +59,13 @@ Widget question4 = QuestionAnswer4Page(
   onMonthSelected: onMonthSelected,
 );
 
+Widget question6 = QuestionAnswer6Page(
+  image: crabImage,
+  name: crabSpecies,
+  intensity: intensity,
+  onIntensitySelected: onIntensitySelected,
+);
+
 Widget question11 = QuestionAnswer11Page(
   image: crabImage,
   name: crabSpecies,
@@ -72,6 +85,7 @@ Widget question12 = QuestionAnswer12Page(
 List<Widget> questionsPagesList = [
   question3,
   question4,
+  question6,
   question11,
   question12,
   const QuestionAnswer13Page(),
