@@ -10,7 +10,6 @@ class QuestionAnswer12Page extends StatefulWidget {
   final Function(String) onCountySelected;
 
 
-
   const QuestionAnswer12Page({
     Key? key,
     required this.state,
