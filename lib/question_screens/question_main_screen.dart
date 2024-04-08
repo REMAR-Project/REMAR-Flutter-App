@@ -7,7 +7,7 @@ import '../widgets/bottom_navigation_bar.dart';
 class QuestionMain extends StatefulWidget {
   final int totalQues;
 
-  const QuestionMain({super.key, required this.totalQues});
+  const QuestionMain({Key? key, required this.totalQues}) : super(key: key);
 
   @override
   State<QuestionMain> createState() => _QuestionMainState();

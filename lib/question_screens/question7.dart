@@ -1,32 +1,31 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
-class QuestionAnswer4Page extends StatefulWidget {
+class QuestionAnswer7Page extends StatefulWidget {
 
   final String name;
   final String image;
-  final String month;
-  final Function(String) onMonthSelected;
+  final Function(String) onIntensitySelected;
 
-  const QuestionAnswer4Page({
+  const QuestionAnswer7Page({
     Key? key,
     required this.name,
-    required this.image, required this.month, required this.onMonthSelected,
+    required this.image, required String intensity, required this.onIntensitySelected,
   }) : super(key: key);
 
 
   @override
-  _QuestionAnswerPage4State createState() => _QuestionAnswerPage4State();
+  _QuestionAnswerPage7State createState() => _QuestionAnswerPage7State();
 }
 
-class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
+class _QuestionAnswerPage7State extends State<QuestionAnswer7Page> {
   String selectedArea = '';
   List<String> answers = [];
   String questionText = '';
-  String month='';
-
-  final ScrollController _controller = ScrollController();
+  String intensity='';
+  late SharedPreferences prefs;
 
   @override
   void initState() {
@@ -43,57 +42,53 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
     List<dynamic> jsonData = jsonDecode(jsonString);
 
     // Extract data from the first question (question number 9)
-    Map<String, dynamic> firstQuestionData = jsonData[3];
-
-
+    Map<String, dynamic> firstQuestionData = jsonData[6];
     // Set question text and answers list
     setState(() {
-      questionText = firstQuestionData['questionText'];
+      questionText = firstQuestionData['description'];
 
       // Extract answers from the answers map
       List<dynamic> answerList = firstQuestionData['answers'];
 
       // Cast answers to List<String>
       answers = answerList.map((answer) => answer.toString()).toList();
+
     });
   }
 
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Image.asset(
-                  widget.image,
-                  width: 100,
-                  height: 125,
-                ),
-                Text(
-                  widget.name,
-                  style: const TextStyle(fontSize: 24),
-                ),
-              ],
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8,
-              height: MediaQuery.of(context).size.height * 0.15,
-              child: Text(questionText,
-                style: const TextStyle(fontSize: 16),
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.asset(
+                widget.image,
+                width: 100,
+                height: 125,
               ),
+              Text(
+                widget.name,
+                style: const TextStyle(fontSize: 24),
+              ),
+            ],
+          ),
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.8,
+            height: MediaQuery.of(context).size.height * 0.15,
+            child: Text(questionText,
+              style: const TextStyle(fontSize: 16),
             ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height *0.4,
-              width: MediaQuery.of(context).size.width * 0.6,
+          ),
+          Expanded(
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
               child: Scrollbar(
-                controller: _controller,
                 child: ListView.separated(
-                  controller: _controller,
                   itemCount: answers.length,
                   itemBuilder: (BuildContext context, int index) {
                     return buildAnswerButton(answers[index]);
@@ -103,10 +98,11 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
                 ),
               ),
             ),
-          ], // Column children
-        ), // Column
-      ), // Scaffold
-    ); // MaterialApp
+          ),
+        ], // Column children
+      ), // Column
+    );
+
   }
 
   Widget buildAnswerButton(String answer) {
@@ -116,8 +112,9 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
       onTap: () {
         setState(() {
           selectedArea = answer;
-          month = answer;
-          widget.onMonthSelected(month);
+          intensity = answer;
+          widget.onIntensitySelected(intensity);
+
         });
       },
       child: Container(

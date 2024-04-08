@@ -1,16 +1,23 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:remar_flutter_app/question_screens/questions_utils.dart';
 
 class QuestionAnswer12Page extends StatefulWidget {
   final String state;
+  final String county;
   final String name;
   final String image;
+  final Function(String) onCountySelected;
+
+
 
   const QuestionAnswer12Page({
     Key? key,
     required this.state,
     required this.name,
     required this.image,
+    required this.county,
+    required this.onCountySelected,
   }) : super(key: key);
 
   @override
@@ -21,6 +28,8 @@ class _QuestionAnswerPage12State extends State<QuestionAnswer12Page> {
   String selectedArea = '';
   List<String> answers = [];
   String descriptionText = '';
+  String county='';
+
 
 
   @override
@@ -30,6 +39,8 @@ class _QuestionAnswerPage12State extends State<QuestionAnswer12Page> {
   }
 
   void loadQuestions() async {
+
+    print(state);
     // Load the JSON data from the file
     String jsonString = await DefaultAssetBundle.of(context)
         .loadString('assets/raw_eng/questions2Modified.json');
@@ -53,7 +64,6 @@ class _QuestionAnswerPage12State extends State<QuestionAnswer12Page> {
       answers = stateList.map((answer) => answer.toString()).toList();
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -65,7 +75,7 @@ class _QuestionAnswerPage12State extends State<QuestionAnswer12Page> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Image.asset(
-                  widget.image, // Use the provided image
+                  widget.image,
                   width: 100,
                   height: 125,
                 ),
@@ -77,32 +87,31 @@ class _QuestionAnswerPage12State extends State<QuestionAnswer12Page> {
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
-              height: MediaQuery.of(context).size.height * 0.1,
-              child: Text(
-                descriptionText,
-                style: const TextStyle(fontSize: 18),
+              height: MediaQuery.of(context).size.height * 0.15,
+              child: Text(descriptionText,
+                style: const TextStyle(fontSize: 16),
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.55,
-              width: MediaQuery.of(context).size.width * 0.8,
+              height: MediaQuery.of(context).size.height *0.4,
+              width: MediaQuery.of(context).size.width * 0.6,
               child: Scrollbar(
                 child: ListView.separated(
                   itemCount: answers.length,
                   itemBuilder: (BuildContext context, int index) {
                     return buildAnswerButton(answers[index]);
-                  },
-                  separatorBuilder: (BuildContext context, int index) {
-                    return const Divider();
-                  },
+                  }, separatorBuilder: (BuildContext context, int index) {
+                  return const Divider();
+                },
                 ),
               ),
             ),
-          ],
-        ),
-      ),
-    );
+          ], // Column children
+        ), // Column
+      ), // Scaffold
+    ); // MaterialApp
   }
+
 
   Widget buildAnswerButton(String answer) {
     bool isSelected = answer == selectedArea;
@@ -111,6 +120,8 @@ class _QuestionAnswerPage12State extends State<QuestionAnswer12Page> {
       onTap: () {
         setState(() {
           selectedArea = answer;
+          county = answer;
+          widget.onCountySelected(county);
         });
       },
       child: Container(
