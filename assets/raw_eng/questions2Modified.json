@@ -1,0 +1,211 @@
+[
+
+
+  {
+    "questionNumber": 1,
+    "questionType": "ModeChoose",
+    "questionPicture": "q0_(1:0)",
+    "questionTitle": "crab_title_(1:0)",
+    "description": "<b>Choose one of the below options by tapping with finger.</b>",
+    "choiceOneText": "<b>Simple<br>version</b>",
+    "choiceOneTextTwo": "<b>Basic<br>10 clicks</b>",
+    "choiceTwoText": "<b>Full<br>version</b>",
+    "choiceTwoTextTwo": "<b>Advanced<br>14 clicks</b>",
+    "backText": "Press to go back",
+    "forwardText": "Press to proceed"
+  },
+  {
+    "questionNumber": 2,
+    "questionType": "TwoPictureChoice",
+    "questionText": "<b>Become a citizen scientist</b> and help record mass mating events of commercially important Brazilian mangrove crabs.<br></br><br></br>This information will help to improve Brazilian crab fisheries legislation and fishers' livelihoods.<br></br><br></br>Click on one of the below species to share your observations.",
+    "choiceOneTitle": "Ucides cordatus",
+    "choiceOnePicture": "raster_q0_0",
+    "choiceTwoTitle": "Cardisoma guanhumi",
+    "choiceTwoPicture": "raster_q0_1",
+    "choiceOnePicTwo": "raster_q1_0",
+    "choiceTwoPicTwo": "raster_q1_1",
+    "backText": "Press to go back",
+    "forwardText": "Press to proceed"
+  },
+  {
+    "questionNumber": 3,
+    "questionType": "YearChoice",
+    "questionPicture": "raster_q0_(2:0)",
+    "questionTitle": "crab_title_(2:0)",
+    "questionText": "When did you observe andada? Touch screen, move finger and tap to choose the correct year.",
+    "answers": ["2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"]
+  },
+
+  {
+    "questionNumber": 4,
+    "questionType": "MonthChoice",
+    "questionPicture": "raster_q0_(2:0)",
+    "questionTitle": "crab_title_(2:0)",
+    "questionText": "Touch screen and move finger to choose correct month. In case you saw two andadas this month (one around new moon and one around full moon), please run the app for each andada seperately.",
+    "answers": ["January","February","March","April","May","June","July","August","September","October","November","December"]
+  },  {
+  "questionNumber": 5,
+  "questionType": "DateRange",
+  "questionPicture": "raster_q0_(2:0)",
+  "questionTitle": "crab_title_(2:0)",
+  "description": "For the andada you are reporting here, touch with finger when you noted it. Remember: In case you saw andada in two periods (e.g. one around new moon and one around full moon), only mark ONE period (SEVERAL CONSECUTIVE DAYS OR ONE DAY).",
+  "month": "(4:0)",
+  "year": "(3:0)",
+  "filterOnQuestion": -1,
+  "optional": false
+
+},
+  {
+    "questionNumber": 6,
+    "questionType": "DateRangeSelect",
+    "questionPicture": "raster_q0_(2:0)",
+    "questionTitle": "crab_title_(2:0)",
+    "description": "<b>Touch the day with the STRONGEST andada activity.<br>If you don’t know, you can proceed without selecting a date.<br><br></b>",
+    "month": "(4:0)",
+    "year": "(3:0)",
+    "filterOnQuestion": -1,
+    "optional": true
+  },
+
+  {
+    "questionNumber": 7,
+    "questionType": "ListSelect",
+    "questionPicture": "raster_q0_(2:0)",
+    "questionTitle": "crab_title_(2:0)",
+    "description": "How do you estimate the intensity of the observed Andada:",
+    "jsonInput": "number_of_crabs.json",
+    "disableCustom": "true",
+    "answers": ["Very Low","Low","Medium","High","Very High","I Don't Know"]
+  },
+
+  {
+    "questionNumber": 8,
+    "questionType": "DayNightChoice",
+    "questionPicture": "raster_q0_(2:0)",
+    "questionTitle": "crab_title_(2:0)",
+    "description": "When did you observe andada? Touch correct symbol with finger.",
+    "choiceOneText": "At new moon",
+    "choiceTwoText": "At full moon",
+    "quantityQuestion": 3
+  },
+  {
+    "questionNumber": 9,
+    "questionType": "ListSelect",
+    "questionPicture": "raster_q0_(2:0)",
+    "questionTitle": "crab_title_(2:0)",
+    "description": "Did you see berried (ovigerous) females?<br>Touch correct answer with finger.",
+    "jsonInput": "ovigerious.json",
+    "disableCustom": "true",
+    "answers": ["Yes, I saw berried females", "No, there were no berried females", "I did not look"]
+  },
+  {
+    "questionNumber": 10,
+    "questionType": "ListSelect",
+    "questionPicture": "raster_q0_(2:0)",
+    "questionTitle": "crab_title_(2:0)",
+    "description": "In which habitat did you observe the andada?<br>Touch correct answer with finger. You can chose more than one option.",
+    "jsonInput": "locations_(2:0).json",
+    "allowMultiple": "true",
+    "disableCustom": "true",
+    "answers_0": ["Mangrove","Forest","Beach","Road","Other"],
+    "answers_1":["Mangrove","Saltmarsh","Forest","Beach","Road","River Bed","Rocky Shore","House","Other"]
+  },
+
+  {
+    "questionNumber": 11,
+    "questionType": "ListSelect",
+    "questionPicture": "raster_q0_(2:0)",
+    "questionTitle": "crab_title_(2:0)",
+    "description": "Touch screen, move with finger and tap to select the state where you made your observation.",
+    "jsonInput": "regions.json",
+    "disableCustom": "true",
+    "answers": ["Alagoas","Amapá","Bahia","Ceará","Espírito Santo","Maranhão","Pará","Paraíba","Paraná","Pernambuco","Piauí", "Rio de Janeiro","Rio Grande do Norte","Santa Catarina","São Paulo","Sergipe"]
+  },
+  {
+    "questionNumber": 12,
+    "questionType": "ListSelect",
+    "questionPicture": "raster_q0_(2:0)",
+    "questionTitle": "crab_title_(2:0)",
+    "description": "Touch screen and move with finger to select the county where you made your observation.",
+    "jsonInput": "region_counties.json",
+    "disableCustom": "true",
+    "jsonKey": "(-1:0)",
+    "enableOther": true,
+    "otherText": "Touch the field and type the name of the county.",
+    "otherPosition": -1,
+    "otherIsLastItem": "true",
+    "answers" : {"Piauí": ["Cajueiro da Praia", "Ilha Grande", "Luís Correia", "Parnaíba","Not in list"], "Bahia": ["Alcobaça", "Belmonte", "Cairu", "Camaçari", "Canavieiras", "Candeias", "Caravelas", "Conde", "Entre Rios", "Esplanada", "Igrapiúna", "Ilhéus", "Itacaré", "Itaparica", "Ituberá", "Jaguaripe", "Jandaíra", "Lauro de Freitas", "Madre de Deus", "Maraú", "Mata de São João", "Mucuri", "Nilo Peçanha", "Nova Viçosa", "Porto Seguro", "Prado", "Salinas da Margarida", "Salvador", "Santa Cruz Cabrália", "Saubara", "São Francisco do Conde", "Una", "Uruçuca", "Valença", "Vera Cruz","Not in list"], "São Paulo": ["Bertioga", "Cananéia", "Caraguatatuba", "Guarujá", "Iguape", "Ilha Comprida", "Ilhabela", "Itanhaém", "Mongaguá", "Peruíbe", "Praia Grande", "Santos", "São Sebastião", "São Vicente", "Ubatuba","Not in list"], "Rio Grande do Norte": ["Areia Branca", "Baía Formosa", "Caiçara do Norte", "Canguaretama", "Ceará-Mirim", "Extremoz", "Galinhos", "Grossos", "Guamaré", "Macau", "Maxaranguape", "Natal", "Nísia Floresta", "Parnamirim", "Pedra Grande", "Porto do Mangue", "Rio do Fogo", "Senador Georgino Avelino", "São Bento do Norte", "São Miguel de Touros", "Tibau", "Tibau do Sul", "Touros","Not in list"], "Alagoas": ["Barra de Santo Antônio", "Barra de São Miguel", "Coruripe", "Feliz Deserto", "Japaratinga", "Jequiá da Praia", "Maceió", "Maragogi", "Marechal Deodoro", "Paripueira", "Passo de Camaragibe", "Piaçabuçu", "Porto de Pedras", "Roteiro", "São Miguel dos Milagres","Not in list"], "Espírito Santo": ["Anchieta", "Aracruz", "Conceição da Barra", "Fundão", "Guarapari", "Itapemirim", "Linhares", "Marataízes", "Piúma", "Presidente Kennedy", "Serra", "São Mateus", "Vila Velha", "Vitória","Not in list"], "Pará": ["Augusto Corrêa", "Bragança", "Chaves", "Curuçá", "Magalhães Barata", "Maracanã", "Marapanim", "Quatipuru", "Salinópolis", "Soure", "São Caetano de Odivelas", "São João de Pirabas", "Tracuateua", "Viseu","Not in list"], "Sergipe": ["Aracaju", "Barra dos Coqueiros", "Brejo Grande", "Estância", "Itaporanga d'Ajuda", "Pacatuba", "Pirambu","Not in list"], "Maranhão": ["Alcântara", "Apicum-Açu", "Araioses", "Bacuri", "Barreirinhas", "Carutapera", "Cedral", "Cururupu", "Cândido Mendes", "Godofredo Viana", "Guimarães", "Humberto de Campos", "Icatu", "Luís Domingues", "Paulino Neves", "Paço do Lumiar", "Porto Rico do Maranhão", "Primeira Cruz", "Raposa", "Santo Amaro do Maranhão", "Serrano do Maranhão", "São José de Ribamar", "São Luís", "Turiaçu", "Tutóia","Not in list"], "Amapá": ["Amapá", "Calçoene", "Macapá", "Oiapoque","Not in list"], "Rio de Janeiro": ["Angra dos Reis", "Araruama", "Armação dos Búzios", "Arraial do Cabo", "Cabo Frio", "Campos dos Goytacazes", "Carapebus", "Casimiro de Abreu", "Duque de Caxias", "Guapimirim", "Itaboraí", "Itaguaí", "Macaé", "Magé", "Mangaratiba", "Maricá", "Niterói", "Parati", "Quissamã", "Rio das Ostras", "Rio de Janeiro", "Saquarema", "São Francisco de Itabapoana", "São Gonçalo", "São João da Barra","Not in list"], "Paraná": ["Guaraqueçaba", "Guaratuba", "Matinhos", "Paranaguá", "Pontal do Paraná","Not in list"], "Paraíba": ["Baía da Traição", "Cabedelo", "Conde", "João Pessoa", "Lucena", "Marcação", "Mataraca", "Pitimbu", "Rio Tinto", "Santa Rita","Not in list"], "Pernambuco": ["Barreiros", "Cabo de Santo Agostinho", "Fernando de Noronha", "Goiana", "Igarassu", "Ilha de Itamaracá", "Ipojuca", "Jaboatão dos Guararapes", "Olinda", "Paulista", "Recife", "Sirinhaém", "São José da Coroa Grande", "Tamandaré","Not in list"], "Ceará": ["Acaraú", "Amontada", "Aquiraz", "Aracati", "Barroquinha", "Beberibe", "Camocim", "Cascavel", "Caucaia", "Cruz", "Fortaleza", "Fortim", "Icapuí", "Itapipoca", "Itarema", "Jijoca de Jericoacoara", "Paracuru", "Paraipaba", "São Gonçalo do Amarante", "Trairi","Not in list"], "Santa Catarina": ["Araquari", "Balneário Barra do Sul", "Balneário Camboriú", "Barra Velha", "Biguaçu", "Bombinhas", "Florianópolis", "Garopaba", "Governador Celso Ramos", "Imbituba", "Itajaí", "Itapema", "Itapoá", "Laguna", "Navegantes", "Palhoça", "Paulo Lopes", "Penha", "Piçarras", "Porto Belo", "São Francisco do Sul", "São José", "Tijucas","Not in list"]}
+  },
+  {
+    "questionNumber": 13 ,
+    "questionType": "YesNoExtra",
+    "questionPicture": "raster_q0_(2:0)",
+    "questionTitle": "crab_title_(2:0)",
+    "question": "Is the monitored locality in a protected area?",
+    "extraDetailText": "Touch screen and move/tap finger to select the correct Protected Area.",
+    "cacheAnswer": true,
+    "state": "(7:0)",
+    "answers": {"Alagoas":["APA de Piaçabuçu","Resex Lagoa do Jequiá","APA Costa dos Corais","APA de Santa Rita"],"Amapá":["ESEC de Maracá-Jipioca","Parna do Cabo Orange","Rebio do Lago Piratuba"],"Bahia":["Parna do Monte Pascoal","Rebio de Una","Resex Baia de Iguape","Resex Cassurubá","Resex do Corumbau","Resex de Canavieiras","Revis Rio dos Frades","Revis de Una","APA Baía de Camamu","APA Baía de Todos os Santos","APA Caraíva/ Trancoso","APA Costa de Itacaré/ Serra Grande","APA Lagoa Encantada","APA Lagoas de Guarajuba","APA Plataforma Continental do Litoral Norte","APA Ponta da Baleia / Abrolhos","APA Santo Antônio","PARNA do Descobrimento"],"Ceará":["Parna de Jericoacoara","Resex Batoque","APA Delta do Parnaíba","APA do Estuário do Rio Mundaú","APA do Manguezal da Barra Grande","APA do Rio Pacoti","APA Serra de Ibiapaba"],"Espírito Santo":["APA Costa das Algas","Revis de Santa Cruz","APA Conceição da Barra","APA do Maciço Central","APA Municipal Manguezal Sul da Serra","ESEC Municipal Ilha do Lameirão","PE de Itaúnas","PNM de Jacarenema","PNM do Manguezal de Itanguá","PNM Dom Luiz Gonzaga Fernandes","RDS Municipal do Manguezal de Cariacica","RDS Municipal Papagaio","RDS Municipal Piraque-Açú e Piraque-Mirim"],"Maranhão":["Parna dos Lençois Maranhenses","Resex de Cururupu","APA Delta do Parnaíba","APA da Baixada Maranhense","APA da Foz do Rio das Preguiças - Pequenos Lençóis - Região Lagunar Adjacente","APA das Reentrâncias Maranhenses","APA de Upaon-açu / Miritiba / Alto Preguiças","PE da Ilha do Cardoso"],"Pará":["Resex de São João da Ponta","Resex Mãe Grande de Curuça","Resex Araí Peroba","Resex Chocoaré- Mato Grosso","Resex Gurupi-Piriá","Resex Maracanã","Resex Marinha Cuinarana","Resex Marinha de Tracuateua","Resex Marinha de Caeté-Taperaçú","Marinha Mestre Lucindo","RESEX Marinha Mocapajuba","Resex Soure","APA de Algodoal-Maiandeua","APA do Arquipélago do Marajó"],"Paraíba":["APA da Barra de Mamanguape","ARIE Manguezais da Foz do Rio Mamanguape","Flona da Restinga de Cabedelo","Resex Acaú- Goiana","ARIE da Barra do Rio Camaratuba","PE do Jacarapé"],"Pernambuco":["Resex Acaú- Goiana","Parna Marinho de Fernando de Noronha","APA Costa dos Corais","APA de Sirinhaém"],"Piauí":["Resex  Delta do Parnaíba","APA Serra de Ibiapaba"],"Paraná":["APA de Guaraqueçaba","ESEC de Guaraqueçaba","Parna do Superagui","APA Estadual de Guaratuba","ESEC do Guaraguaçu","PARNA de Saint-Hilaire/Lange","REBIO Bom Jesus"],"Rio Grande do Norte":["APA Bonfim/Guaraíra","APA de Jenipabu","PE da Lagoa do Açu","RDS Estadual Ponta do Tubarão"],"Rio de Janeiro":["APA de Cairuçu","APA de Guapi-Mirim","ESEC da Guanabara","APA da Bacia do Rio Macacu","APA da Bacia do Rio São João - Mico Leão","APA da Orla Marítima da Baía de Sepetiba","APA da Serra da Capoeira Grande","APA das Brisas","APA de Tamoios","APA do Morro do Silvério","APA da Estrela","APA Suruí","REBIO Estadual de Guaratiba"],"Santa Catarina":["APA da Baleia Franca","APA de Anhatomirim","ESEC de Carijós","Resex do Pirajubaé","PE Acarai","PE da Serra do Tabuleiro","PNM da Caieira","RDS da Ilha do Morro do Amaral"],"Sergipe":["Rebio de Santa Izabel","FLONA do Ibura","RPPN do Caju"],"São Paulo":["APA de Cananéia-Iguapé-Peruíbe","ARIE Ilha do Ameixal","Resex Mandira","APA Ilha Comprida","APA Marinha do Litoral Norte","ARIE do Guará","ESEC Juréia-Itatins","PE da Serra do Mar","PE do Itinguçu","PE Lagamar de Cananeia","PE Restinga de Bertioga","RDS da Barra do Una","RDS Itapanhapima","RESEX Ilha do Tumba","RESEX Taquari"]},
+    "hasManual": "true",
+    "hideHeader": "true"
+  },
+  {
+    "questionNumber": 14 ,
+    "questionType": "ListSelect",
+    "question_10": "Please can you let us know what you do? Touch screen and move finger to select.",
+    "answers_10": [
+      "• I catch crabs and depend on them for my living",
+      "• I catch crabs only occasionally for my own consumption",
+      "• I work with crab meat processing",
+      "• I work with crab commercialization",
+      "• I am a local villager and do not normally catch mangrove crabs",
+      "• I work for ICMBio and observed the andada myself",
+      "• I work for ICMBio and report results of a crab fisher",
+      "• I work for IBAMA and observed the andada myself",
+      "• I work for IBAMA and report results of a crab fisher",
+      "• I work in the city hall and observed the andada myself",
+      "• I work in the city hall and report results of a crab fisher",
+      "• I am a researcher and observed the andada myself",
+      "• I am a researcher and report results of a crab fisher",
+      "• I am a tourist",
+      "• I work in tourism",
+      "• Other",
+      "• I do not want to specify"],
+    "disableCustom": "true"
+  },
+  {
+    "questionNumber": 15,
+    "questionType": "ListSelect",
+    "questionPicture": "raster_q0_(2:0)",
+    "questionTitle": "crab_title_(2:0)",
+    "description": "Any additional observations you want to share?",
+    "jsonInput": "yes_no.json",
+    "disableCustom": "true",
+    "enableOther": true,
+    "otherText": "Please touch field and type",
+    "otherPosition": 1
+  },
+  {
+    "questionNumber": 16,
+    "questionType": "Commit",
+    "description": "If you want to contact REMAR, find out about ways to engage more with this research, ask or suggest something, please send a message to <b><a href=\"mailto:remar.quest@gmail.com?subject=Question for REMAR\">remar.quest@gmail.com</a></b>",
+    "choiceOneText": "I WANT TO SUBMIT MY ANSWERS",
+    "choiceTwoText": "I WANT TO GO BACK TO CHANGE ANSWERS"
+  },
+  {
+    "questionType": "Done",
+    "questionPicture": "raster_q0_(2:0)",
+    "questionTitle": "crab_title_(2:0)",
+    "hideBackNext": true
+  },
+  {
+    "questionType": "Return",
+    "questionPicture": "raster_q0_(2:0)",
+    "questionTitle": "crab_title_(2:0)",
+    "description": "To view analyses of the information we receive from you and other citizen scientists, please see the REMAR website at<br><a href=\"https://ufsb.edu.br/remar/o-remar-cidadao\">https://ufsb.edu.br/remar/o-remar-cidadao</a><br>OR<br><a href=\"http://crabdata.napier.ac.uk/public/\">http://crabdata.napier.ac.uk/public/</a><br>",
+    "choiceOneText": "I want to close the app",
+    "choiceTwoText": "I want to return to first page"
+  }
+]
+
+
