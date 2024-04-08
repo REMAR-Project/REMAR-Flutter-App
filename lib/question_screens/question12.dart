@@ -40,7 +40,7 @@ class _QuestionAnswerPage12State extends State<QuestionAnswer12Page> {
 
   void loadQuestions() async {
 
-    print(state);
+
     // Load the JSON data from the file
     String jsonString = await DefaultAssetBundle.of(context)
         .loadString('assets/raw_eng/questions2Modified.json');
@@ -57,7 +57,7 @@ class _QuestionAnswerPage12State extends State<QuestionAnswer12Page> {
 
       // Extract answers from the answers map based on the selected state
       Map<String, dynamic> answerMap = firstQuestionData['answers'];
-      List<dynamic> stateList = answerMap[widget.state];
+      List<dynamic> stateList = answerMap[state];
 
 
       // Cast answers to List<String>
