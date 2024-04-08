@@ -12,53 +12,67 @@ import 'package:remar_flutter_app/question_screens/question4.dart';
 
 // list of answers
 
-const String crabSpecies='Ucides cordatus';
-const String crabImage='assets/images/raster_q0_0.png';
+const String crabSpecies = 'Ucides cordatus';
+const String crabImage = 'assets/images/raster_q0_0.png';
 
+// Define initial values for various properties
+String year = '';
+String month = '';
+String state = '';
+String county = '';
 
-const int onDaySelected=0;
-const int onStrongestDaySelected=0;
-const String intensity='';
-const String timeObserved='';
-const String berried='';
-const String habitat='';
-const String state='';
-const String county='';
-const bool isProtectedArea=false;
-const String protectedArea ='';
-const String occupation='';
-const bool additionalInfoShared = false;
-const String additionalInfo='';
+// Define callback functions for updating the properties
+void onYearSelected(String selectedYear) {
+  year = selectedYear;
+}
 
- Widget question3 = QuestionAnswer3Page(
+void onMonthSelected(String selectedMonth) {
+  month = selectedMonth;
+}
+
+void onStateSelected(String selectedState) {
+  state = selectedState;
+}
+
+void onCountySelected(String selectedCounty) {
+  county = selectedCounty;
+}
+
+// Create instances of question widgets with callback functions
+Widget question3 = QuestionAnswer3Page(
   image: crabImage,
   name: crabSpecies,
-  year: '', // Initial value of year
-  onYearSelected: (String selectedYear) {
-    },
-
+  year: year,
+  onYearSelected: onYearSelected,
 );
 
-
- Widget question4 = QuestionAnswer4Page(
+Widget question4 = QuestionAnswer4Page(
   image: crabImage,
   name: crabSpecies,
-  month: '', // Initial value of year
-  onMonthSelected: (String selectedMonth) {
-      print(selectedMonth);
-  },
+  month: month,
+  onMonthSelected: onMonthSelected,
 );
 
+Widget question11 = QuestionAnswer11Page(
+  image: crabImage,
+  name: crabSpecies,
+  state: state,
+  onStateSelected: onStateSelected,
+);
 
-String year = (question3 as QuestionAnswer3Page).year;
-String month =(question4 as QuestionAnswer4Page).month;
+Widget question12 = QuestionAnswer12Page(
+  image: crabImage,
+  name: crabSpecies,
+  state: state,
+  onCountySelected: onCountySelected,
+  county: county,
+);
 
-//Add Question Pages here
+// Add question widgets to the list
 List<Widget> questionsPagesList = [
   question3,
   question4,
-  const QuestionAnswer11Page(image: crabImage, name: crabSpecies),
-  const QuestionAnswer12Page(state: "Piauí", image: crabImage, name: crabSpecies),
-  const QuestionAnswer13Page()
+  question11,
+  question12,
+  const QuestionAnswer13Page(),
 ];
-
