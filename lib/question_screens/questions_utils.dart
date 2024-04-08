@@ -4,7 +4,8 @@ import 'package:remar_flutter_app/question_screens/question12.dart';
 import 'package:remar_flutter_app/question_screens/question13.dart';
 import 'package:remar_flutter_app/question_screens/question3.dart';
 import 'package:remar_flutter_app/question_screens/question4.dart';
-import 'package:remar_flutter_app/question_screens/question6.dart';
+import 'package:remar_flutter_app/question_screens/question7.dart';
+import 'package:remar_flutter_app/question_screens/question9.dart';
 
 
 // list of answers
@@ -18,6 +19,7 @@ String month = '';
 String state = '';
 String county = '';
 String intensity ='';
+String berried='';
 
 // Define callback functions for updating the properties
 void onYearSelected(String selectedYear) {
@@ -40,6 +42,11 @@ void onCountySelected(String selectedCounty) {
   county = selectedCounty;
 }
 
+void onBerriedSelected(String selectedBerried) {
+  berried = selectedBerried;
+}
+
+
 // Create instances of question widgets with callback functions
 Widget question3 = QuestionAnswer3Page(
   image: crabImage,
@@ -55,11 +62,18 @@ Widget question4 = QuestionAnswer4Page(
   onMonthSelected: onMonthSelected,
 );
 
-Widget question6 = QuestionAnswer6Page(
+Widget question7 = QuestionAnswer7Page(
   image: crabImage,
   name: crabSpecies,
   intensity: intensity,
   onIntensitySelected: onIntensitySelected,
+);
+
+Widget question9 = QuestionAnswer9Page(
+  image: crabImage,
+  name: crabSpecies,
+  berried: berried,
+  onBerriedSelected: onBerriedSelected,
 );
 
 Widget question11 = QuestionAnswer11Page(
@@ -81,7 +95,7 @@ Widget question12 = QuestionAnswer12Page(
 List<Widget> questionsPagesList = [
   question3,
   question4,
-  question6,
+  question7,
   question11,
   question12,
   const QuestionAnswer13Page(),

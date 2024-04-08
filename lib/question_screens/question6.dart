@@ -1,134 +1,47 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:remar_flutter_app/widgets/imports/calendar_components.dart';
+import 'package:remar_flutter_app/widgets/imports/moon_calendar.dart';
 
+class CalendarScreen extends StatelessWidget {
+  final String month;
+  final String year;
+  final List<DateTime>? selectableDates;
+  final EdgeInsets padding;
+  final Function onSelection;
 
-class QuestionAnswer6Page extends StatefulWidget {
-
-  final String name;
-  final String image;
-  final Function(String) onIntensitySelected;
-
-  const QuestionAnswer6Page({
-    Key? key,
-    required this.name,
-    required this.image, required String intensity, required this.onIntensitySelected,
-  }) : super(key: key);
-
-
-  @override
-  _QuestionAnswerPage6State createState() => _QuestionAnswerPage6State();
-}
-
-class _QuestionAnswerPage6State extends State<QuestionAnswer6Page> {
-  String selectedArea = '';
-  List<String> answers = [];
-  String questionText = '';
-  String intensity='';
-  late SharedPreferences prefs;
-
-  @override
-  void initState() {
-    super.initState();
-    loadQuestions();
-  }
-
-  void loadQuestions() async {
-    // Load the JSON data from the file
-    String jsonString = await DefaultAssetBundle.of(context)
-        .loadString('assets/raw_eng/questions2Modified.json');
-
-    // Parse the JSON string into a list of objects
-    List<dynamic> jsonData = jsonDecode(jsonString);
-
-    // Extract data from the first question (question number 9)
-    Map<String, dynamic> firstQuestionData = jsonData[6];
-    // Set question text and answers list
-    setState(() {
-      questionText = firstQuestionData['description'];
-
-      // Extract answers from the answers map
-      List<dynamic> answerList = firstQuestionData['answers'];
-
-      // Cast answers to List<String>
-      answers = answerList.map((answer) => answer.toString()).toList();
-
-    });
-  }
-
+  const CalendarScreen({Key? key, required this.month, required this.year, this.selectableDates, required this.onSelection, this.padding = const EdgeInsets.fromLTRB(30.0, 15.0, 30.0, 15.0)})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Image.asset(
-                widget.image,
-                width: 100,
-                height: 125,
-              ),
-              Text(
-                widget.name,
-                style: const TextStyle(fontSize: 24),
-              ),
-            ],
+          Padding(
+            padding: padding,
+            child: Header(month: month, year: year),
           ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.8,
-            height: MediaQuery.of(context).size.height * 0.15,
-            child: Text(questionText,
-              style: const TextStyle(fontSize: 16),
-            ),
+          Padding(
+            padding: padding,
+            child: const MoonPhaseKey(),
+          ),
+          Padding(
+            padding: padding,
+            child: const DayOfWeekHeaders(),
           ),
           Expanded(
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8,
-              child: Scrollbar(
-                child: ListView.separated(
-                  itemCount: answers.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return buildAnswerButton(answers[index]);
-                  }, separatorBuilder: (BuildContext context, int index) {
-                  return const Divider();
-                },
-                ),
+            child: Padding(
+              padding: padding,
+              child: MoonCalendar(
+                month: month,
+                year: year,
+                selectableDates: selectableDates,
+                onSelection: onSelection,
               ),
             ),
           ),
-        ], // Column children
-      ), // Column
-    );
-
-  }
-
-  Widget buildAnswerButton(String answer) {
-    bool isSelected = answer == selectedArea;
-
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          selectedArea = answer;
-          intensity = answer;
-          widget.onIntensitySelected(intensity);
-
-        });
-      },
-      child: Container(
-        color: isSelected ? Colors.green : null,
-        padding: const EdgeInsets.all(1.0),
-        margin: const EdgeInsets.symmetric(vertical: 1.0),
-        child: Text(
-          answer,
-          style: TextStyle(
-            color: isSelected ? Colors.white : Colors.black,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
+        ],
+      )
     );
   }
 }
