@@ -26,6 +26,8 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
   String questionText = '';
   String month='';
 
+  final ScrollController _controller = ScrollController();
+
   @override
   void initState() {
     super.initState();
@@ -89,7 +91,9 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
               height: MediaQuery.of(context).size.height *0.4,
               width: MediaQuery.of(context).size.width * 0.6,
               child: Scrollbar(
+                controller: _controller,
                 child: ListView.separated(
+                  controller: _controller,
                   itemCount: answers.length,
                   itemBuilder: (BuildContext context, int index) {
                     return buildAnswerButton(answers[index]);

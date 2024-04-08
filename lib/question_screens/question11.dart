@@ -6,11 +6,14 @@ class QuestionAnswer11Page extends StatefulWidget {
 
   final String name;
   final String image;
+  final String state;
+  final Function(String) onStateSelected;
 
   const QuestionAnswer11Page({
     Key? key,
     required this.name,
     required this.image,
+    required this.onStateSelected, required this.state,
   }) : super(key: key);
 
 
@@ -22,6 +25,7 @@ class _QuestionAnswerPage11State extends State<QuestionAnswer11Page> {
   String selectedArea = '';
   List<String> answers = [];
   String questionText = '';
+  String state='';
 
   @override
   void initState() {
@@ -83,10 +87,11 @@ class _QuestionAnswerPage11State extends State<QuestionAnswer11Page> {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height *0.5,
-              width: MediaQuery.of(context).size.width * 0.8,
+              height: MediaQuery.of(context).size.height *0.4,
+              width: MediaQuery.of(context).size.width * 0.6,
               child: Scrollbar(
                 child: ListView.separated(
+                  controller: ScrollController(),
                   itemCount: answers.length,
                   itemBuilder: (BuildContext context, int index) {
                     return buildAnswerButton(answers[index]);
@@ -109,6 +114,8 @@ class _QuestionAnswerPage11State extends State<QuestionAnswer11Page> {
       onTap: () {
         setState(() {
           selectedArea = answer;
+          state = answer;
+          widget.onStateSelected(state);
         });
       },
       child: Container(
@@ -125,4 +132,5 @@ class _QuestionAnswerPage11State extends State<QuestionAnswer11Page> {
       ),
     );
   }
+
 }
