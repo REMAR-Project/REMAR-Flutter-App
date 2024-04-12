@@ -16,6 +16,7 @@ import 'package:remar_flutter_app/question_screens/question13.dart';
 import 'package:remar_flutter_app/question_screens/question15.dart';
 import 'package:remar_flutter_app/question_screens/question16.dart';
 
+
 // list of answers
 
 const String crabSpecies = 'Ucides cordatus';
@@ -29,7 +30,11 @@ String county = '';
 String intensity ='';
 String berried='';
 String whenObserved='';
+
+String habitat = '';
 String additionalInfo='';
+
+
 
 
 // Define callback functions for updating the properties
@@ -48,8 +53,15 @@ void onIntensitySelected(String selectedIntensity) {
 
 void onWhenObserved(String selectedWhenObserved) {
   whenObserved = selectedWhenObserved;
+}
+
+
+
+void onWhenObserved(String selectedWhenObserved) {
+  whenObserved = selectedWhenObserved;
   print(whenObserved);
 }
+
 
 
 void onStateSelected(String selectedState) {
@@ -62,6 +74,12 @@ void onCountySelected(String selectedCounty) {
 
 void onBerriedSelected(String selectedBerried) {
   berried = selectedBerried;
+}
+
+
+void onHabitatSelected(String selectedHabit) {
+  habitat = selectedHabit;
+  print(habitat);
 }
 
 
@@ -86,6 +104,7 @@ Widget question4 = QuestionAnswer4Page(
   onMonthSelected: onMonthSelected,
 );
 
+
 Widget question7 = QuestionAnswer7Page(
   image: crabImage,
   name: crabSpecies,
@@ -101,13 +120,20 @@ Widget question8 = const QuestionAnswer8Page(
 
 );
 
-
 Widget question9 = QuestionAnswer9Page(
   image: crabImage,
   name: crabSpecies,
   berried: berried,
   onBerriedSelected: onBerriedSelected,
 );
+
+
+Widget question10 = const QuestionAnswer10Page(
+  image: crabImage,
+  name: crabSpecies,
+  onHabitatSelected: onHabitatSelected, habitat: '',
+);
+
 
 Widget question11 = QuestionAnswer11Page(
   image: crabImage,
@@ -123,7 +149,7 @@ Widget question12 = QuestionAnswer12Page(
   onCountySelected: onCountySelected,
   county: county,
 );
-
+v
 
 Widget question16 = const QuestionAnswer16Page(
 );
@@ -135,6 +161,8 @@ List<Widget> questionsPagesList = [
   question4,
   question7,
   question8,
+  question9,
+  question10,
   question11,
   question12,
   question15,
