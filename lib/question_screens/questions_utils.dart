@@ -30,6 +30,7 @@ String county = '';
 String intensity ='';
 String berried='';
 String whenObserved='';
+String habitat = '';
 String additionalInfo='';
 
 // Define callback functions for updating the properties
@@ -47,7 +48,6 @@ void onIntensitySelected(String selectedIntensity) {
 
 void onWhenObserved(String selectedWhenObserved) {
   whenObserved = selectedWhenObserved;
-  print(whenObserved);
 }
 
 void onStateSelected(String selectedState) {
@@ -62,9 +62,16 @@ void onBerriedSelected(String selectedBerried) {
   berried = selectedBerried;
 }
 
+void onHabitatSelected(String selectedHabit) {
+  habitat = selectedHabit;
+  print(habitat);
+}
+
 void onAdditionalInfoSelected(String selectedAdditionalInfo) {
   additionalInfo = selectedAdditionalInfo;
 }
+
+
 
 
 // Create instances of question widgets with callback functions
@@ -81,6 +88,8 @@ Widget question4 = QuestionAnswer4Page(
   month: month,
   onMonthSelected: onMonthSelected,
 );
+
+
 
 Widget question7 = QuestionAnswer7Page(
   image: crabImage,
@@ -101,6 +110,12 @@ Widget question9 = QuestionAnswer9Page(
   name: crabSpecies,
   berried: berried,
   onBerriedSelected: onBerriedSelected,
+);
+
+Widget question10 = const QuestionAnswer10Page(
+  image: crabImage,
+  name: crabSpecies,
+  onHabitatSelected: onHabitatSelected, habitat: '',
 );
 
 Widget question11 = QuestionAnswer11Page(
@@ -132,8 +147,11 @@ Widget question16 = const QuestionAnswer16Page(
 List<Widget> questionsPagesList = [
   question3,
   question4,
+
   question7,
   question8,
+  question9,
+  question10,
   question11,
   question12,
   question15,
