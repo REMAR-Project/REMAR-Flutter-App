@@ -30,8 +30,12 @@ String county = '';
 String intensity ='';
 String berried='';
 String whenObserved='';
+
 String habitat = '';
 String additionalInfo='';
+
+
+
 
 // Define callback functions for updating the properties
 void onYearSelected(String selectedYear) {
@@ -46,9 +50,19 @@ void onIntensitySelected(String selectedIntensity) {
   intensity = selectedIntensity;
 }
 
+
 void onWhenObserved(String selectedWhenObserved) {
   whenObserved = selectedWhenObserved;
 }
+
+
+
+void onWhenObserved(String selectedWhenObserved) {
+  whenObserved = selectedWhenObserved;
+  print(whenObserved);
+}
+
+
 
 void onStateSelected(String selectedState) {
   state = selectedState;
@@ -62,15 +76,16 @@ void onBerriedSelected(String selectedBerried) {
   berried = selectedBerried;
 }
 
+
 void onHabitatSelected(String selectedHabit) {
   habitat = selectedHabit;
   print(habitat);
 }
 
+
 void onAdditionalInfoSelected(String selectedAdditionalInfo) {
   additionalInfo = selectedAdditionalInfo;
 }
-
 
 
 
@@ -90,13 +105,13 @@ Widget question4 = QuestionAnswer4Page(
 );
 
 
-
 Widget question7 = QuestionAnswer7Page(
   image: crabImage,
   name: crabSpecies,
   intensity: intensity,
   onIntensitySelected: onIntensitySelected,
 );
+
 
 Widget question8 = const QuestionAnswer8Page(
   image: crabImage,
@@ -112,11 +127,13 @@ Widget question9 = QuestionAnswer9Page(
   onBerriedSelected: onBerriedSelected,
 );
 
+
 Widget question10 = const QuestionAnswer10Page(
   image: crabImage,
   name: crabSpecies,
   onHabitatSelected: onHabitatSelected, habitat: '',
 );
+
 
 Widget question11 = QuestionAnswer11Page(
   image: crabImage,
@@ -132,12 +149,7 @@ Widget question12 = QuestionAnswer12Page(
   onCountySelected: onCountySelected,
   county: county,
 );
-
-Widget question15 = const QuestionAnswer15Page(
-  image: crabImage,
-  name: crabSpecies,
-  onAdditionalInfo: onAdditionalInfoSelected, additionalInfo: '',
-);
+v
 
 Widget question16 = const QuestionAnswer16Page(
 );
@@ -147,7 +159,6 @@ Widget question16 = const QuestionAnswer16Page(
 List<Widget> questionsPagesList = [
   question3,
   question4,
-
   question7,
   question8,
   question9,
