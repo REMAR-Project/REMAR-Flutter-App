@@ -16,7 +16,6 @@ import 'package:remar_flutter_app/question_screens/question13.dart';
 import 'package:remar_flutter_app/question_screens/question15.dart';
 import 'package:remar_flutter_app/question_screens/question16.dart';
 
-
 // list of answers
 
 const String crabSpecies = 'Ucides cordatus';
@@ -32,6 +31,7 @@ String berried='';
 String whenObserved='';
 String additionalInfo='';
 
+
 // Define callback functions for updating the properties
 void onYearSelected(String selectedYear) {
   year = selectedYear;
@@ -45,10 +45,12 @@ void onIntensitySelected(String selectedIntensity) {
   intensity = selectedIntensity;
 }
 
+
 void onWhenObserved(String selectedWhenObserved) {
   whenObserved = selectedWhenObserved;
   print(whenObserved);
 }
+
 
 void onStateSelected(String selectedState) {
   state = selectedState;
@@ -62,9 +64,11 @@ void onBerriedSelected(String selectedBerried) {
   berried = selectedBerried;
 }
 
+
 void onAdditionalInfoSelected(String selectedAdditionalInfo) {
   additionalInfo = selectedAdditionalInfo;
 }
+
 
 
 // Create instances of question widgets with callback functions
@@ -89,12 +93,14 @@ Widget question7 = QuestionAnswer7Page(
   onIntensitySelected: onIntensitySelected,
 );
 
+
 Widget question8 = const QuestionAnswer8Page(
   image: crabImage,
   name: crabSpecies,
   onWhenObserved: onWhenObserved,
 
 );
+
 
 Widget question9 = QuestionAnswer9Page(
   image: crabImage,
@@ -118,11 +124,6 @@ Widget question12 = QuestionAnswer12Page(
   county: county,
 );
 
-Widget question15 = const QuestionAnswer15Page(
-  image: crabImage,
-  name: crabSpecies,
-  onAdditionalInfo: onAdditionalInfoSelected, additionalInfo: '',
-);
 
 Widget question16 = const QuestionAnswer16Page(
 );
