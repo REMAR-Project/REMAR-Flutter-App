@@ -1,11 +1,19 @@
 import 'package:flutter/cupertino.dart';
+
+import 'package:remar_flutter_app/question_screens/question3.dart';
+import 'package:remar_flutter_app/question_screens/question4.dart';
+import 'package:remar_flutter_app/question_screens/question5.dart';
+import 'package:remar_flutter_app/question_screens/question6.dart';
+import 'package:remar_flutter_app/question_screens/question7.dart';
+import 'package:remar_flutter_app/question_screens/question8.dart';
+//import 'package:remar_flutter_app/question_screens/question8.dart';
+import 'package:remar_flutter_app/question_screens/question9.dart';
+import 'package:remar_flutter_app/question_screens/question10.dart';
 import 'package:remar_flutter_app/question_screens/question11.dart';
 import 'package:remar_flutter_app/question_screens/question12.dart';
 import 'package:remar_flutter_app/question_screens/question13.dart';
-import 'package:remar_flutter_app/question_screens/question3.dart';
-import 'package:remar_flutter_app/question_screens/question4.dart';
-import 'package:remar_flutter_app/question_screens/question7.dart';
-import 'package:remar_flutter_app/question_screens/question9.dart';
+// import 'package:remar_flutter_app/question_screens/question14.dart';
+import 'package:remar_flutter_app/question_screens/question15.dart';
 import 'package:remar_flutter_app/question_screens/question16.dart';
 
 
@@ -21,6 +29,8 @@ String state = '';
 String county = '';
 String intensity ='';
 String berried='';
+String whenObserved='';
+String additionalInfo='';
 
 // Define callback functions for updating the properties
 void onYearSelected(String selectedYear) {
@@ -35,6 +45,11 @@ void onIntensitySelected(String selectedIntensity) {
   intensity = selectedIntensity;
 }
 
+void onWhenObserved(String selectedWhenObserved) {
+  whenObserved = selectedWhenObserved;
+  print(whenObserved);
+}
+
 void onStateSelected(String selectedState) {
   state = selectedState;
 }
@@ -45,6 +60,10 @@ void onCountySelected(String selectedCounty) {
 
 void onBerriedSelected(String selectedBerried) {
   berried = selectedBerried;
+}
+
+void onAdditionalInfoSelected(String selectedAdditionalInfo) {
+  additionalInfo = selectedAdditionalInfo;
 }
 
 
@@ -70,6 +89,13 @@ Widget question7 = QuestionAnswer7Page(
   onIntensitySelected: onIntensitySelected,
 );
 
+Widget question8 = const QuestionAnswer8Page(
+  image: crabImage,
+  name: crabSpecies,
+  onWhenObserved: onWhenObserved,
+
+);
+
 Widget question9 = QuestionAnswer9Page(
   image: crabImage,
   name: crabSpecies,
@@ -92,6 +118,12 @@ Widget question12 = QuestionAnswer12Page(
   county: county,
 );
 
+Widget question15 = const QuestionAnswer15Page(
+  image: crabImage,
+  name: crabSpecies,
+  onAdditionalInfo: onAdditionalInfoSelected, additionalInfo: '',
+);
+
 Widget question16 = const QuestionAnswer16Page(
 );
 
@@ -101,8 +133,10 @@ List<Widget> questionsPagesList = [
   question3,
   question4,
   question7,
+  question8,
   question11,
   question12,
+  question15,
   question16
   //const QuestionAnswer13Page(),
 ];
