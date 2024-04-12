@@ -6,6 +6,7 @@ import 'package:remar_flutter_app/question_screens/question3.dart';
 import 'package:remar_flutter_app/question_screens/question4.dart';
 import 'package:remar_flutter_app/question_screens/question7.dart';
 import 'package:remar_flutter_app/question_screens/question9.dart';
+import 'package:remar_flutter_app/question_screens/question16.dart';
 
 
 // list of answers
@@ -91,6 +92,9 @@ Widget question12 = QuestionAnswer12Page(
   county: county,
 );
 
+Widget question16 = const QuestionAnswer16Page(
+);
+
 
 // Add question widgets to the list
 List<Widget> questionsPagesList = [
@@ -99,5 +103,6 @@ List<Widget> questionsPagesList = [
   question7,
   question11,
   question12,
-  const QuestionAnswer13Page(),
+  question16
+  //const QuestionAnswer13Page(),
 ];
