@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 
-
 import 'package:remar_flutter_app/question_screens/question3.dart';
 import 'package:remar_flutter_app/question_screens/question4.dart';
 import 'package:remar_flutter_app/question_screens/question5.dart';
@@ -35,6 +34,7 @@ String habitat = '';
 String occupation ='';
 String additionalInfo='';
 
+
 // Define callback functions for updating the properties
 void onYearSelected(String selectedYear) {
   year = selectedYear;
@@ -52,6 +52,17 @@ void onWhenObserved(String selectedWhenObserved) {
   whenObserved = selectedWhenObserved;
 }
 
+
+
+
+void onWhenObserved(String selectedWhenObserved) {
+  whenObserved = selectedWhenObserved;
+  print(whenObserved);
+}
+
+
+
+
 void onStateSelected(String selectedState) {
   state = selectedState;
 }
@@ -64,6 +75,7 @@ void onBerriedSelected(String selectedBerried) {
   berried = selectedBerried;
 }
 
+
 void onHabitatSelected(String selectedHabit) {
   habitat = selectedHabit;
 
@@ -74,10 +86,17 @@ void onOccupationSelected(String selectedOccupation) {
   print(selectedOccupation);
 }
 
+
+void onHabitatSelected(String selectedHabit) {
+  habitat = selectedHabit;
+  print(habitat);
+}
+
+
+
 void onAdditionalInfoSelected(String selectedAdditionalInfo) {
   additionalInfo = selectedAdditionalInfo;
 }
-
 
 
 
@@ -97,13 +116,13 @@ Widget question4 = QuestionAnswer4Page(
 );
 
 
-
 Widget question7 = QuestionAnswer7Page(
   image: crabImage,
   name: crabSpecies,
   intensity: intensity,
   onIntensitySelected: onIntensitySelected,
 );
+
 
 Widget question8 = const QuestionAnswer8Page(
   image: crabImage,
@@ -119,12 +138,15 @@ Widget question9 = QuestionAnswer9Page(
   onBerriedSelected: onBerriedSelected,
 );
 
-Widget question10 =  QuestionAnswer10Page(
+
+
+Widget question10 = const QuestionAnswer10Page(
   image: crabImage,
   name: crabSpecies,
-  onHabitatSelected: onHabitatSelected,
-  habitat: habitat,
+  onHabitatSelected: onHabitatSelected, habitat: '',
 );
+
+
 
 Widget question11 = QuestionAnswer11Page(
   image: crabImage,
@@ -141,6 +163,7 @@ Widget question12 = QuestionAnswer12Page(
   county: county,
 );
 
+
 Widget question14 = QuestionAnswer14Page(
   image: crabImage,
   name: crabSpecies,
@@ -154,6 +177,7 @@ Widget question15 = QuestionAnswer15Page(
   onAdditionalInfoSelected: onAdditionalInfoSelected,
   additionalInfo: additionalInfo,
 );
+
 
 Widget question16 = const QuestionAnswer16Page(
 );
@@ -169,8 +193,10 @@ List<Widget> questionsPagesList = [
   question10,
   question11,
   question12,
+  question14
   question14,
   question15,
   question16,
+
   //const QuestionAnswer13Page(),
 ];
