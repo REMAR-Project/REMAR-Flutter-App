@@ -47,16 +47,17 @@ class _QuestionAnswerPage10State extends State<QuestionAnswer10Page> {
     // Extract data from the first question (question number 9)
     Map<String, dynamic> firstQuestionData = jsonData[9];
 
+   // Extract answers from the answers map
+    List<dynamic> answerList = firstQuestionData['answers_0'];
+
+    // Cast answers to List<String>
+    answers = answerList.map((answer) => answer.toString()).toList();
 
     // Set question text and answers list
     setState(() {
       questionText = firstQuestionData['description'];
 
-      // Extract answers from the answers map
-      List<dynamic> answerList = firstQuestionData['answers_0'];
 
-      // Cast answers to List<String>
-      answers = answerList.map((answer) => answer.toString()).toList();
     });
   }
 

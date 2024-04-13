@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
+
 import 'package:remar_flutter_app/question_screens/question3.dart';
 import 'package:remar_flutter_app/question_screens/question4.dart';
 import 'package:remar_flutter_app/question_screens/question5.dart';
@@ -12,7 +13,7 @@ import 'package:remar_flutter_app/question_screens/question10.dart';
 import 'package:remar_flutter_app/question_screens/question11.dart';
 import 'package:remar_flutter_app/question_screens/question12.dart';
 import 'package:remar_flutter_app/question_screens/question13.dart';
-// import 'package:remar_flutter_app/question_screens/question14.dart';
+import 'package:remar_flutter_app/question_screens/question14.dart';
 import 'package:remar_flutter_app/question_screens/question15.dart';
 import 'package:remar_flutter_app/question_screens/question16.dart';
 
@@ -64,7 +65,7 @@ void onBerriedSelected(String selectedBerried) {
 
 void onHabitatSelected(String selectedHabit) {
   habitat = selectedHabit;
-  print(habitat);
+
 }
 
 void onAdditionalInfoSelected(String selectedAdditionalInfo) {
@@ -112,10 +113,11 @@ Widget question9 = QuestionAnswer9Page(
   onBerriedSelected: onBerriedSelected,
 );
 
-Widget question10 = const QuestionAnswer10Page(
+Widget question10 =  QuestionAnswer10Page(
   image: crabImage,
   name: crabSpecies,
-  onHabitatSelected: onHabitatSelected, habitat: '',
+  onHabitatSelected: onHabitatSelected,
+  habitat: habitat,
 );
 
 Widget question11 = QuestionAnswer11Page(
@@ -133,10 +135,18 @@ Widget question12 = QuestionAnswer12Page(
   county: county,
 );
 
-Widget question15 = const QuestionAnswer15Page(
+Widget question14 = const QuestionAnswer14Page(
+  // image: crabImage,
+  // name: crabSpecies,
+  // onAdditionalInfoSelected: onAdditionalInfoSelected,
+  // additionalInfo: additionalInfo,
+);
+
+Widget question15 = QuestionAnswer15Page(
   image: crabImage,
   name: crabSpecies,
-  onAdditionalInfo: onAdditionalInfoSelected, additionalInfo: '',
+  onAdditionalInfoSelected: onAdditionalInfoSelected,
+  additionalInfo: additionalInfo,
 );
 
 Widget question16 = const QuestionAnswer16Page(
@@ -147,14 +157,14 @@ Widget question16 = const QuestionAnswer16Page(
 List<Widget> questionsPagesList = [
   question3,
   question4,
-
   question7,
   question8,
   question9,
   question10,
   question11,
   question12,
+  question14,
   question15,
-  question16
+  question16,
   //const QuestionAnswer13Page(),
 ];

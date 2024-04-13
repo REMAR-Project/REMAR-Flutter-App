@@ -6,25 +6,28 @@ class QuestionAnswer15Page extends StatefulWidget {
   final String name;
   final String image;
   final String additionalInfo;
-  final Function(String) onAdditionalInfo;
+  final Function(String) onAdditionalInfoSelected;
 
   const QuestionAnswer15Page({
-    Key? key,
+   Key? key,
     required this.name,
     required this.image,
-    required this.onAdditionalInfo, required this.additionalInfo
-  }) : super(key: key);
+    required this.additionalInfo,
+    required this.onAdditionalInfoSelected,
+
+}) : super(key: key);
 
   @override
   _QuestionAnswerPage15State createState() => _QuestionAnswerPage15State();
 }
 
 class _QuestionAnswerPage15State extends State<QuestionAnswer15Page> {
+  String selectedArea = '';
   String questionText = '';
   String selectedAnswer = '';
-  late List<String> answers = [];
-  late String otherText = '';
-  late int otherPosition = 0;
+  List<String> answers = [];
+  String otherText = '';
+  int otherPosition = 0;
   String additionalInfo='';
 
   @override
@@ -45,15 +48,10 @@ class _QuestionAnswerPage15State extends State<QuestionAnswer15Page> {
     // Extract data from the first question (question number 9)
     Map<String, dynamic> firstQuestionData = jsonData[14];
 
-
     // Set question text and answers list
     setState(() {
       questionText = firstQuestionData['description'];
       otherText = firstQuestionData['otherText'];
-
-      // Load answers from JSON data
-      List<dynamic> answerList = firstQuestionData['answers'];
-      answers = answerList.map((answer) => answer.toString()).toList();
     });
   }
 
@@ -80,8 +78,11 @@ class _QuestionAnswerPage15State extends State<QuestionAnswer15Page> {
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.8,
             height: MediaQuery.of(context).size.height * 0.15,
-            child: Text(
-              selectedAnswer == 'Yes' ? otherText : questionText,
+            child: selectedAnswer == 'Yes' ? Text(
+              otherText,
+              style: const TextStyle(fontSize: 16),
+            ) : Text(
+              questionText,
               style: const TextStyle(fontSize: 16),
             ),
           ),
@@ -118,12 +119,13 @@ class _QuestionAnswerPage15State extends State<QuestionAnswer15Page> {
   }
 
   Widget buildAnswerButton(String answer, bool selected) {
+    bool isSelected = answer == selectedArea;
     return GestureDetector(
       onTap: () {
         setState(() {
           selectedAnswer = answer;
           additionalInfo = answer;
-          widget.onAdditionalInfo(additionalInfo);
+          widget.onAdditionalInfoSelected(additionalInfo);
         });
       },
       child: Container(
@@ -132,14 +134,14 @@ class _QuestionAnswerPage15State extends State<QuestionAnswer15Page> {
         margin: const EdgeInsets.symmetric(vertical: 1.0),
         width: double.maxFinite,
         decoration: BoxDecoration(
-            color: selected ? Colors.green : null,
+            color: isSelected ? Colors.green : null,
             border: const Border(bottom: BorderSide(color: Colors.black))),
         height: 30,
         child: Text(
           answer,
           textAlign: TextAlign.start,
           style: TextStyle(
-            color: selected ? Colors.white : Colors.black,
+            color: isSelected ? Colors.white : Colors.black,
             fontWeight: FontWeight.bold,
           ),
         ),
