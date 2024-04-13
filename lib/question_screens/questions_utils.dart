@@ -32,6 +32,7 @@ String intensity ='';
 String berried='';
 String whenObserved='';
 String habitat = '';
+String occupation ='';
 String additionalInfo='';
 
 // Define callback functions for updating the properties
@@ -66,6 +67,11 @@ void onBerriedSelected(String selectedBerried) {
 void onHabitatSelected(String selectedHabit) {
   habitat = selectedHabit;
 
+}
+
+void onOccupationSelected(String selectedOccupation) {
+  occupation =selectedOccupation;
+  print(selectedOccupation);
 }
 
 void onAdditionalInfoSelected(String selectedAdditionalInfo) {
@@ -135,11 +141,11 @@ Widget question12 = QuestionAnswer12Page(
   county: county,
 );
 
-Widget question14 = const QuestionAnswer14Page(
-  // image: crabImage,
-  // name: crabSpecies,
-  // onAdditionalInfoSelected: onAdditionalInfoSelected,
-  // additionalInfo: additionalInfo,
+Widget question14 = QuestionAnswer14Page(
+  image: crabImage,
+  name: crabSpecies,
+  onOccupationSelected: onOccupationSelected,
+  occupation: occupation,
 );
 
 Widget question15 = QuestionAnswer15Page(
