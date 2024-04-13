@@ -2,16 +2,30 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 class QuestionAnswer14Page extends StatefulWidget {
-  const QuestionAnswer14Page({super.key});
+
+  final String name;
+  final String image;
+  final String occupation;
+  final Function(String) onOccupationSelected;
+
+  const QuestionAnswer14Page({
+    Key? key,
+    required this.name,
+    required this.image,
+    required this.occupation,
+    required this.onOccupationSelected,
+  }) : super(key: key);
 
   @override
   _QuestionAnswerPage14State createState() => _QuestionAnswerPage14State();
 }
 
 class _QuestionAnswerPage14State extends State<QuestionAnswer14Page> {
+  String selectedArea = '';
   List<String> selectedAnswer = [];
   List<String> answers = [];
   String questionText = '';
+  String occupation='';
 
   @override
   void initState() {
@@ -55,25 +69,25 @@ class _QuestionAnswerPage14State extends State<QuestionAnswer14Page> {
               Expanded(
                 flex: 1,
                 child: Image.asset(
-                  'assets/images/raster_q0_0.png',
-                  height: 200,
-                  width: 200,
+                  widget.image,
+                  width: 100,
+                  height: 125,
                 ),
               ),
               const SizedBox(width: 20.0),
-              const Expanded(
+               Expanded(
                 flex: 2,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Monitoring Ucides cordatus",
-                      style: TextStyle(
+                      widget.name,
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20.0,
                       ),
                     ),
-                    SizedBox(height: 10.0),
+                    const SizedBox(height: 10.0),
                   ],
                 ),
               ),
@@ -94,23 +108,20 @@ class _QuestionAnswerPage14State extends State<QuestionAnswer14Page> {
   }
 
   Widget buildAnswerButton(String answer) {
-    bool isSelected = selectedAnswer.contains(answer);
+    bool isSelected = answer == selectedArea;
 
     return GestureDetector(
       onTap: () {
         setState(() {
-          if (isSelected) {
-            selectedAnswer.remove(answer);
-          } else {
-            selectedAnswer.clear();
-            selectedAnswer.add(answer);
-          }
+          selectedArea = answer;
+          occupation = answer;
+          widget.onOccupationSelected(occupation);
         });
       },
       child: Container(
         color: isSelected ? Colors.green : null,
-        padding: const EdgeInsets.all(12.0),
-        margin: const EdgeInsets.symmetric(vertical: 8.0),
+        padding: const EdgeInsets.all(1.0),
+        margin: const EdgeInsets.symmetric(vertical: 1.0),
         child: Text(
           answer,
           style: TextStyle(
