@@ -60,6 +60,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
                                 size: 30,
                               ),
                             ),
+
                             const SizedBox(
                               width: 10,
                             ),
@@ -90,10 +91,11 @@ class CustomBottomNavigationBar extends StatelessWidget {
 
                     GestureDetector(
                       onTap: () {
-                        print(enableForwardNavigation);
-                        pageController.nextPage(
+                        if(enableForwardNavigation == true) {
+                          pageController.nextPage(
                             duration: const Duration(milliseconds: 200),
                             curve: Curves.easeInOutCubic);
+                        }
                       },
                       child: MouseRegion(
                         cursor: SystemMouseCursors.click,
