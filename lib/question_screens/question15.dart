@@ -6,13 +6,13 @@ class QuestionAnswer15Page extends StatefulWidget {
   final String name;
   final String image;
   final String additionalInfo;
-  final Function(String) onAdditionalInfo;
+  final Function(String) onAdditionalInfoSelected;
 
   const QuestionAnswer15Page({
     Key? key,
     required this.name,
     required this.image,
-    required this.onAdditionalInfo, required this.additionalInfo
+    required this.onAdditionalInfoSelected, required this.additionalInfo,
   }) : super(key: key);
 
   @override
@@ -123,7 +123,7 @@ class _QuestionAnswerPage15State extends State<QuestionAnswer15Page> {
         setState(() {
           selectedAnswer = answer;
           additionalInfo = answer;
-          widget.onAdditionalInfo(additionalInfo);
+          widget.onAdditionalInfoSelected(additionalInfo);
         });
       },
       child: Container(

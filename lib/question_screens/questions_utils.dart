@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'package:remar_flutter_app/question_screens/question3.dart';
 import 'package:remar_flutter_app/question_screens/question4.dart';
@@ -19,8 +20,8 @@ import 'package:remar_flutter_app/question_screens/question16.dart';
 
 // list of answers
 
-const String crabSpecies = 'Ucides cordatus';
-const String crabImage = 'assets/images/raster_q0_0.png';
+const String crabSpecies = 'Cardisoma guanhumi';
+const String crabImage = 'assets/images/raster_q1_0.png';
 
 // Define initial values for various properties
 String year = '';
@@ -30,7 +31,6 @@ String county = '';
 String intensity ='';
 String berried='';
 String whenObserved='';
-
 String habitat = '';
 String additionalInfo='';
 
@@ -57,13 +57,6 @@ void onWhenObserved(String selectedWhenObserved) {
 
 
 
-void onWhenObserved(String selectedWhenObserved) {
-  whenObserved = selectedWhenObserved;
-  print(whenObserved);
-}
-
-
-
 void onStateSelected(String selectedState) {
   state = selectedState;
 }
@@ -79,7 +72,6 @@ void onBerriedSelected(String selectedBerried) {
 
 void onHabitatSelected(String selectedHabit) {
   habitat = selectedHabit;
-  print(habitat);
 }
 
 
@@ -149,7 +141,14 @@ Widget question12 = QuestionAnswer12Page(
   onCountySelected: onCountySelected,
   county: county,
 );
-v
+
+Widget question15 = QuestionAnswer15Page(
+  image: crabImage,
+  name: crabSpecies,
+  onAdditionalInfoSelected: onAdditionalInfoSelected,
+  additionalInfo: additionalInfo,
+);
+
 
 Widget question16 = const QuestionAnswer16Page(
 );
