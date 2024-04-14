@@ -16,6 +16,7 @@ import 'package:remar_flutter_app/question_screens/question13.dart';
 // import 'package:remar_flutter_app/question_screens/question14.dart';
 import 'package:remar_flutter_app/question_screens/question15.dart';
 import 'package:remar_flutter_app/question_screens/question16.dart';
+import 'global.dart';
 
 
 // list of answers
