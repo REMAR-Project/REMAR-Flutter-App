@@ -89,6 +89,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
                       ),
                     ),
 
+
                     GestureDetector(
                       onTap: () {
                         if(enableForwardNavigation == true) {
