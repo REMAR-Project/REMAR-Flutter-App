@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:remar_flutter_app/question_screens/questions_utils.dart';
 
+
 class QuestionAnswer13Page extends StatefulWidget {
 
   final String image;
@@ -66,8 +67,7 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
       // Cast answers to List<String>
       answers = stateList.map((answer) => answer.toString()).toList();
       areas = stateList.map((area) => area.toString()).toList();
-      print(state);
-      print(areas);
+
 
     });
   }
