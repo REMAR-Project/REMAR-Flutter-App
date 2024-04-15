@@ -1,8 +1,9 @@
 import 'dart:convert';
+import 'dart:core';
 import 'package:flutter/material.dart';
+import 'global.dart';
 
 List<String> yearList = []; // Declaration of yearList
-
 
 class QuestionAnswer3Page extends StatefulWidget {
 
@@ -29,6 +30,9 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
   String questionText = '';
   String year='';
 
+  final ScrollController _controller = ScrollController();
+
+
   @override
   void initState() {
     super.initState();
@@ -37,6 +41,9 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
   }
 
   void loadQuestions() async {
+
+    enableForwardNavigation = false;
+
     // Load the JSON data from the file
     String jsonString = await DefaultAssetBundle.of(context)
         .loadString('assets/raw_eng/questions2Modified.json');
@@ -113,6 +120,7 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
           selectedArea = answer;
           year = answer;
           widget.onYearSelected(year);
+          enableForwardNavigation = true;
         });
         },
       child: Container(

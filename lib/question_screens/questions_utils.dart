@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/cupertino.dart';
 
+
+import 'package:flutter/cupertino.dart';
 import 'package:remar_flutter_app/question_screens/question3.dart';
 import 'package:remar_flutter_app/question_screens/question4.dart';
 import 'package:remar_flutter_app/question_screens/question5.dart';
@@ -16,6 +16,7 @@ import 'package:remar_flutter_app/question_screens/question13.dart';
 // import 'package:remar_flutter_app/question_screens/question14.dart';
 import 'package:remar_flutter_app/question_screens/question15.dart';
 import 'package:remar_flutter_app/question_screens/question16.dart';
+import 'global.dart';
 
 
 // list of answers
@@ -32,6 +33,8 @@ String intensity ='';
 String berried='';
 String whenObserved='';
 String habitat = '';
+bool isProtectedArea = false;
+String protectedArea = '';
 String additionalInfo='';
 
 
@@ -55,8 +58,6 @@ void onWhenObserved(String selectedWhenObserved) {
   whenObserved = selectedWhenObserved;
 }
 
-
-
 void onStateSelected(String selectedState) {
   state = selectedState;
 }
@@ -72,6 +73,14 @@ void onBerriedSelected(String selectedBerried) {
 
 void onHabitatSelected(String selectedHabit) {
   habitat = selectedHabit;
+}
+
+void onIsProtectedAreaSelected(bool selectedIsProtected) {
+   isProtectedArea = selectedIsProtected;
+}
+
+void onProtectedAreaSelected(String selectedProtectedArea) {
+  protectedArea = selectedProtectedArea;
 }
 
 
@@ -142,6 +151,14 @@ Widget question12 = QuestionAnswer12Page(
   county: county,
 );
 
+Widget question13 = QuestionAnswer13Page(
+  image: crabImage,
+  name: crabSpecies,
+  state: state,
+  onProtectedAreaSelected: onProtectedAreaSelected,
+  protectedArea: protectedArea,
+);
+
 Widget question15 = QuestionAnswer15Page(
   image: crabImage,
   name: crabSpecies,
@@ -164,6 +181,7 @@ List<Widget> questionsPagesList = [
   question10,
   question11,
   question12,
+  question13,
   question15,
   question16
   //const QuestionAnswer13Page(),
