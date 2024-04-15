@@ -13,7 +13,7 @@ import 'package:remar_flutter_app/question_screens/question10.dart';
 import 'package:remar_flutter_app/question_screens/question11.dart';
 import 'package:remar_flutter_app/question_screens/question12.dart';
 import 'package:remar_flutter_app/question_screens/question13.dart';
-// import 'package:remar_flutter_app/question_screens/question14.dart';
+import 'package:remar_flutter_app/question_screens/question14.dart';
 import 'package:remar_flutter_app/question_screens/question15.dart';
 import 'package:remar_flutter_app/question_screens/question16.dart';
 import 'global.dart';
@@ -33,7 +33,9 @@ String intensity ='';
 String berried='';
 String whenObserved='';
 String habitat = '';
+String occupation ='';
 bool isProtectedArea = false;
+
 String protectedArea = '';
 String additionalInfo='';
 
@@ -83,6 +85,14 @@ void onProtectedAreaSelected(String selectedProtectedArea) {
   protectedArea = selectedProtectedArea;
 }
 
+
+void onProtectedAreaSelected(String selectedProtectedArea) {
+  protectedArea = selectedProtectedArea;
+}
+
+void onOccupationSelected(String selectOccuption) {
+
+}
 
 void onAdditionalInfoSelected(String selectedAdditionalInfo) {
   additionalInfo = selectedAdditionalInfo;
@@ -159,6 +169,14 @@ Widget question13 = QuestionAnswer13Page(
   protectedArea: protectedArea,
 );
 
+
+Widget question14 = QuestionAnswer14Page(
+  image: crabImage,
+  name: crabSpecies,
+  onOccupationSelected: onOccupationSelected,
+  occupation: occupation,
+);
+
 Widget question15 = QuestionAnswer15Page(
   image: crabImage,
   name: crabSpecies,
@@ -182,6 +200,7 @@ List<Widget> questionsPagesList = [
   question11,
   question12,
   question13,
+  question14,
   question15,
   question16
   //const QuestionAnswer13Page(),
