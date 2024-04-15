@@ -127,10 +127,6 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
                   enableForwardNavigation = true;
                 });
               },
-
-                  enableForwardNavigation = false;
-                });
-              },
               child: Container(
                 color: Colors.green,
                 padding: const EdgeInsets.all(12.0),
