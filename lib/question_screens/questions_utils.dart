@@ -34,6 +34,8 @@ String berried='';
 String whenObserved='';
 String habitat = '';
 String occupation ='';
+bool isProtectedArea = false;
+
 String protectedArea = '';
 String additionalInfo='';
 
@@ -73,6 +75,14 @@ void onBerriedSelected(String selectedBerried) {
 
 void onHabitatSelected(String selectedHabit) {
   habitat = selectedHabit;
+}
+
+void onIsProtectedAreaSelected(bool selectedIsProtected) {
+   isProtectedArea = selectedIsProtected;
+}
+
+void onProtectedAreaSelected(String selectedProtectedArea) {
+  protectedArea = selectedProtectedArea;
 }
 
 
@@ -158,6 +168,7 @@ Widget question13 = QuestionAnswer13Page(
   onProtectedAreaSelected: onProtectedAreaSelected,
   protectedArea: protectedArea,
 );
+
 
 Widget question14 = QuestionAnswer14Page(
   image: crabImage,
