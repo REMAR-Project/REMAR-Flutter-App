@@ -142,24 +142,24 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
           }
 
           Container(
-              color: isSelected ? Colors.white : null,
-              padding: const EdgeInsets.all(1.0),
-              margin: const EdgeInsets.symmetric(vertical: 1.0),
-              child: Text(
-                answer,
-                style: TextStyle(
-                  color: isSelected ? Colors.white : Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
+            color: isSelected ? Colors.white : null,
+            padding: const EdgeInsets.all(1.0),
+            margin: const EdgeInsets.symmetric(vertical: 1.0),
+            child: Text(
+              answer,
+              style: TextStyle(
+                color: isSelected ? Colors.white : Colors.black,
+                fontWeight: FontWeight.bold,
               ),
-            );
-          if(isMonthValid == true);
+            ),
+          );
+
         });
 
       },
 
-    child: Container(
-      color: isSelected ? Colors.green : null,
+      child: Container(
+        color: isSelected ? Colors.green : null,
         padding: const EdgeInsets.all(1.0),
         margin: const EdgeInsets.symmetric(vertical: 1.0),
         child: Text(
@@ -175,34 +175,32 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
 }
 
 void validateMonth(String month) {
-    var currentDate = DateTime.now();
-    var currentMonth = currentDate.month;
-    var selectedMonth =0;
+  var currentDate = DateTime.now();
+  var currentMonth = currentDate.month;
+  var selectedMonth =0;
 
-    switch (month) {
-      case "January" : (selectedMonth=1);
-      case "February" : (selectedMonth=2);
-      case "March" : (selectedMonth=3);
-      case "April" : (selectedMonth=4);
-      case "May" : (selectedMonth=5);
-      case "June" : (selectedMonth=6);
-      case "July" : (selectedMonth=7);
-      case "August" : (selectedMonth=8);
-      case "September" : (selectedMonth=9);
-      case "October" : (selectedMonth=10);
-      case "November" : (selectedMonth=11);
-      case "December" : (selectedMonth=12);
-    }
+  switch (month) {
+    case "January" : (selectedMonth=1);
+    case "February" : (selectedMonth=2);
+    case "March" : (selectedMonth=3);
+    case "April" : (selectedMonth=4);
+    case "May" : (selectedMonth=5);
+    case "June" : (selectedMonth=6);
+    case "July" : (selectedMonth=7);
+    case "August" : (selectedMonth=8);
+    case "September" : (selectedMonth=9);
+    case "October" : (selectedMonth=10);
+    case "November" : (selectedMonth=11);
+    case "December" : (selectedMonth=12);
+  }
 
 
 
-    if(selectedMonth > currentMonth) {
-      isMonthValid = false;
-    }
-    else {
-      isMonthValid = true;
-    }
+  if(selectedMonth > currentMonth) {
+    isMonthValid = false;
+  }
+  else {
+    isMonthValid = true;
+  }
 
 }
-
-

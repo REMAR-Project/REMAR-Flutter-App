@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:remar_flutter_app/question_screens/global.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class QuestionAnswer16Page extends StatefulWidget {
@@ -29,6 +30,9 @@ class _QuestionAnswer16Page extends State<QuestionAnswer16Page> {
   }
 
   void loadQuestionData() async {
+
+    enableForwardNavigation = false;
+
     // Load JSON data from asset file
     String jsonString = await DefaultAssetBundle.of(context)
         .loadString('assets/raw_eng/questions2Modified.json');
@@ -43,10 +47,10 @@ class _QuestionAnswer16Page extends State<QuestionAnswer16Page> {
     // Assign values to variables
     setState(() {
       description = questionData['description'];
-
       choiceOneText = questionData['choiceOneText'];
       choiceTwoText = questionData['choiceTwoText'];
       choiceThreeText = questionData['choiceThreeText'];
+     // enableForwardNavigation = true;
     });
   }
 

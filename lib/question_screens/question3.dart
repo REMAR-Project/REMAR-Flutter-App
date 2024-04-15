@@ -5,6 +5,7 @@ import 'global.dart';
 
 List<String> yearList = []; // Declaration of yearList
 
+
 class QuestionAnswer3Page extends StatefulWidget {
 
   final String name;
@@ -29,8 +30,6 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
   String selectedArea = '';
   String questionText = '';
   String year='';
-
-  final ScrollController _controller = ScrollController();
 
 
   @override

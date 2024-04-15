@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:remar_flutter_app/question_screens/global.dart';
 import 'package:remar_flutter_app/question_screens/questions_utils.dart';
 
 
@@ -42,6 +43,9 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
   }
 
   void loadQuestions() async {
+
+    enableForwardNavigation = false;
+
     // Load the JSON data from the file
     String jsonString = await DefaultAssetBundle.of(context)
         .loadString('assets/raw_eng/questions2Modified.json');
@@ -78,49 +82,52 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
 
     return Scaffold(
       body: ListView(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         children: [
           Text(
             questionText,
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 20.0,
             ),
           ),
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10.0),
           Row(
             children: [
               buildCheckbox("Yes", selectedAnswer == "Yes"),
-              SizedBox(width: 10.0),
+              const SizedBox(width: 10.0),
               buildCheckbox("No", selectedAnswer == "No"),
-              SizedBox(width: 10.0),
+              const SizedBox(width: 10.0),
               buildCheckbox("I don't know", selectedAnswer == "I don't know"),
             ],
           ),
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
           Text(
             extraDetailText,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16.0,
             ),
           ),
           SizedBox(height: 20.0),
           // Display answers only if "Yes" is selected
           if (displayAnswers)
+
             for (var area in displayedAreas) buildAnswerButton(area),
           if (!isExpanded &&
-              displayAnswers) // Hide "Name not in list" until "Yes" is selected
+              displayAnswers)
+            // Hide "Name not in list" until "Yes" is selected
             GestureDetector(
               onTap: () {
                 setState(() {
                   isExpanded = true;
+                  enableForwardNavigation = false;
                 });
               },
               child: Container(
                 color: Colors.green,
-                padding: EdgeInsets.all(12.0),
+                padding: const EdgeInsets.all(12.0),
                 margin: EdgeInsets.symmetric(vertical: 8.0),
-                child: Text(
+                child: const Text(
                   "Name not in list",
                   style: TextStyle(
                     color: Colors.white,
@@ -141,6 +148,7 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
           selectedAnswer = title;
           // Update the flag based on the selected answer
           displayAnswers = selectedAnswer == "Yes";
+          enableForwardNavigation = true;
         });
       },
       child: Row(
@@ -176,8 +184,8 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
       },
       child: Container(
         color: isSelected ? Colors.green : null,
-        padding: EdgeInsets.all(12.0),
-        margin: EdgeInsets.symmetric(vertical: 8.0),
+        padding: const EdgeInsets.all(12.0),
+        margin: const EdgeInsets.symmetric(vertical: 8.0),
         child: Text(
           answer,
           style: TextStyle(
