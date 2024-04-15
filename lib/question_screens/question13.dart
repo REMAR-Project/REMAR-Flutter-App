@@ -125,6 +125,7 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
                   protectedArea = answers as String;
                   widget.onProtectedAreaSelected(intensity);
                   enableForwardNavigation = true;
+
                 });
               },
               child: Container(
