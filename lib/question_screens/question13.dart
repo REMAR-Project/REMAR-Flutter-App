@@ -120,6 +120,7 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
               onTap: () {
                 setState(() {
                   isExpanded = true;
+
                   selectedArea = answers as String;
                   protectedArea = answers as String;
                   widget.onProtectedAreaSelected(intensity);
@@ -127,6 +128,21 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
                 });
               },
 
+                  enableForwardNavigation = false;
+                });
+              },
+              child: Container(
+                color: Colors.green,
+                padding: const EdgeInsets.all(12.0),
+                margin: EdgeInsets.symmetric(vertical: 8.0),
+                child: const Text(
+                  "Name not in list",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              )
             ),
         ],
       ),
