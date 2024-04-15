@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:remar_flutter_app/question_screens/global.dart';
 
 
 class QuestionAnswer10Page extends StatefulWidget {
@@ -36,6 +37,9 @@ class _QuestionAnswerPage10State extends State<QuestionAnswer10Page> {
   }
 
   void loadQuestions() async {
+
+    enableForwardNavigation = false;
+
     // Load the JSON data from the file
     String jsonString = await DefaultAssetBundle.of(context)
         .loadString('assets/raw_eng/questions2Modified.json');
@@ -126,6 +130,7 @@ class _QuestionAnswerPage10State extends State<QuestionAnswer10Page> {
           selectedArea = answer;
           habitat = answer;
           widget.onHabitatSelected(habitat);
+          enableForwardNavigation = true;
         });
       },
       child: Container(
