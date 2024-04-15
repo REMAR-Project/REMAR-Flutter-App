@@ -27,16 +27,14 @@ const String crabImage = 'assets/images/raster_q1_0.png';
 // Define initial values for various properties
 String year = '';
 String month = '';
+String intensity ='';
+String whenObserved='';
+String berried='';
+String habitat = '';
 String state = '';
 String county = '';
-String intensity ='';
-String berried='';
-String whenObserved='';
-String habitat = '';
-String occupation ='';
-bool isProtectedArea = false;
-
 String protectedArea = '';
+String occupation ='';
 String additionalInfo='';
 
 
@@ -45,14 +43,17 @@ String additionalInfo='';
 // Define callback functions for updating the properties
 void onYearSelected(String selectedYear) {
   year = selectedYear;
+  print(year);
 }
 
 void onMonthSelected(String selectedMonth) {
   month = selectedMonth;
+  print(month);
 }
 
 void onIntensitySelected(String selectedIntensity) {
   intensity = selectedIntensity;
+  print(intensity);
 }
 
 
@@ -60,38 +61,35 @@ void onWhenObserved(String selectedWhenObserved) {
   whenObserved = selectedWhenObserved;
 }
 
+void onBerriedSelected(String selectedBerried) {
+  berried = selectedBerried;
+  print(berried);
+}
+
+void onHabitatSelected(String selectedHabit) {
+  habitat = selectedHabit;
+  print(habitat);
+}
+
 void onStateSelected(String selectedState) {
   state = selectedState;
+  print(selectedState);
 }
 
 void onCountySelected(String selectedCounty) {
   county = selectedCounty;
-}
-
-void onBerriedSelected(String selectedBerried) {
-  berried = selectedBerried;
-}
-
-
-void onHabitatSelected(String selectedHabit) {
-  habitat = selectedHabit;
-}
-
-void onIsProtectedAreaSelected(bool selectedIsProtected) {
-   isProtectedArea = selectedIsProtected;
+  print(county);
 }
 
 void onProtectedAreaSelected(String selectedProtectedArea) {
   protectedArea = selectedProtectedArea;
+  print(protectedArea);
 }
 
 
-void onProtectedAreaSelected(String selectedProtectedArea) {
-  protectedArea = selectedProtectedArea;
-}
-
-void onOccupationSelected(String selectOccuption) {
-
+void onOccupationSelected(String selectOccupation) {
+   occupation = selectOccupation;
+   print(occupation);
 }
 
 void onAdditionalInfoSelected(String selectedAdditionalInfo) {

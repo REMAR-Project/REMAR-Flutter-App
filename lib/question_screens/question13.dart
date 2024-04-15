@@ -120,6 +120,14 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
               onTap: () {
                 setState(() {
                   isExpanded = true;
+
+                  selectedArea = answers as String;
+                  protectedArea = answers as String;
+                  widget.onProtectedAreaSelected(intensity);
+                  enableForwardNavigation = true;
+                });
+              },
+
                   enableForwardNavigation = false;
                 });
               },
@@ -134,7 +142,7 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-              ),
+              )
             ),
         ],
       ),

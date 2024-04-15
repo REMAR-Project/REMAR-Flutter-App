@@ -136,7 +136,10 @@ class _QuestionAnswerPage9State extends State<QuestionAnswer9Page> {
         setState(() {
           selectedArea = answer;
           berried = answer;
+          widget.onBerriedSelected(berried);
+
           widget.onBerriedSelected(month);
+
           enableForwardNavigation = true;
 
 
