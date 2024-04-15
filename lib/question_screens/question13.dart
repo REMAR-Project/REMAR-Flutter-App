@@ -120,21 +120,13 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
               onTap: () {
                 setState(() {
                   isExpanded = true;
-                  enableForwardNavigation = false;
+                  selectedArea = answers as String;
+                  protectedArea = answers as String;
+                  widget.onProtectedAreaSelected(intensity);
+                  enableForwardNavigation = true;
                 });
               },
-              child: Container(
-                color: Colors.green,
-                padding: const EdgeInsets.all(12.0),
-                margin: EdgeInsets.symmetric(vertical: 8.0),
-                child: const Text(
-                  "Name not in list",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+
             ),
         ],
       ),

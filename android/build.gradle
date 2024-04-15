@@ -10,6 +10,11 @@ buildscript {
     }
 }
 
+android {
+    compileSdkVersion 34
+
+}
+
 allprojects {
     repositories {
         google()
