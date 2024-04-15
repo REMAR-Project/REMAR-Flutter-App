@@ -1,12 +1,28 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:remar_flutter_app/question_screens/questions_utils.dart';
 
 class QuestionAnswer13Page extends StatefulWidget {
-  const QuestionAnswer13Page({super.key});
+
+  final String image;
+  final String name;
+  final String state;
+  final String protectedArea;
+  final Function(String) onProtectedAreaSelected;
+
+  const QuestionAnswer13Page({
+    Key? key,
+    required this.image,
+    required this.name,
+    required this.state,
+    required this.protectedArea,
+    required this.onProtectedAreaSelected
+}) : super(key:key);
 
   @override
   _QuestionAnswerPage13State createState() => _QuestionAnswerPage13State();
-}
+  }
+
 
 class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
   String selectedAnswer = '';
@@ -16,6 +32,7 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
   String questionText = '';
   String extraDetailText = '';
   bool isExpanded = false;
+  bool displayAnswers = false; // Flag to control displaying answers
 
   @override
   void initState() {
@@ -33,6 +50,7 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
     Map<String, dynamic> firstQuestionData = jsonData[12];
     // Set question text and answers list
     setState(() {
+
       questionText = firstQuestionData['question'];
       extraDetailText = firstQuestionData['extraDetailText'];
       // Extract areas from the answers map
@@ -41,7 +59,16 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
           .expand((areaList) => areaList as List<dynamic>)
           .toList();
       // Cast areas to List<String>
-      areas = areasList.map((area) => area.toString()).toList();
+      Map<String, dynamic> answerMap = firstQuestionData['answers'];
+      List<dynamic> stateList = answerMap[state];
+
+
+      // Cast answers to List<String>
+      answers = stateList.map((answer) => answer.toString()).toList();
+      areas = stateList.map((area) => area.toString()).toList();
+      print(state);
+      print(areas);
+
     });
   }
 
@@ -51,35 +78,38 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
 
     return Scaffold(
       body: ListView(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0),
         children: [
           Text(
             questionText,
-            style: const TextStyle(
+            style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 20.0,
             ),
           ),
-          const SizedBox(height: 10.0),
+          SizedBox(height: 10.0),
           Row(
             children: [
               buildCheckbox("Yes", selectedAnswer == "Yes"),
-              const SizedBox(width: 10.0),
+              SizedBox(width: 10.0),
               buildCheckbox("No", selectedAnswer == "No"),
-              const SizedBox(width: 10.0),
+              SizedBox(width: 10.0),
               buildCheckbox("I don't know", selectedAnswer == "I don't know"),
             ],
           ),
-          const SizedBox(height: 20.0),
+          SizedBox(height: 20.0),
           Text(
             extraDetailText,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 16.0,
             ),
           ),
-          const SizedBox(height: 20.0),
-          for (var area in displayedAreas) buildAnswerButton(area),
-          if (!isExpanded)
+          SizedBox(height: 20.0),
+          // Display answers only if "Yes" is selected
+          if (displayAnswers)
+            for (var area in displayedAreas) buildAnswerButton(area),
+          if (!isExpanded &&
+              displayAnswers) // Hide "Name not in list" until "Yes" is selected
             GestureDetector(
               onTap: () {
                 setState(() {
@@ -88,9 +118,9 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
               },
               child: Container(
                 color: Colors.green,
-                padding: const EdgeInsets.all(12.0),
-                margin: const EdgeInsets.symmetric(vertical: 8.0),
-                child: const Text(
+                padding: EdgeInsets.all(12.0),
+                margin: EdgeInsets.symmetric(vertical: 8.0),
+                child: Text(
                   "Name not in list",
                   style: TextStyle(
                     color: Colors.white,
@@ -109,6 +139,8 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
       onTap: () {
         setState(() {
           selectedAnswer = title;
+          // Update the flag based on the selected answer
+          displayAnswers = selectedAnswer == "Yes";
         });
       },
       child: Row(
@@ -116,7 +148,7 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
           Container(
             width: 24.0,
             height: 24.0,
-            margin: const EdgeInsets.only(right: 8.0),
+            margin: EdgeInsets.only(right: 8.0),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.black),
               color: selected ? Colors.green : Colors.transparent,
@@ -144,8 +176,8 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
       },
       child: Container(
         color: isSelected ? Colors.green : null,
-        padding: const EdgeInsets.all(12.0),
-        margin: const EdgeInsets.symmetric(vertical: 8.0),
+        padding: EdgeInsets.all(12.0),
+        margin: EdgeInsets.symmetric(vertical: 8.0),
         child: Text(
           answer,
           style: TextStyle(

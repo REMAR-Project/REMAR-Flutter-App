@@ -30,6 +30,9 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
   String questionText = '';
   String year='';
 
+  final ScrollController _controller = ScrollController();
+
+
   @override
   void initState() {
     super.initState();
