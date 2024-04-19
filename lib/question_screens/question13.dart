@@ -25,6 +25,15 @@ class QuestionAnswer13Page extends StatefulWidget {
   _QuestionAnswerPage13State createState() => _QuestionAnswerPage13State();
   }
 
+=======
+
+class QuestionAnswer13Page extends StatefulWidget {
+  const QuestionAnswer13Page({super.key});
+
+  @override
+  _QuestionAnswerPage13State createState() => _QuestionAnswerPage13State();
+}
+
 
 class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
   String selectedAnswer = '';
@@ -34,7 +43,9 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
   String questionText = '';
   String extraDetailText = '';
   bool isExpanded = false;
+
   bool displayAnswers = false; // Flag to control displaying answers
+
 
   @override
   void initState() {
@@ -44,7 +55,9 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
 
   void loadQuestions() async {
 
+
     enableForwardNavigation = false;
+
 
     // Load the JSON data from the file
     String jsonString = await DefaultAssetBundle.of(context)
@@ -64,6 +77,7 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
           .expand((areaList) => areaList as List<dynamic>)
           .toList();
       // Cast areas to List<String>
+
       Map<String, dynamic> answerMap = firstQuestionData['answers'];
       List<dynamic> stateList = answerMap[state];
 
@@ -73,6 +87,8 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
       areas = stateList.map((area) => area.toString()).toList();
 
 
+
+      areas = areasList.map((area) => area.toString()).toList();
     });
   }
 
@@ -108,6 +124,7 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
               fontSize: 16.0,
             ),
           ),
+
           SizedBox(height: 20.0),
           // Display answers only if "Yes" is selected
           if (displayAnswers)
@@ -116,6 +133,7 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
           if (!isExpanded &&
               displayAnswers)
             // Hide "Name not in list" until "Yes" is selected
+
             GestureDetector(
               onTap: () {
                 setState(() {
@@ -131,7 +149,10 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
               child: Container(
                 color: Colors.green,
                 padding: const EdgeInsets.all(12.0),
+
                 margin: EdgeInsets.symmetric(vertical: 8.0),
+                margin: const EdgeInsets.symmetric(vertical: 8.0),
+
                 child: const Text(
                   "Name not in list",
                   style: TextStyle(
@@ -139,7 +160,11 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+
               )
+
+              ),
+
             ),
         ],
       ),
@@ -151,9 +176,11 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
       onTap: () {
         setState(() {
           selectedAnswer = title;
+
           // Update the flag based on the selected answer
           displayAnswers = selectedAnswer == "Yes";
           enableForwardNavigation = true;
+
         });
       },
       child: Row(
@@ -161,7 +188,11 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
           Container(
             width: 24.0,
             height: 24.0,
+
             margin: EdgeInsets.only(right: 8.0),
+
+            margin: const EdgeInsets.only(right: 8.0),
+
             decoration: BoxDecoration(
               border: Border.all(color: Colors.black),
               color: selected ? Colors.green : Colors.transparent,
