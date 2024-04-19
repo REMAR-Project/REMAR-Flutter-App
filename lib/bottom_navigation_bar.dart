@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CustomBottomNavigationBar extends StatelessWidget {
   final int currentPageIndex;
   final Function(int) onPageChanged;
-
+  
   const CustomBottomNavigationBar({
     Key? key,
     required this.currentPageIndex,
