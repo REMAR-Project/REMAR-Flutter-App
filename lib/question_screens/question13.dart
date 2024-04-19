@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:remar_flutter_app/question_screens/global.dart';
+import 'package:remar_flutter_app/global.dart';
 import 'package:remar_flutter_app/question_screens/questions_utils.dart';
 
 

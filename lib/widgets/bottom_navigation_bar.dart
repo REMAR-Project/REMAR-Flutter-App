@@ -4,7 +4,7 @@ import 'package:remar_flutter_app/utils/color_res.dart';
 import 'package:provider/provider.dart';
 
 import '../Screens/providers/bottom_state_provider.dart';
-import '../question_screens/global.dart';
+import '../global.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   final int currentPageIndex;

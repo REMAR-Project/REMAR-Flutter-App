@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:core';
 import 'package:flutter/material.dart';
-import 'package:remar_flutter_app/question_screens/global.dart';
+import 'package:remar_flutter_app/global.dart';
 import 'package:remar_flutter_app/question_screens/questions_utils.dart';
 
 bool isMonthValid = false;

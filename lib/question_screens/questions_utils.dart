@@ -16,9 +16,8 @@ import 'package:remar_flutter_app/question_screens/question15.dart';
 import 'package:remar_flutter_app/question_screens/question16.dart';
 
 
-
-
 // list of answers
+int version=0;              // 0 = advanced, 1 = short
 String CrabSelected ='';
 String crabSpecies = '';
 String crabImage = '';
@@ -40,6 +39,7 @@ String additionalInfo='';
 
 
 // Define callback functions for updating the properties
+
 
 void onCrabSelected(String selectedCrabImage) {
   CrabSelected = selectedCrabImage;
@@ -131,9 +131,6 @@ Widget question4 = QuestionAnswer4Page(
   onMonthSelected: onMonthSelected,
 );
 
-
-
-
 Widget question7 = QuestionAnswer7Page(
   image: crabImage,
   name: crabSpecies,
@@ -207,21 +204,29 @@ Widget question16 = const QuestionAnswer16Page(
 );
 
 
-// Add question widgets to the list
-List<Widget> questionsPagesList = [
-//  question2,
-  question3,
-  question4,
-  question7,
-  question8,
-  question9,
-  question10,
-  question11,
-  question12,
-  question13,
-  question14,
-  question15,
-  question16
-  //const QuestionAnswer13Page(),
-];
+
+List<Widget> questionsPagesLongList() {
+  return [
+    question3,
+    question4,
+    question7,
+    question8,
+    question9,
+    question10,
+    question11,
+    question12,
+    question13,
+    question14,
+    question15,
+    question16
+  ];
+}
+
+List<Widget> questionsPagesShortList() {
+  return [
+    question3,
+    question4
+  ];
+}
+
 

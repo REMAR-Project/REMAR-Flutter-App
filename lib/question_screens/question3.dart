@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:core';
 import 'package:flutter/material.dart';
-import 'global.dart';
+import '../global.dart';
 import 'package:flutter/material.dart';
 
 List<String> yearList = []; // Declaration of yearList
