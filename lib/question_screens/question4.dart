@@ -1,5 +1,12 @@
 import 'dart:convert';
+import 'dart:core';
 import 'package:flutter/material.dart';
+import 'package:remar_flutter_app/question_screens/global.dart';
+
+bool isMonthValid = false;
+
+import 'package:flutter/material.dart';
+
 
 
 class QuestionAnswer4Page extends StatefulWidget {
@@ -8,6 +15,7 @@ class QuestionAnswer4Page extends StatefulWidget {
   final String image;
   final String month;
   final Function(String) onMonthSelected;
+
 
   const QuestionAnswer4Page({
     Key? key,
@@ -24,7 +32,8 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
   String selectedArea = '';
   List<String> answers = [];
   String questionText = '';
-  String month='';
+
+  String month = '';
 
   final ScrollController _controller = ScrollController();
 
@@ -35,6 +44,9 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
   }
 
   void loadQuestions() async {
+
+    enableForwardNavigation = false;
+
     // Load the JSON data from the file
     String jsonString = await DefaultAssetBundle.of(context)
         .loadString('assets/raw_eng/questions2Modified.json');
@@ -81,15 +93,37 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
               ],
             ),
             SizedBox(
+
+              width: MediaQuery
+                  .of(context)
+                  .size
+                  .width * 0.8,
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .height * 0.15,
+
               width: MediaQuery.of(context).size.width * 0.8,
               height: MediaQuery.of(context).size.height * 0.15,
+
               child: Text(questionText,
                 style: const TextStyle(fontSize: 16),
               ),
             ),
             SizedBox(
+
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .height * 0.4,
+              width: MediaQuery
+                  .of(context)
+                  .size
+                  .width * 0.6,
+
               height: MediaQuery.of(context).size.height *0.4,
               width: MediaQuery.of(context).size.width * 0.6,
+
               child: Scrollbar(
                 controller: _controller,
                 child: ListView.separated(
@@ -117,9 +151,35 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
         setState(() {
           selectedArea = answer;
           month = answer;
+
+          validateMonth(month);
+          if(isMonthValid == true) {
+            widget.onMonthSelected(month);
+            enableForwardNavigation = true;
+          }
+
+          Container(
+            color: isSelected ? Colors.white : null,
+            padding: const EdgeInsets.all(1.0),
+            margin: const EdgeInsets.symmetric(vertical: 1.0),
+            child: Text(
+              answer,
+              style: TextStyle(
+                color: isSelected ? Colors.white : Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          );
+
+        });
+
+      },
+
+
           widget.onMonthSelected(month);
         });
       },
+
       child: Container(
         color: isSelected ? Colors.green : null,
         padding: const EdgeInsets.all(1.0),
@@ -134,4 +194,37 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
       ),
     );
   }
+
 }
+
+void validateMonth(String month) {
+  var currentDate = DateTime.now();
+  var currentMonth = currentDate.month;
+  var selectedMonth =0;
+
+  switch (month) {
+    case "January" : (selectedMonth=1);
+    case "February" : (selectedMonth=2);
+    case "March" : (selectedMonth=3);
+    case "April" : (selectedMonth=4);
+    case "May" : (selectedMonth=5);
+    case "June" : (selectedMonth=6);
+    case "July" : (selectedMonth=7);
+    case "August" : (selectedMonth=8);
+    case "September" : (selectedMonth=9);
+    case "October" : (selectedMonth=10);
+    case "November" : (selectedMonth=11);
+    case "December" : (selectedMonth=12);
+  }
+
+
+
+  if(selectedMonth > currentMonth) {
+    isMonthValid = false;
+  }
+  else {
+    isMonthValid = true;
+  }
+
+}
+

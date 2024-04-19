@@ -1,49 +1,46 @@
 import 'dart:convert';
 import 'dart:core';
 import 'package:flutter/material.dart';
-import 'global.dart';
-import 'package:flutter/material.dart';
+import 'package:remar_flutter_app/question_screens/global.dart';
 
-List<String> yearList = []; // Declaration of yearList
+bool isMonthValid = false;
 
-
-class QuestionAnswer3Page extends StatefulWidget {
+class QuestionAnswer14Page extends StatefulWidget {
 
   final String name;
   final String image;
-  final String year;
-  final Function(String) onYearSelected;
+  final String occupation;
+  final Function(String) onOccupationSelected;
 
 
-  const QuestionAnswer3Page({
+  const QuestionAnswer14Page({
     Key? key,
     required this.name,
-    required this.image,
-    required this.year, required this.onYearSelected,
+    required this.image, required this.occupation, required this.onOccupationSelected,
   }) : super(key: key);
 
 
   @override
-  _QuestionAnswerPage3State createState() => _QuestionAnswerPage3State();
+  _QuestionAnswerPage14State createState() => _QuestionAnswerPage14State();
 }
 
-class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
+class _QuestionAnswerPage14State extends State<QuestionAnswer14Page> {
   String selectedArea = '';
+  List<String> answers = [];
   String questionText = '';
-  String year='';
+  String occupation = '';
+
+
+  final ScrollController _controller = ScrollController();
 
   @override
   void initState() {
     super.initState();
-    getYearList();
     loadQuestions();
   }
 
   void loadQuestions() async {
-
-
     enableForwardNavigation = false;
-
     // Load the JSON data from the file
     String jsonString = await DefaultAssetBundle.of(context)
         .loadString('assets/raw_eng/questions2Modified.json');
@@ -52,13 +49,18 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
     List<dynamic> jsonData = jsonDecode(jsonString);
 
     // Extract data from the first question (question number 9)
-    Map<String, dynamic> firstQuestionData = jsonData[2];
+    Map<String, dynamic> firstQuestionData = jsonData[13];
 
 
     // Set question text and answers list
     setState(() {
-      questionText = firstQuestionData['questionText'];
+      questionText = firstQuestionData['question_10'];
 
+      // Extract answers from the answers map
+      List<dynamic> answerList = firstQuestionData['answers_10'];
+
+      // Cast answers to List<String>
+      answers = answerList.map((answer) => answer.toString()).toList();
     });
   }
 
@@ -85,20 +87,34 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
               ],
             ),
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8,
-              height: MediaQuery.of(context).size.height * 0.1,
+              width: MediaQuery
+                  .of(context)
+                  .size
+                  .width * 0.8,
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .height * 0.15,
               child: Text(questionText,
-                style: const TextStyle(fontSize: 18),
+                style: const TextStyle(fontSize: 16),
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height *0.4,
-              width: MediaQuery.of(context).size.width * 0.6,
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .height * 0.4,
+              width: MediaQuery
+                  .of(context)
+                  .size
+                  .width * 0.6,
               child: Scrollbar(
+                controller: _controller,
                 child: ListView.separated(
-                  itemCount: yearList.length,
+                  controller: _controller,
+                  itemCount: answers.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return buildAnswerButton(yearList[index]);
+                    return buildAnswerButton(answers[index]);
                   }, separatorBuilder: (BuildContext context, int index) {
                   return const Divider();
                 },
@@ -118,13 +134,28 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
       onTap: () {
         setState(() {
           selectedArea = answer;
-          year = answer;
-          widget.onYearSelected(year);
-
+          occupation = answer;
+          widget.onOccupationSelected(occupation);
           enableForwardNavigation = true;
 
+
+          Container(
+            color: isSelected ? Colors.white : null,
+            padding: const EdgeInsets.all(1.0),
+            margin: const EdgeInsets.symmetric(vertical: 1.0),
+            child: Text(
+              answer,
+              style: TextStyle(
+                color: isSelected ? Colors.white : Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          );
+
         });
-        },
+
+      },
+
       child: Container(
         color: isSelected ? Colors.green : null,
         padding: const EdgeInsets.all(1.0),
@@ -139,19 +170,4 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
       ),
     );
   }
-
-}
-
-void getYearList() {
-
-  var currentDate = DateTime.now();
-  var currentYear = currentDate.year;
-  var startYear = currentYear - 10;
-
-  for (var yearCount = 0; yearCount < 10; yearCount++) {
-    startYear = startYear + 1;
-    String getYear = startYear.toString();
-    yearList.add(getYear);
-  }
-
 }

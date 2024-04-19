@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:remar_flutter_app/utils/color_res.dart';
 import 'package:provider/provider.dart';
-
 import '../Screens/providers/bottom_state_provider.dart';
+import '../question_screens/global.dart';
+
 
 class CustomBottomNavigationBar extends StatelessWidget {
   final int currentPageIndex;
@@ -59,6 +60,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
                                 size: 30,
                               ),
                             ),
+
                             const SizedBox(
                               width: 10,
                             ),
@@ -86,6 +88,13 @@ class CustomBottomNavigationBar extends StatelessWidget {
                         ),
                       ),
                     ),
+                    GestureDetector(
+                      onTap: () {
+                        if(enableForwardNavigation == true) {
+                          pageController.nextPage(
+                            duration: const Duration(milliseconds: 200),
+                            curve: Curves.easeInOutCubic);
+                        }
                     GestureDetector(
                       onTap: () {
                         pageController.nextPage(

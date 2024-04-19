@@ -1,32 +1,30 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:remar_flutter_app/question_screens/global.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-
-class QuestionAnswer7Page extends StatefulWidget {
+class QuestionAnswer8Page extends StatefulWidget {
 
   final String name;
   final String image;
-  final Function(String) onIntensitySelected;
+  final Function(String) onWhenObserved;
 
-  const QuestionAnswer7Page({
+  const QuestionAnswer8Page({
     Key? key,
     required this.name,
-    required this.image, required String intensity, required this.onIntensitySelected,
+    required this.image,
+    required this.onWhenObserved
   }) : super(key: key);
 
 
   @override
-  _QuestionAnswerPage7State createState() => _QuestionAnswerPage7State();
+  _QuestionAnswerPage8State createState() => _QuestionAnswerPage8State();
 }
 
-class _QuestionAnswerPage7State extends State<QuestionAnswer7Page> {
+class _QuestionAnswerPage8State extends State<QuestionAnswer8Page> {
   String selectedArea = '';
   List<String> answers = [];
   String questionText = '';
-  String intensity='';
-  late SharedPreferences prefs;
+  String whenObserved='';
 
   @override
   void initState() {
@@ -36,8 +34,7 @@ class _QuestionAnswerPage7State extends State<QuestionAnswer7Page> {
 
   void loadQuestions() async {
 
-
-    enableForwardNavigation = false;
+   // enableForwardNavigation = false;
 
     // Load the JSON data from the file
     String jsonString = await DefaultAssetBundle.of(context)
@@ -47,7 +44,9 @@ class _QuestionAnswerPage7State extends State<QuestionAnswer7Page> {
     List<dynamic> jsonData = jsonDecode(jsonString);
 
     // Extract data from the first question (question number 9)
-    Map<String, dynamic> firstQuestionData = jsonData[6];
+    Map<String, dynamic> firstQuestionData = jsonData[7];
+
+
     // Set question text and answers list
     setState(() {
       questionText = firstQuestionData['description'];
@@ -57,7 +56,6 @@ class _QuestionAnswerPage7State extends State<QuestionAnswer7Page> {
 
       // Cast answers to List<String>
       answers = answerList.map((answer) => answer.toString()).toList();
-
     });
   }
 
@@ -117,11 +115,9 @@ class _QuestionAnswerPage7State extends State<QuestionAnswer7Page> {
       onTap: () {
         setState(() {
           selectedArea = answer;
-          intensity = answer;
-          widget.onIntensitySelected(intensity);
-
-          enableForwardNavigation = true;
-
+          whenObserved = answer;
+          widget.onWhenObserved(whenObserved);
+       //   enableForwardNavigation = false;
         });
       },
       child: Container(
