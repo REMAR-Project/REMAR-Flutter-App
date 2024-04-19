@@ -1,34 +1,37 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:remar_flutter_app/main.dart';
 
+class CustomBottomNavigationBar extends StatelessWidget {
+  final int currentPageIndex;
+  final Function(int) onPageChanged;
 
+  const CustomBottomNavigationBar({
+    Key? key,
+    required this.currentPageIndex,
+    required this.onPageChanged,
+  }) : super(key: key);
 
-void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
-
-
-
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
-  });
+  @override
+  Widget build(BuildContext context) {
+    return BottomAppBar(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              onPageChanged(currentPageIndex - 1); // Go to previous page
+            },
+          ),
+          Text('Page ${currentPageIndex + 1} of 2'),
+          IconButton(
+            icon: const Icon(Icons.arrow_forward),
+            onPressed: () {
+              onPageChanged(currentPageIndex + 1); // Go to next page
+            },
+          ),
+        ],
+      ),
+    );
+  }
 }
 
