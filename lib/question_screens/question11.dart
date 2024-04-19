@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:remar_flutter_app/question_screens/global.dart';
 
 
+
 class QuestionAnswer11Page extends StatefulWidget {
 
   final String name;
@@ -120,7 +121,9 @@ class _QuestionAnswerPage11State extends State<QuestionAnswer11Page> {
           selectedArea = answer;
           state = answer;
           widget.onStateSelected(state);
+
           enableForwardNavigation = true;
+
         });
       },
       child: Container(

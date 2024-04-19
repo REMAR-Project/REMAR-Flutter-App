@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:core';
 import 'package:flutter/material.dart';
 import 'global.dart';
+import 'package:flutter/material.dart';
 
 List<String> yearList = []; // Declaration of yearList
 
@@ -31,7 +32,6 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
   String questionText = '';
   String year='';
 
-
   @override
   void initState() {
     super.initState();
@@ -40,6 +40,7 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
   }
 
   void loadQuestions() async {
+
 
     enableForwardNavigation = false;
 
@@ -119,7 +120,9 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
           selectedArea = answer;
           year = answer;
           widget.onYearSelected(year);
+
           enableForwardNavigation = true;
+
         });
         },
       child: Container(
