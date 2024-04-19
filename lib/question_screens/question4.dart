@@ -5,10 +5,6 @@ import 'package:remar_flutter_app/question_screens/global.dart';
 
 bool isMonthValid = false;
 
-import 'package:flutter/material.dart';
-
-
-
 class QuestionAnswer4Page extends StatefulWidget {
 
   final String name;
@@ -32,8 +28,8 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
   String selectedArea = '';
   List<String> answers = [];
   String questionText = '';
-
   String month = '';
+
 
   final ScrollController _controller = ScrollController();
 
@@ -44,9 +40,7 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
   }
 
   void loadQuestions() async {
-
     enableForwardNavigation = false;
-
     // Load the JSON data from the file
     String jsonString = await DefaultAssetBundle.of(context)
         .loadString('assets/raw_eng/questions2Modified.json');
@@ -93,7 +87,6 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
               ],
             ),
             SizedBox(
-
               width: MediaQuery
                   .of(context)
                   .size
@@ -102,16 +95,11 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
                   .of(context)
                   .size
                   .height * 0.15,
-
-              width: MediaQuery.of(context).size.width * 0.8,
-              height: MediaQuery.of(context).size.height * 0.15,
-
               child: Text(questionText,
                 style: const TextStyle(fontSize: 16),
               ),
             ),
             SizedBox(
-
               height: MediaQuery
                   .of(context)
                   .size
@@ -120,10 +108,6 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
                   .of(context)
                   .size
                   .width * 0.6,
-
-              height: MediaQuery.of(context).size.height *0.4,
-              width: MediaQuery.of(context).size.width * 0.6,
-
               child: Scrollbar(
                 controller: _controller,
                 child: ListView.separated(
@@ -151,7 +135,6 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
         setState(() {
           selectedArea = answer;
           month = answer;
-
           validateMonth(month);
           if(isMonthValid == true) {
             widget.onMonthSelected(month);
@@ -175,11 +158,6 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
 
       },
 
-
-          widget.onMonthSelected(month);
-        });
-      },
-
       child: Container(
         color: isSelected ? Colors.green : null,
         padding: const EdgeInsets.all(1.0),
@@ -194,7 +172,6 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
       ),
     );
   }
-
 }
 
 void validateMonth(String month) {
