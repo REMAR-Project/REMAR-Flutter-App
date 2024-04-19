@@ -36,7 +36,9 @@ class _QuestionAnswerPage7State extends State<QuestionAnswer7Page> {
 
   void loadQuestions() async {
 
+
     enableForwardNavigation = false;
+
     // Load the JSON data from the file
     String jsonString = await DefaultAssetBundle.of(context)
         .loadString('assets/raw_eng/questions2Modified.json');
@@ -117,7 +119,9 @@ class _QuestionAnswerPage7State extends State<QuestionAnswer7Page> {
           selectedArea = answer;
           intensity = answer;
           widget.onIntensitySelected(intensity);
+
           enableForwardNavigation = true;
+
         });
       },
       child: Container(
