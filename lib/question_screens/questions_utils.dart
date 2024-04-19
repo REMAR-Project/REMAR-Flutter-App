@@ -1,10 +1,8 @@
-
-
 import 'package:flutter/cupertino.dart';
+import 'package:remar_flutter_app/question_screens/question2.dart';
 import 'package:remar_flutter_app/question_screens/question3.dart';
 import 'package:remar_flutter_app/question_screens/question4.dart';
 import 'package:remar_flutter_app/question_screens/question5.dart';
-import 'package:remar_flutter_app/question_screens/question6.dart';
 import 'package:remar_flutter_app/question_screens/question7.dart';
 import 'package:remar_flutter_app/question_screens/question8.dart';
 //import 'package:remar_flutter_app/question_screens/question8.dart';
@@ -16,17 +14,19 @@ import 'package:remar_flutter_app/question_screens/question13.dart';
 import 'package:remar_flutter_app/question_screens/question14.dart';
 import 'package:remar_flutter_app/question_screens/question15.dart';
 import 'package:remar_flutter_app/question_screens/question16.dart';
-import 'global.dart';
+
+
 
 
 // list of answers
-
-const String crabSpecies = 'Cardisoma guanhumi';
-const String crabImage = 'assets/images/raster_q1_0.png';
+String CrabSelected ='';
+String crabSpecies = '';
+String crabImage = '';
 
 // Define initial values for various properties
 String year = '';
 String month = '';
+DateTime observedDates = '' as DateTime;
 String intensity ='';
 String whenObserved='';
 String berried='';
@@ -39,8 +39,19 @@ String additionalInfo='';
 
 
 
-
 // Define callback functions for updating the properties
+
+void onCrabSelected(String selectedCrabImage) {
+  CrabSelected = selectedCrabImage;
+  print(CrabSelected);
+}
+
+void onCrabSpeciesSelected(String selectedSpecies) {
+  crabSpecies = selectedSpecies;
+  print(crabSpecies);
+}
+
+
 void onYearSelected(String selectedYear) {
   year = selectedYear;
   print(year);
@@ -49,6 +60,10 @@ void onYearSelected(String selectedYear) {
 void onMonthSelected(String selectedMonth) {
   month = selectedMonth;
   print(month);
+}
+
+void onDatesSelected(String selectedDates) {
+  observedDates = selectedDates as DateTime;
 }
 
 void onIntensitySelected(String selectedIntensity) {
@@ -96,6 +111,9 @@ void onAdditionalInfoSelected(String selectedAdditionalInfo) {
   additionalInfo = selectedAdditionalInfo;
 }
 
+Widget question2 =  const QuestionAnswer2Page(
+  onCrabSelected:  onCrabSelected,
+);
 
 
 // Create instances of question widgets with callback functions
@@ -114,6 +132,8 @@ Widget question4 = QuestionAnswer4Page(
 );
 
 
+
+
 Widget question7 = QuestionAnswer7Page(
   image: crabImage,
   name: crabSpecies,
@@ -122,7 +142,7 @@ Widget question7 = QuestionAnswer7Page(
 );
 
 
-Widget question8 = const QuestionAnswer8Page(
+Widget question8 = QuestionAnswer8Page(
   image: crabImage,
   name: crabSpecies,
   onWhenObserved: onWhenObserved,
@@ -137,7 +157,7 @@ Widget question9 = QuestionAnswer9Page(
 );
 
 
-Widget question10 = const QuestionAnswer10Page(
+Widget question10 = QuestionAnswer10Page(
   image: crabImage,
   name: crabSpecies,
   onHabitatSelected: onHabitatSelected, habitat: '',
@@ -189,6 +209,7 @@ Widget question16 = const QuestionAnswer16Page(
 
 // Add question widgets to the list
 List<Widget> questionsPagesList = [
+//  question2,
   question3,
   question4,
   question7,
@@ -203,3 +224,5 @@ List<Widget> questionsPagesList = [
   question16
   //const QuestionAnswer13Page(),
 ];
+
+
