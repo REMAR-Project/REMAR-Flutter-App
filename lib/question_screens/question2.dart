@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'dart:core';
+import '../global.dart';
 import '../utils/color_res.dart';
 
 class QuestionAnswer2Page extends StatefulWidget {
@@ -76,6 +77,7 @@ class _QuestionAnswer2PageState extends State<QuestionAnswer2Page> {
                   onTap: () {
                     selectContainer1();
                     widget.onCrabSelected('Ucides cordatus');
+                    enableForwardNavigation = true;
                   },
                   child: MouseRegion(
                     cursor: SystemMouseCursors.click,
@@ -136,6 +138,7 @@ class _QuestionAnswer2PageState extends State<QuestionAnswer2Page> {
                   onTap: () {
                     selectContainer2();
                     widget.onCrabSelected('Cardisoma guanhumi');
+                    enableForwardNavigation = true;
                   },
                   child: MouseRegion(
                     cursor: SystemMouseCursors.click,
