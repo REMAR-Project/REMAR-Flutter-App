@@ -1,9 +1,9 @@
-// Navigation control
 import 'dart:core';
-import 'dart:core';
+
 
 
 bool enableForwardNavigation = false;
+bool backwardsNavigation = false;
 
 
 // responses from question pages

@@ -113,7 +113,9 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
         });
         },
       child: Container(
-        color: isSelected ? Colors.green : null,
+        color: isSelected
+            ? (isSelected ? Colors.green : null)
+            : (backwardsNavigation ? (answer == year ? Colors.green : null) : null),
         padding: const EdgeInsets.all(1.0),
         margin: const EdgeInsets.symmetric(vertical: 1.0),
         child: Text(
