@@ -132,13 +132,13 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
           }
 
           Container(
-            color: isSelected ? Colors.white : null,
+            color: isSelected && isMonthValid ? Colors.green: null,
             padding: const EdgeInsets.all(1.0),
             margin: const EdgeInsets.symmetric(vertical: 1.0),
             child: Text(
               answer,
               style: TextStyle(
-                color: isSelected ? Colors.white : Colors.black,
+                color: isSelected ? Colors.white : Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -149,13 +149,13 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
       },
 
       child: Container(
-        color: isSelected ? Colors.green : null,
+          color: isSelected && isMonthValid ? Colors.green : null,
         padding: const EdgeInsets.all(1.0),
         margin: const EdgeInsets.symmetric(vertical: 1.0),
         child: Text(
           answer,
           style: TextStyle(
-            color: isSelected ? Colors.white : Colors.black,
+            color: isSelected && !isMonthValid ? Colors.black : Colors.black,
             fontWeight: FontWeight.bold,
           ),
         ),
