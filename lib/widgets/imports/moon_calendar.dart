@@ -185,17 +185,22 @@ class _MoonCalendarState extends State<MoonCalendar> {
 
     return GestureDetector(
       onTap: isSelectable
-          ? () {
-              setState(() {
-                if (isSelected) {
+        ? () {
+            setState(() {
+              if (widget.selectableDates == null || widget.selectableDates!.isEmpty) {
+                if (selectedDates.contains(currentDate)) {
                   selectedDates.remove(currentDate);
                 } else {
                   selectedDates.add(currentDate);
                 }
-                widget.onSelection(selectedDates);
-              });
-            }
-          : null,
+              } else {
+                selectedDates.clear();
+                selectedDates.add(currentDate);
+              }
+              widget.onSelection(selectedDates);
+            });
+          }
+        : null,
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(color: Colors.black, width: 1.0),
