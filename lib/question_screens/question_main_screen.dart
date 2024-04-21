@@ -3,6 +3,7 @@ import 'package:remar_flutter_app/question_screens/questions_utils.dart';
 
 import '../widgets/app_bar.dart';
 import '../widgets/bottom_navigation_bar.dart';
+import 'package:remar_flutter_app/global.dart' as global;
 
 class QuestionMain extends StatefulWidget {
   final int totalQues;
@@ -37,7 +38,9 @@ class _QuestionMainState extends State<QuestionMain> {
                   _currentPageIndex = index;
                 });
               },
-              children: questionsPagesList,
+              children: global.version== 0
+                  ? questionsPagesLongList()
+                  : questionsPagesShortList(),
             ),
           ),
           const SizedBox(

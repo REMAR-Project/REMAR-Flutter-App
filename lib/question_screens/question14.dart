@@ -1,22 +1,15 @@
 import 'dart:convert';
 import 'dart:core';
 import 'package:flutter/material.dart';
-import 'package:remar_flutter_app/question_screens/global.dart';
+import 'package:remar_flutter_app/global.dart';
 
 bool isMonthValid = false;
 
 class QuestionAnswer14Page extends StatefulWidget {
 
-  final String name;
-  final String image;
-  final String occupation;
-  final Function(String) onOccupationSelected;
-
 
   const QuestionAnswer14Page({
     Key? key,
-    required this.name,
-    required this.image, required this.occupation, required this.onOccupationSelected,
   }) : super(key: key);
 
 
@@ -28,8 +21,6 @@ class _QuestionAnswerPage14State extends State<QuestionAnswer14Page> {
   String selectedArea = '';
   List<String> answers = [];
   String questionText = '';
-  String occupation = '';
-
 
   final ScrollController _controller = ScrollController();
 
@@ -76,12 +67,12 @@ class _QuestionAnswerPage14State extends State<QuestionAnswer14Page> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Image.asset(
-                  widget.image,
+                  selectedCrabSpeciesImage,
                   width: 100,
                   height: 125,
                 ),
                 Text(
-                  widget.name,
+                  selectedCrabSpecies,
                   style: const TextStyle(fontSize: 24),
                 ),
               ],
@@ -135,7 +126,6 @@ class _QuestionAnswerPage14State extends State<QuestionAnswer14Page> {
         setState(() {
           selectedArea = answer;
           occupation = answer;
-          widget.onOccupationSelected(occupation);
           enableForwardNavigation = true;
 
 

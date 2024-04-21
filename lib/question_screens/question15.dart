@@ -1,19 +1,15 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:remar_flutter_app/question_screens/global.dart';
+import 'package:remar_flutter_app/global.dart';
+
+
 
 class QuestionAnswer15Page extends StatefulWidget {
-  final String name;
-  final String image;
-  final String additionalInfo;
-  final Function(String) onAdditionalInfoSelected;
 
   const QuestionAnswer15Page({
     Key? key,
-    required this.name,
-    required this.image,
-    required this.onAdditionalInfoSelected, required this.additionalInfo,
+
   }) : super(key: key);
 
   @override
@@ -26,7 +22,7 @@ class _QuestionAnswerPage15State extends State<QuestionAnswer15Page> {
   late List<String> answers = [];
   late String otherText = '';
   late int otherPosition = 0;
-  String additionalInfo='';
+
 
   @override
   void initState() {
@@ -71,12 +67,12 @@ class _QuestionAnswerPage15State extends State<QuestionAnswer15Page> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Image.asset(
-                widget.image,
+               selectedCrabSpeciesImage,
                 width: 100,
                 height: 125,
               ),
               Text(
-                widget.name,
+                selectedCrabSpecies,
                 style: const TextStyle(fontSize: 24),
               ),
             ],
@@ -126,9 +122,8 @@ class _QuestionAnswerPage15State extends State<QuestionAnswer15Page> {
       onTap: () {
         setState(() {
           selectedAnswer = answer;
-          additionalInfo = answer;
-          widget.onAdditionalInfoSelected(additionalInfo);
-      //    enableForwardNavigation = true;
+          additionalObservations = answer;
+        //  enableForwardNavigation = true;
         });
       },
       child: Container(

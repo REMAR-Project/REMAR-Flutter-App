@@ -1,23 +1,15 @@
 import 'dart:convert';
 import 'dart:core';
 import 'package:flutter/material.dart';
-import 'package:remar_flutter_app/question_screens/global.dart';
+import 'package:remar_flutter_app/global.dart';
 import 'package:remar_flutter_app/question_screens/questions_utils.dart';
 
 bool isMonthValid = false;
 
 class QuestionAnswer9Page extends StatefulWidget {
 
-  final String name;
-  final String image;
-  final String berried;
-  final Function(String) onBerriedSelected;
-
-
   const QuestionAnswer9Page({
     Key? key,
-    required this.name,
-    required this.image, required this.berried, required this.onBerriedSelected,
   }) : super(key: key);
 
 
@@ -29,8 +21,6 @@ class _QuestionAnswerPage9State extends State<QuestionAnswer9Page> {
   String selectedArea = '';
   List<String> answers = [];
   String questionText = '';
-  String berried = '';
-
 
   final ScrollController _controller = ScrollController();
 
@@ -77,12 +67,12 @@ class _QuestionAnswerPage9State extends State<QuestionAnswer9Page> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Image.asset(
-                  widget.image,
+                  selectedCrabSpeciesImage,
                   width: 100,
                   height: 125,
                 ),
                 Text(
-                  widget.name,
+                  selectedCrabSpecies,
                   style: const TextStyle(fontSize: 24),
                 ),
               ],
@@ -136,10 +126,6 @@ class _QuestionAnswerPage9State extends State<QuestionAnswer9Page> {
         setState(() {
           selectedArea = answer;
           berried = answer;
-          widget.onBerriedSelected(berried);
-
-          widget.onBerriedSelected(month);
-
           enableForwardNavigation = true;
 
 

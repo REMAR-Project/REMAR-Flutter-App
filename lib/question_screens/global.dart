@@ -1,1 +1,0 @@
-bool enableForwardNavigation = false;

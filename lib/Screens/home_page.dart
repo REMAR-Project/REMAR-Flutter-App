@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:remar_flutter_app/widgets/app_bar.dart';
 import 'package:remar_flutter_app/question_screens/question_main_screen.dart';
+import 'package:remar_flutter_app/global.dart';
 
 
 import '../../utils/color_res.dart';
@@ -49,6 +50,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 GestureDetector(
                   onTap: () {
+                    version = 0;
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => const QuestionMain(totalQues: 14),
@@ -124,6 +126,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 GestureDetector(
                   onTap: () {
+                    version = 1;
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => const QuestionMain(totalQues: 10),

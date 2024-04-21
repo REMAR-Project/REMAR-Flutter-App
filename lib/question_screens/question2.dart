@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'dart:core';
+import '../global.dart';
 import '../utils/color_res.dart';
 
 class QuestionAnswer2Page extends StatefulWidget {
-  final Function(String) onCrabSelected;
 
   const QuestionAnswer2Page({
     Key? key,
-    required this.onCrabSelected,
   }) : super(key: key);
 
   @override
@@ -75,7 +74,9 @@ class _QuestionAnswer2PageState extends State<QuestionAnswer2Page> {
                 GestureDetector(
                   onTap: () {
                     selectContainer1();
-                    widget.onCrabSelected('Ucides cordatus');
+                    selectedCrabSpecies ='Ucides cordatus';
+                    selectedCrabSpeciesImage = "assets/images/raster_q0_0.png";
+                    enableForwardNavigation = true;
                   },
                   child: MouseRegion(
                     cursor: SystemMouseCursors.click,
@@ -135,7 +136,9 @@ class _QuestionAnswer2PageState extends State<QuestionAnswer2Page> {
                 GestureDetector(
                   onTap: () {
                     selectContainer2();
-                    widget.onCrabSelected('Cardisoma guanhumi');
+                    selectedCrabSpecies ='Cardisoma guanhumi';
+                    selectedCrabSpeciesImage = "assets/images/raster_q0_1.png";
+                    enableForwardNavigation = true;
                   },
                   child: MouseRegion(
                     cursor: SystemMouseCursors.click,
