@@ -86,6 +86,7 @@
     "description": "When did you observe andada? Touch correct symbol with finger.",
     "choiceOneText": "At new moon",
     "choiceTwoText": "At full moon",
+	"answers": ["At new moon", "At full moon"],
     "quantityQuestion": 3
   },
   {
