@@ -20,7 +20,6 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
   String selectedArea = '';
   List<String> answers = [];
   String questionText = '';
-  String month = '';
 
   final ScrollController _controller = ScrollController();
 
