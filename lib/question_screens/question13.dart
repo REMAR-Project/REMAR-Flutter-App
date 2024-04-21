@@ -56,6 +56,7 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
       // Cast areas to List<String>
       Map<String, dynamic> answerMap = firstQuestionData['answers'];
       List<dynamic> stateList = answerMap[state];
+      print(stateList);
 
 
       // Cast answers to List<String>
@@ -98,38 +99,44 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
               fontSize: 16.0,
             ),
           ),
-          SizedBox(height: 20.0),
-          // Display answers only if "Yes" is selected
           if (displayAnswers)
-
-            for (var area in displayedAreas) buildAnswerButton(area),
-          if (!isExpanded &&
-              displayAnswers)
-            // Hide "Name not in list" until "Yes" is selected
-            GestureDetector(
-              onTap: () {
-                setState(() {
-                  isExpanded = true;
-                  selectedArea = answers as String;
-                  protectedArea = answers as String;
-
-                  enableForwardNavigation = true;
-
-                });
-              },
-              child: Container(
-                color: Colors.green,
-                padding: const EdgeInsets.all(12.0),
-                margin: EdgeInsets.symmetric(vertical: 8.0),
-                child: const Text(
-                  "Name not in list",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.4,
+              width: MediaQuery.of(context).size.width * 0.6,
+              child: Scrollbar(
+                child: ListView.separated(
+                  itemCount: answers.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return buildAnswerButton(answers[index]);
+                  },
+                  separatorBuilder: (BuildContext context, int index) {
+                    return const Divider();
+                  },
                 ),
-              )
+              ),
             ),
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                isExpanded = true;
+                selectedArea = answers as String;
+                protectedArea = answers as String;
+                enableForwardNavigation = true;
+              });
+            },
+            child: Container(
+              color: Colors.green,
+              padding: const EdgeInsets.all(12.0),
+              margin: EdgeInsets.symmetric(vertical: 8.0),
+              child: const Text(
+                "Name not in list",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

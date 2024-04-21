@@ -26,6 +26,7 @@ List<Widget> questionsPagesLongList() {
     const QuestionAnswer3Page(),
     const QuestionAnswer4Page(),
     const QuestionAnswer7Page(),
+    const QuestionAnswer8Page(),
     const QuestionAnswer9Page(),
     const QuestionAnswer10Page(),
     const QuestionAnswer11Page(),

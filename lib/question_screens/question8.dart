@@ -4,15 +4,9 @@ import 'package:remar_flutter_app/global.dart';
 
 class QuestionAnswer8Page extends StatefulWidget {
 
-  final String name;
-  final String image;
-  final Function(String) onWhenObserved;
 
   const QuestionAnswer8Page({
     Key? key,
-    required this.name,
-    required this.image,
-    required this.onWhenObserved
   }) : super(key: key);
 
 
@@ -47,12 +41,15 @@ class _QuestionAnswerPage8State extends State<QuestionAnswer8Page> {
     Map<String, dynamic> firstQuestionData = jsonData[7];
 
 
+
     // Set question text and answers list
     setState(() {
       questionText = firstQuestionData['description'];
 
       // Extract answers from the answers map
       List<dynamic> answerList = firstQuestionData['answers'];
+      print(answers);
+
 
       // Cast answers to List<String>
       answers = answerList.map((answer) => answer.toString()).toList();
@@ -70,12 +67,12 @@ class _QuestionAnswerPage8State extends State<QuestionAnswer8Page> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Image.asset(
-                widget.image,
+                selectedCrabSpeciesImage,
                 width: 100,
                 height: 125,
               ),
               Text(
-                widget.name,
+                selectedCrabSpecies ,
                 style: const TextStyle(fontSize: 24),
               ),
             ],
@@ -116,7 +113,7 @@ class _QuestionAnswerPage8State extends State<QuestionAnswer8Page> {
         setState(() {
           selectedArea = answer;
           whenObserved = answer;
-          widget.onWhenObserved(whenObserved);
+          print(whenObserved);
        //   enableForwardNavigation = false;
         });
       },
