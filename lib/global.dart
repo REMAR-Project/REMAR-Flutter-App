@@ -1,9 +1,9 @@
-// Navigation control
 import 'dart:core';
-import 'dart:core';
+
 
 
 bool enableForwardNavigation = false;
+bool backwardsNavigation = false;
 
 
 // responses from question pages
@@ -21,7 +21,7 @@ String selectedCrabSpeciesImage='';
 // Select month from question 4
 String month='';
 
-// question 5
+// select question 5
 
 // question 6
 
@@ -40,7 +40,7 @@ String habitat='';
 String state='';
 
 // Select county where observation made from question 12
-String country='';
+String county='';
 
 // Select protected area from question 13
 String protectedArea='';

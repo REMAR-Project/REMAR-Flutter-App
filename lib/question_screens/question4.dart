@@ -20,7 +20,7 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
   String selectedArea = '';
   List<String> answers = [];
   String questionText = '';
-  String month = '';
+
 
   final ScrollController _controller = ScrollController();
 
@@ -31,7 +31,14 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
   }
 
   void loadQuestions() async {
+
+
     enableForwardNavigation = false;
+
+    if(backwardsNavigation==true) {
+      enableForwardNavigation =true;
+    }
+
     // Load the JSON data from the file
     String jsonString = await DefaultAssetBundle.of(context)
         .loadString('assets/raw_eng/questions2Modified.json');
@@ -149,7 +156,9 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
       },
 
       child: Container(
-          color: isSelected && isMonthValid ? Colors.green : null,
+        color: isSelected
+            ? (isSelected && isMonthValid ? Colors.green : null)
+            : (backwardsNavigation ? (answer == month ? Colors.green : null) : null),
         padding: const EdgeInsets.all(1.0),
         margin: const EdgeInsets.symmetric(vertical: 1.0),
         child: Text(

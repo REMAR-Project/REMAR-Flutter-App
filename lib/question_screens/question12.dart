@@ -31,6 +31,10 @@ class _QuestionAnswerPage12State extends State<QuestionAnswer12Page> {
 
    enableForwardNavigation = false;
 
+   if(backwardsNavigation==true) {
+     enableForwardNavigation =true;
+   }
+
 
     // Load the JSON data from the file
     String jsonString = await DefaultAssetBundle.of(context)
@@ -111,14 +115,16 @@ class _QuestionAnswerPage12State extends State<QuestionAnswer12Page> {
       onTap: () {
         setState(() {
           selectedArea = answer;
-          country= answer;
+          county= answer;
 
           enableForwardNavigation = true;
 
         });
       },
       child: Container(
-        color: isSelected ? Colors.green : null,
+        color: isSelected
+            ? (isSelected ? Colors.green : null)
+            : (backwardsNavigation ? (answer == county ? Colors.green : null) : null),
         padding: const EdgeInsets.all(1.0),
         margin: const EdgeInsets.symmetric(vertical: 1.0),
         child: Text(

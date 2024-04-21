@@ -38,6 +38,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
                         pageController.previousPage(
                             duration: const Duration(milliseconds: 200),
                             curve: Curves.easeInOutCubic);
+                            backwardsNavigation = true;
                       },
                       child: MouseRegion(
                         cursor: SystemMouseCursors.click,
