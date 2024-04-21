@@ -43,24 +43,24 @@
     "questionTitle": "crab_title_(2:0)",
     "questionText": "Touch screen and move finger to choose correct month. In case you saw two andadas this month (one around new moon and one around full moon), please run the app for each andada seperately.",
     "answers": ["January","February","March","April","May","June","July","August","September","October","November","December"]
-  },  {
-  "questionNumber": 5,
-  "questionType": "DateRange",
-  "questionPicture": "raster_q0_(2:0)",
-  "questionTitle": "crab_title_(2:0)",
-  "description": "For the andada you are reporting here, touch with finger when you noted it. Remember: In case you saw andada in two periods (e.g. one around new moon and one around full moon), only mark ONE period (SEVERAL CONSECUTIVE DAYS OR ONE DAY).",
-  "month": "(4:0)",
-  "year": "(3:0)",
-  "filterOnQuestion": -1,
-  "optional": false
-
-},
+  },  
+  {
+    "questionNumber": 5,
+    "questionType": "DateRange",
+    "questionPicture": "raster_q0_(2:0)",
+    "questionTitle": "crab_title_(2:0)",
+    "questionText": "For the andada you are reporting here, touch with finger when you noted it. Remember: In case you saw andada in two periods (e.g. one around new moon and one around full moon), only mark ONE period (SEVERAL CONSECUTIVE DAYS OR ONE DAY).",
+    "month": "(4:0)",
+    "year": "(3:0)",
+    "filterOnQuestion": -1,
+    "optional": false
+  },
   {
     "questionNumber": 6,
     "questionType": "DateRangeSelect",
     "questionPicture": "raster_q0_(2:0)",
     "questionTitle": "crab_title_(2:0)",
-    "description": "<b>Touch the day with the STRONGEST andada activity.<br>If you don’t know, you can proceed without selecting a date.<br><br></b>",
+    "questionText": "<b>Touch the day with the STRONGEST andada activity.<br>If you don’t know, you can proceed without selecting a date.<br><br></b>",
     "month": "(4:0)",
     "year": "(3:0)",
     "filterOnQuestion": -1,
