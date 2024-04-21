@@ -167,6 +167,7 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
 void validateMonth(String month) {
   var currentDate = DateTime.now();
   var currentMonth = currentDate.month;
+  var currentYear = currentDate.year;
   var selectedMonth =0;
 
   switch (month) {
@@ -186,7 +187,7 @@ void validateMonth(String month) {
 
 
 
-  if(selectedMonth > currentMonth) {
+  if(selectedMonth > currentMonth  && year == currentYear.toString()) {
     isMonthValid = false;
   }
   else {
