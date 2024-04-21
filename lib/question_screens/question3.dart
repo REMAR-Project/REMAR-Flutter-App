@@ -30,8 +30,10 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
 
   void loadQuestions() async {
 
+    if(backwardsNavigation==true) {
+      enableForwardNavigation =true;
+    }
 
-    enableForwardNavigation = false;
 
     // Load the JSON data from the file
     String jsonString = await DefaultAssetBundle.of(context)
@@ -111,9 +113,12 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
           enableForwardNavigation = true;
 
         });
+
         },
       child: Container(
-        color: isSelected ? Colors.green : null,
+        color: isSelected
+            ? (isSelected ? Colors.green : null)
+            : (backwardsNavigation ? (answer == year ? Colors.green : null) : null),
         padding: const EdgeInsets.all(1.0),
         margin: const EdgeInsets.symmetric(vertical: 1.0),
         child: Text(

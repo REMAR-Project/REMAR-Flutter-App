@@ -2,9 +2,10 @@ import 'dart:convert';
 import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:remar_flutter_app/global.dart';
-import 'package:remar_flutter_app/question_screens/questions_utils.dart';
+
 
 bool isMonthValid = false;
+
 
 class QuestionAnswer9Page extends StatefulWidget {
 
@@ -31,7 +32,13 @@ class _QuestionAnswerPage9State extends State<QuestionAnswer9Page> {
   }
 
   void loadQuestions() async {
+
     enableForwardNavigation = false;
+
+    if(backwardsNavigation==true) {
+      enableForwardNavigation =true;
+    }
+
     // Load the JSON data from the file
     String jsonString = await DefaultAssetBundle.of(context)
         .loadString('assets/raw_eng/questions2Modified.json');
@@ -146,7 +153,10 @@ class _QuestionAnswerPage9State extends State<QuestionAnswer9Page> {
       },
 
       child: Container(
-        color: isSelected ? Colors.green : null,
+        //color: isSelected ? Colors.green : null,
+        color: isSelected
+            ? (isSelected ? Colors.green : null)
+            : (backwardsNavigation ? (answer == berried ? Colors.green : null) : null),
         padding: const EdgeInsets.all(1.0),
         margin: const EdgeInsets.symmetric(vertical: 1.0),
         child: Text(

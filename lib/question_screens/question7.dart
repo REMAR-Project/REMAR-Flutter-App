@@ -32,6 +32,10 @@ class _QuestionAnswerPage7State extends State<QuestionAnswer7Page> {
 
     enableForwardNavigation = false;
 
+    if(backwardsNavigation==true) {
+      enableForwardNavigation =true;
+    }
+
     // Load the JSON data from the file
     String jsonString = await DefaultAssetBundle.of(context)
         .loadString('assets/raw_eng/questions2Modified.json');
@@ -116,7 +120,10 @@ class _QuestionAnswerPage7State extends State<QuestionAnswer7Page> {
         });
       },
       child: Container(
-        color: isSelected ? Colors.green : null,
+      //  color: isSelected ? Colors.green : null,
+        color: isSelected
+            ? (isSelected ? Colors.green : null)
+            : (backwardsNavigation ? (answer == intensity ? Colors.green : null) : null),
         padding: const EdgeInsets.all(1.0),
         margin: const EdgeInsets.symmetric(vertical: 1.0),
         child: Text(
