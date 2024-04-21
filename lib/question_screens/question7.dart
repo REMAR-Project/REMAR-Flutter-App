@@ -70,7 +70,7 @@ class _QuestionAnswerPage7State extends State<QuestionAnswer7Page> {
                 height: 125,
               ),
               Text(
-                selectedCrabSpeciesImage,
+                selectedCrabSpecies,
                 style: const TextStyle(fontSize: 24),
               ),
             ],
