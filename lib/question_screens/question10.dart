@@ -5,15 +5,8 @@ import 'package:remar_flutter_app/global.dart';
 
 class QuestionAnswer10Page extends StatefulWidget {
 
-  final String name;
-  final String image;
-  final String habitat;
-  final Function(String) onHabitatSelected;
-
   const QuestionAnswer10Page({
     Key? key,
-    required this.name,
-    required this.image, required this.habitat, required this.onHabitatSelected,
   }) : super(key: key);
 
 
@@ -25,7 +18,6 @@ class _QuestionAnswerPage10State extends State<QuestionAnswer10Page> {
   String selectedArea = '';
   List<String> answers = [];
   String questionText = '';
-  String habitat='';
   String answer='';
 
   final ScrollController _controller = ScrollController();
@@ -50,10 +42,10 @@ class _QuestionAnswerPage10State extends State<QuestionAnswer10Page> {
     // Extract data from the first question (question number 9)
     Map<String, dynamic> firstQuestionData = jsonData[9];
 
-    if(widget.name=="Ucides cordatus") {
+    if(selectedCrabSpecies=="Ucides cordatus") {
       answer='answers_0';
     }
-    else {
+    else if(selectedCrabSpecies=="Cardisoma guanhumi") {
       answer='answers_1';
     }
 
@@ -82,12 +74,12 @@ class _QuestionAnswerPage10State extends State<QuestionAnswer10Page> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Image.asset(
-                  widget.image,
+                  selectedCrabSpeciesImage,
                   width: 100,
                   height: 125,
                 ),
                 Text(
-                  widget.name,
+                  selectedCrabSpecies,
                   style: const TextStyle(fontSize: 24),
                 ),
               ],
@@ -128,8 +120,7 @@ class _QuestionAnswerPage10State extends State<QuestionAnswer10Page> {
       onTap: () {
         setState(() {
           selectedArea = answer;
-          habitat = answer;
-          widget.onHabitatSelected(habitat);
+          habitat = answer;;
           enableForwardNavigation = true;
         });
       },

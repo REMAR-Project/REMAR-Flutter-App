@@ -7,16 +7,8 @@ bool isMonthValid = false;
 
 class QuestionAnswer4Page extends StatefulWidget {
 
-  final String name;
-  final String image;
-  final String month;
-  final Function(String) onMonthSelected;
-
-
   const QuestionAnswer4Page({
     Key? key,
-    required this.name,
-    required this.image, required this.month, required this.onMonthSelected,
   }) : super(key: key);
 
 
@@ -29,7 +21,6 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
   List<String> answers = [];
   String questionText = '';
   String month = '';
-
 
   final ScrollController _controller = ScrollController();
 
@@ -76,12 +67,12 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Image.asset(
-                  widget.image,
+                  selectedCrabSpeciesImage,
                   width: 100,
                   height: 125,
                 ),
                 Text(
-                  widget.name,
+                  selectedCrabSpecies,
                   style: const TextStyle(fontSize: 24),
                 ),
               ],
@@ -137,7 +128,6 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
           month = answer;
           validateMonth(month);
           if(isMonthValid == true) {
-            widget.onMonthSelected(month);
             enableForwardNavigation = true;
           }
 

@@ -6,14 +6,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class QuestionAnswer7Page extends StatefulWidget {
 
-  final String name;
-  final String image;
-  final Function(String) onIntensitySelected;
-
   const QuestionAnswer7Page({
     Key? key,
-    required this.name,
-    required this.image, required String intensity, required this.onIntensitySelected,
   }) : super(key: key);
 
 
@@ -25,7 +19,6 @@ class _QuestionAnswerPage7State extends State<QuestionAnswer7Page> {
   String selectedArea = '';
   List<String> answers = [];
   String questionText = '';
-  String intensity='';
   late SharedPreferences prefs;
 
   @override
@@ -72,12 +65,12 @@ class _QuestionAnswerPage7State extends State<QuestionAnswer7Page> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Image.asset(
-                widget.image,
+                selectedCrabSpeciesImage,
                 width: 100,
                 height: 125,
               ),
               Text(
-                widget.name,
+                selectedCrabSpeciesImage,
                 style: const TextStyle(fontSize: 24),
               ),
             ],
@@ -118,8 +111,6 @@ class _QuestionAnswerPage7State extends State<QuestionAnswer7Page> {
         setState(() {
           selectedArea = answer;
           intensity = answer;
-          widget.onIntensitySelected(intensity);
-
           enableForwardNavigation = true;
 
         });

@@ -2,24 +2,14 @@ import 'dart:convert';
 import 'dart:core';
 import 'package:flutter/material.dart';
 import '../global.dart';
-import 'package:flutter/material.dart';
 
 List<String> yearList = []; // Declaration of yearList
 
 
 class QuestionAnswer3Page extends StatefulWidget {
 
-  final String name;
-  final String image;
-  final String year;
-  final Function(String) onYearSelected;
-
-
   const QuestionAnswer3Page({
     Key? key,
-    required this.name,
-    required this.image,
-    required this.year, required this.onYearSelected,
   }) : super(key: key);
 
 
@@ -30,7 +20,6 @@ class QuestionAnswer3Page extends StatefulWidget {
 class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
   String selectedArea = '';
   String questionText = '';
-  String year='';
 
   @override
   void initState() {
@@ -74,12 +63,12 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Image.asset(
-                  widget.image,
+                  selectedCrabSpeciesImage,
                   width: 100,
                   height: 125,
                 ),
                 Text(
-                  widget.name,
+                  selectedCrabSpecies,
                   style: const TextStyle(fontSize: 24),
                 ),
               ],
@@ -119,8 +108,6 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
         setState(() {
           selectedArea = answer;
           year = answer;
-          widget.onYearSelected(year);
-
           enableForwardNavigation = true;
 
         });

@@ -6,19 +6,9 @@ import 'package:remar_flutter_app/question_screens/questions_utils.dart';
 
 class QuestionAnswer13Page extends StatefulWidget {
 
-  final String image;
-  final String name;
-  final String state;
-  final String protectedArea;
-  final Function(String) onProtectedAreaSelected;
 
   const QuestionAnswer13Page({
     Key? key,
-    required this.image,
-    required this.name,
-    required this.state,
-    required this.protectedArea,
-    required this.onProtectedAreaSelected
 }) : super(key:key);
 
   @override
@@ -120,10 +110,9 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
               onTap: () {
                 setState(() {
                   isExpanded = true;
-
                   selectedArea = answers as String;
                   protectedArea = answers as String;
-                  widget.onProtectedAreaSelected(intensity);
+
                   enableForwardNavigation = true;
 
                 });
@@ -185,6 +174,7 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
       onTap: () {
         setState(() {
           selectedArea = answer;
+          isProtectedArea = true;
         });
       },
       child: Container(

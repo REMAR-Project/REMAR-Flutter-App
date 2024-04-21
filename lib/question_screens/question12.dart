@@ -4,21 +4,10 @@ import 'package:remar_flutter_app/global.dart';
 import 'package:remar_flutter_app/question_screens/questions_utils.dart';
 
 class QuestionAnswer12Page extends StatefulWidget {
-  final String state;
-  final String county;
-  final String name;
-  final String image;
-  final Function(String) onCountySelected;
-
 
 
   const QuestionAnswer12Page({
     Key? key,
-    required this.state,
-    required this.name,
-    required this.image,
-    required this.county,
-    required this.onCountySelected,
   }) : super(key: key);
 
   @override
@@ -29,8 +18,6 @@ class _QuestionAnswerPage12State extends State<QuestionAnswer12Page> {
   String selectedArea = '';
   List<String> answers = [];
   String descriptionText = '';
-  String county='';
-
 
 
   @override
@@ -79,12 +66,12 @@ class _QuestionAnswerPage12State extends State<QuestionAnswer12Page> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Image.asset(
-                  widget.image,
+                  selectedCrabSpeciesImage,
                   width: 100,
                   height: 125,
                 ),
                 Text(
-                  widget.name,
+                  selectedCrabSpecies,
                   style: const TextStyle(fontSize: 24),
                 ),
               ],
@@ -124,8 +111,7 @@ class _QuestionAnswerPage12State extends State<QuestionAnswer12Page> {
       onTap: () {
         setState(() {
           selectedArea = answer;
-          county = answer;
-          widget.onCountySelected(county);
+          country= answer;
 
           enableForwardNavigation = true;
 
