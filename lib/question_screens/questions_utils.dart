@@ -33,14 +33,23 @@ List<Widget> questionsPagesLongList() {
     const QuestionAnswer12Page(),
     const QuestionAnswer13Page(),
     const QuestionAnswer14Page(),
-   const QuestionAnswer15Page(),
+    const QuestionAnswer15Page(),
+    const QuestionAnswer16Page()
 
   ];
 }
 
 List<Widget> questionsPagesShortList() {
   return [
-
+    const QuestionAnswer2Page(),
+    const QuestionAnswer3Page(),
+    const QuestionAnswer4Page(),
+    const QuestionAnswer7Page(),
+    const QuestionAnswer11Page(),
+    const QuestionAnswer12Page(),
+    const QuestionAnswer13Page(),
+    const QuestionAnswer14Page(),
+    const QuestionAnswer15Page(),
   ];
 }
 
