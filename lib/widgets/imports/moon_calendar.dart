@@ -192,7 +192,7 @@ class _MoonCalendarState extends State<MoonCalendar> {
                 } else {
                   selectedDates.add(currentDate);
                 }
-                widget.onSelection(selectedDates, nextQuestion: false);
+                widget.onSelection(selectedDates);
               });
             }
           : null,
