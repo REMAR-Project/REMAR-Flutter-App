@@ -40,7 +40,7 @@ String habitat='';
 String state='';
 
 // Select county where observation made from question 12
-String country='';
+String county='';
 
 // Select protected area from question 13
 String protectedArea='';
