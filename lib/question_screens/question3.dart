@@ -30,8 +30,6 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
 
   void loadQuestions() async {
 
-
-
     if(backwardsNavigation==true) {
       enableForwardNavigation =true;
     }
