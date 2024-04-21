@@ -61,7 +61,7 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
       // Cast answers to List<String>
       answers = stateList.map((answer) => answer.toString()).toList();
       areas = stateList.map((area) => area.toString()).toList();
-
+      print(answers);
 
     });
   }
@@ -124,16 +124,7 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
               });
             },
             child: Container(
-              color: Colors.green,
-              padding: const EdgeInsets.all(12.0),
-              margin: EdgeInsets.symmetric(vertical: 8.0),
-              child: const Text(
-                "Name not in list",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+
             ),
           ),
         ],
