@@ -48,8 +48,6 @@ class _QuestionAnswerPage8State extends State<QuestionAnswer8Page> {
 
       // Extract answers from the answers map
       List<dynamic> answerList = firstQuestionData['answers'];
-      print(answers);
-
 
       // Cast answers to List<String>
       answers = answerList.map((answer) => answer.toString()).toList();
@@ -112,8 +110,6 @@ class _QuestionAnswerPage8State extends State<QuestionAnswer8Page> {
       onTap: () {
         setState(() {
           selectedArea = answer;
-          whenObserved = answer;
-          print(whenObserved);
        //   enableForwardNavigation = false;
         });
       },
