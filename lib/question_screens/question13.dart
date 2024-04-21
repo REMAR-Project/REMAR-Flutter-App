@@ -56,6 +56,7 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
       // Cast areas to List<String>
       Map<String, dynamic> answerMap = firstQuestionData['answers'];
       List<dynamic> stateList = answerMap[state];
+      print(stateList);
 
       // Cast answers to List<String>
       answers = stateList.map((answer) => answer.toString()).toList();
