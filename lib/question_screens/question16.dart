@@ -6,17 +6,13 @@ import 'package:remar_flutter_app/global.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class QuestionAnswer16Page extends StatefulWidget {
-
-
-  const QuestionAnswer16Page({
-    Key? key
-  }) : super(key: key);
+  const QuestionAnswer16Page({Key? key}) : super(key: key);
 
   @override
-  _QuestionAnswer16Page createState() => _QuestionAnswer16Page();
+  _QuestionAnswer16PageState createState() => _QuestionAnswer16PageState();
 }
 
-class _QuestionAnswer16Page extends State<QuestionAnswer16Page> {
+class _QuestionAnswer16PageState extends State<QuestionAnswer16Page> {
   late String description = '';
   String selectedAnswer = '';
   late String choiceOneText = '';
@@ -27,10 +23,11 @@ class _QuestionAnswer16Page extends State<QuestionAnswer16Page> {
   void initState() {
     super.initState();
     loadQuestionData();
+    // Initialize selectedAnswer with choiceOneText
+    selectedAnswer = choiceOneText;
   }
 
   void loadQuestionData() async {
-
     enableForwardNavigation = false;
 
     // Load JSON data from asset file
@@ -43,15 +40,15 @@ class _QuestionAnswer16Page extends State<QuestionAnswer16Page> {
     // Extract question data for Question16
     Map<String, dynamic> questionData = jsonData[15];
 
-
     // Assign values to variables
     setState(() {
       description = questionData['description'];
       choiceOneText = questionData['choiceOneText'];
       choiceTwoText = questionData['choiceTwoText'];
       choiceThreeText = questionData['choiceThreeText'];
-     // enableForwardNavigation = true;
+
     });
+    print(choiceThreeText);
   }
 
   @override
@@ -68,31 +65,35 @@ class _QuestionAnswer16Page extends State<QuestionAnswer16Page> {
             const SizedBox(height: 10),
             buildButton(choiceThreeText, selectedAnswer == choiceThreeText),
             const SizedBox(height: 30),
-            RichText(
-              textAlign: TextAlign.center,
-              text: TextSpan(
-                text:
-                'If you want to contact REMAR, find out about ways to engage more with this research, ask or suggest something, please send a message to ',
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: Colors.black,
-                ),
-                children: [
-                  TextSpan(
-                    text: 'remar.quest@gmail.com',
-                    style: const TextStyle(
-                      color: Color.fromARGB(255, 14, 172, 51),
-                    ),
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () {
-                        launch(
-                            'mailto:remar.quest@gmail.com?subject=Question for REMAR');
-                      },
-                  ),
-                ],
-              ),
-            ),
           ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.all(16.0),
+        child: RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            text:
+            'If you want to contact REMAR, find out about ways to engage more with this research, ask or suggest something, please send a message to ',
+            style: const TextStyle(
+              fontSize: 16,
+              color: Colors.black,
+            ),
+            children: [
+              TextSpan(
+                text: 'remar.quest@gmail.com',
+                style: const TextStyle(
+                  color: Color.fromARGB(255, 14, 172, 51),
+                ),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () {
+                    enableForwardNavigation = true;
+                    launch(
+                        'mailto:remar.quest@gmail.com?subject=Question for REMAR');
+                  },
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -125,4 +126,3 @@ class _QuestionAnswer16Page extends State<QuestionAnswer16Page> {
     );
   }
 }
-

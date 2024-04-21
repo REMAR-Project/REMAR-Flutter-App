@@ -192,7 +192,8 @@
     "questionType": "Commit",
     "description": "If you want to contact REMAR, find out about ways to engage more with this research, ask or suggest something, please send a message to <b><a href=\"mailto:remar.quest@gmail.com?subject=Question for REMAR\">remar.quest@gmail.com</a></b>",
     "choiceOneText": "I WANT TO SUBMIT MY ANSWERS",
-    "choiceTwoText": "I WANT TO GO BACK TO CHANGE ANSWERS"
+    "choiceTwoText": "I WANT TO GO BACK TO CHANGE ANSWERS",
+    "choiceThreeText": "I AM ONLY TESTING/SHOWING THE APP WITHOUT SENDING READ DATA"
   },
   {
     "questionType": "Done",
