@@ -25,7 +25,6 @@ class CalendarScreenQ5 extends StatelessWidget {
 
   // Temporary function to retrofit the question into the global variable system
   void onSelection(List<DateTime> value) {
-    print("Got Data");
     selectedDates = value;
   }
 
