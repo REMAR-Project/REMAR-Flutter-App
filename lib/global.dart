@@ -1,6 +1,5 @@
 // Navigation control
 import 'dart:core';
-import 'dart:core';
 
 
 bool enableForwardNavigation = false;
@@ -22,8 +21,10 @@ String selectedCrabSpeciesImage='';
 String month='';
 
 // question 5
+List<DateTime> selectedDates = [];
 
 // question 6
+DateTime? selectedDate; 
 
 //Select intensity from question 7
 String intensity='';
