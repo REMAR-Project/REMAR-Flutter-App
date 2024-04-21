@@ -21,10 +21,10 @@ String selectedCrabSpeciesImage='';
 String month='';
 
 // question 5
-List<DateTime> selectedDates = [];
+List<DateTime> Q5selectedDates = [];
 
 // question 6
-List<DateTime> selectedDate = []; 
+List<DateTime> Q6selectedDate = []; 
 
 //Select intensity from question 7
 String intensity='';
