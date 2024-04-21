@@ -44,11 +44,13 @@ class _QuestionAnswerPage15State extends State<QuestionAnswer15Page> {
 
     // Extract data from the first question (question number 9)
     Map<String, dynamic> firstQuestionData = jsonData[14];
+    print(firstQuestionData);
 
 
     // Set question text and answers list
     setState(() {
       questionText = firstQuestionData['description'];
+      print(questionText);
       otherText = firstQuestionData['otherText'];
 
       // Load answers from JSON data
@@ -123,7 +125,7 @@ class _QuestionAnswerPage15State extends State<QuestionAnswer15Page> {
         setState(() {
           selectedAnswer = answer;
           additionalObservations = answer;
-        //  enableForwardNavigation = true;
+          enableForwardNavigation = true;
         });
       },
       child: Container(

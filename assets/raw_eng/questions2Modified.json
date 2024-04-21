@@ -184,6 +184,7 @@
     "disableCustom": "true",
     "enableOther": true,
     "otherText": "Please touch field and type",
+    "answers": ["No","Yes"],
     "otherPosition": 1
   },
   {
