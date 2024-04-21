@@ -24,7 +24,7 @@ String month='';
 List<DateTime> selectedDates = [];
 
 // question 6
-DateTime? selectedDate; 
+List<DateTime> selectedDate = []; 
 
 //Select intensity from question 7
 String intensity='';
