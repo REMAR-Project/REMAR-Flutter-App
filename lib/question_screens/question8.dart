@@ -105,8 +105,9 @@ class _QuestionAnswerPage8State extends State<QuestionAnswer8Page> {
                         setState(() {
                           selectedIndex = index;
                           selectedArea = options[selectedIndex]["name"]!;
+
+                          timeObserved = selectedArea;
                           enableForwardNavigation =true;
-                          print(selectedArea);
 
                         });
                       },
@@ -114,7 +115,12 @@ class _QuestionAnswerPage8State extends State<QuestionAnswer8Page> {
                         padding: const EdgeInsets.all(1.0),
                         margin: const EdgeInsets.symmetric(vertical: 1.0),
                         decoration: BoxDecoration(
-                            color: selectedIndex == index ? ColorRes.greenColor : null,
+<
+
+                           // color: selectedIndex == index ? ColorRes.greenColor : null,
+                            color: selectedIndex == index
+                                ? Colors.green
+                                : (backwardsNavigation && options[index]["name"] == timeObserved ? Colors.green : null),
                             borderRadius: BorderRadius.circular(25)
                         ),
 
