@@ -1,9 +1,6 @@
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:remar_flutter_app/global.dart';
-import 'package:remar_flutter_app/utils/color_res.dart';
-
 
 
 class QuestionAnswer8Page extends StatefulWidget {
@@ -43,6 +40,7 @@ class _QuestionAnswerPage8State extends State<QuestionAnswer8Page> {
 
     if(backwardsNavigation==true) {
       enableForwardNavigation =true;
+
     }
 
     // Load the JSON data from the file
@@ -60,6 +58,7 @@ class _QuestionAnswerPage8State extends State<QuestionAnswer8Page> {
       questionText = firstQuestionData['description'];
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -104,17 +103,14 @@ class _QuestionAnswerPage8State extends State<QuestionAnswer8Page> {
                         setState(() {
                           selectedIndex = index;
                           selectedArea = options[selectedIndex]["name"]!;
-
                           timeObserved = selectedArea;
                           enableForwardNavigation =true;
-
                         });
                       },
                       child: Container(
                         padding: const EdgeInsets.all(1.0),
                         margin: const EdgeInsets.symmetric(vertical: 1.0),
                         decoration: BoxDecoration(
-<
 
                            // color: selectedIndex == index ? ColorRes.greenColor : null,
                             color: selectedIndex == index
