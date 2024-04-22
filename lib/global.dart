@@ -48,13 +48,14 @@ String county='';
 
 // Select protected area from question 13
 String protectedArea='';
-bool isProtectedArea = false;
+String protectedAreaResponse='';
 
 // select occupation from question 14
 String occupation='';
 
 // Collect additional observations frm question 15
 String additionalObservations='';
+String additionalObservationsResponse='';
 
 // Responses from question 16
 String finalPageResponse='';

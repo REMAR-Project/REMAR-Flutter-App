@@ -135,7 +135,6 @@ class _QuestionAnswerPage9State extends State<QuestionAnswer9Page> {
           berried = answer;
           enableForwardNavigation = true;
 
-
           Container(
             color: isSelected ? Colors.white : null,
             padding: const EdgeInsets.all(1.0),

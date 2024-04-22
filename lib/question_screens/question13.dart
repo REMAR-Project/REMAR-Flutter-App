@@ -36,6 +36,23 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
 
     enableForwardNavigation = false;
 
+    if(backwardsNavigation==true) {
+      enableForwardNavigation =true;
+    }
+
+    if(backwardsNavigation) {
+
+      setState(() {
+        selectedAnswer =protectedAreaResponse;
+      });
+    }
+
+    if(protectedAreaResponse=="Yes") {
+      displayAnswers = true;
+    }
+
+
+
     // Load the JSON data from the file
     String jsonString = await DefaultAssetBundle.of(context)
         .loadString('assets/raw_eng/questions2Modified.json');
@@ -56,12 +73,12 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
       // Cast areas to List<String>
       Map<String, dynamic> answerMap = firstQuestionData['answers'];
       List<dynamic> stateList = answerMap[state];
-      print(stateList);
+
 
       // Cast answers to List<String>
       answers = stateList.map((answer) => answer.toString()).toList();
       areas = stateList.map((area) => area.toString()).toList();
-      print(answers);
+
 
     });
   }
@@ -139,6 +156,7 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
           selectedAnswer = title;
           // Update the flag based on the selected answer
           displayAnswers = selectedAnswer == "Yes";
+          protectedAreaResponse = title;
           enableForwardNavigation = true;
         });
       },
@@ -171,11 +189,15 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
       onTap: () {
         setState(() {
           selectedArea = answer;
-          isProtectedArea = true;
+          protectedArea = selectedArea;
+
         });
       },
       child: Container(
-        color: isSelected ? Colors.green : null,
+        color: isSelected
+        ? (isSelected  ? Colors.green : null)
+        : (backwardsNavigation ? (answer == protectedArea ? Colors.green : null) : null),
+
         padding: const EdgeInsets.all(12.0),
         margin: const EdgeInsets.symmetric(vertical: 8.0),
         child: Text(
