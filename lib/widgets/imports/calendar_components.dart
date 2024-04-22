@@ -42,7 +42,7 @@ class QuestionText extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
-      height: MediaQuery.of(context).size.height * 0.01,
+      height: MediaQuery.of(context).size.height * 0.001,
       child: Text(
         questionText,
         style: const TextStyle(fontSize: 16),
