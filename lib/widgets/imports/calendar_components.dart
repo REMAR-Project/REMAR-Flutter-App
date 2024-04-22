@@ -30,6 +30,30 @@ class CalendarScreenQ5 extends StatelessWidget {
     return firstQuestionData['questionText'];
   }
 
+class QuestionText extends StatelessWidget {
+  final String questionText;
+
+  const QuestionText({Key? key, required this.questionText}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width * 0.8,
+      height: MediaQuery.of(context).size.height * 0.15,
+      child: Text(
+        questionText,
+        style: const TextStyle(fontSize: 16),
+      ),
+    );
+  }
+}
+
+class DayOfWeekHeaders extends StatelessWidget {
+  static const List<String> daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+  const DayOfWeekHeaders({super.key});
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

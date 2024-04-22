@@ -4,6 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:remar_flutter_app/global.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:remar_flutter_app/question_screens/question15.dart';
 
 class QuestionAnswer16Page extends StatefulWidget {
   const QuestionAnswer16Page({Key? key}) : super(key: key);
@@ -88,8 +89,8 @@ class _QuestionAnswer16PageState extends State<QuestionAnswer16Page> {
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
                     enableForwardNavigation = true;
-                    launch(
-                        'mailto:remar.quest@gmail.com?subject=Question for REMAR');
+                    launchUrl(
+                        'mailto:remar.quest@gmail.com?subject=Question for REMAR' as Uri);
                   },
               ),
             ],
@@ -107,6 +108,12 @@ class _QuestionAnswer16PageState extends State<QuestionAnswer16Page> {
         onPressed: () {
           setState(() {
             selectedAnswer = title;
+            finalPageResponse = selectedAnswer;
+            if (selectedAnswer == "I WANT TO GO BACK TO CHANGE ANSWERS") {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const QuestionAnswer15Page()),
+              );
+            }
           });
         },
         style: ElevatedButton.styleFrom(

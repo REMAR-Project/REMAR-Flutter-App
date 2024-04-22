@@ -3,8 +3,9 @@ import 'dart:async';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:csv/csv.dart';
 import 'package:intl/intl.dart';
+import 'package:remar_flutter_app/global.dart';
 
-
+/// A widget that displays a moon calendar for a specific month and year.
 class MoonCalendar extends StatefulWidget {
   final String month;
   final String year;
@@ -24,7 +25,7 @@ class MoonCalendar extends StatefulWidget {
 }
 
 class _MoonCalendarState extends State<MoonCalendar> {
-  final List<DateTime> selectedDates = [];
+  List<DateTime> selectedDates = [];
   late int daysInMonth;
   late int firstDayOfWeek;
   List<DateTime> newMoonDates = [];
@@ -32,14 +33,45 @@ class _MoonCalendarState extends State<MoonCalendar> {
   late List<DateTime> trailingDates;
   late List<DateTime> leadingDates;
 
+  /// Checks if a given date is within the current month and year.
+  bool _isDateWithinCurrentMonth(DateTime date) {
+    int monthInt = _getMonthInt(widget.month);
+    int yearInt = int.parse(widget.year);
+    return date.month == monthInt && date.year == yearInt;
+  }
+
+  /// Checks if a given date is within the selected dates.
+  bool _isDateWithinSelectedDates(DateTime date) {
+    return Q5selectedDates.any((selectedDate) => 
+      selectedDate.year == date.year && 
+      selectedDate.month == date.month && 
+      selectedDate.day == date.day);
+  }
+
   @override
   void initState() {
     super.initState();
+    enableForwardNavigation = false;
+    // Assumes Q5 if not set
+    if (widget.selectableDates == null || widget.selectableDates!.isEmpty) {
+      selectedDates = Q5selectedDates.where(_isDateWithinCurrentMonth).toList();
+      Q5selectedDates = selectedDates;
+    }else{
+      if (Q6selectedDate.isNotEmpty && _isDateWithinSelectedDates(Q6selectedDate.first)) {
+        selectedDates = Q6selectedDate.where(_isDateWithinCurrentMonth).toList();
+      }
+      Q6selectedDate = selectedDates;
+    }
+    if (selectedDates.isNotEmpty) {
+      enableForwardNavigation = true;
+    }
     daysInMonth = _getDaysInMonth();
     firstDayOfWeek = _getFirstDayOfWeek();
     _loadMoonPhases();
     _calculateTrailingAndLeadingDates();
   }
+
+  /// Loads the moon phases from CSV files.
   Future<void> _loadMoonPhases() async {
     // Load and parse the new moons CSV.
     final newMoonCsvData = await _loadCsvData('assets/moons/moons_new.csv');
@@ -51,6 +83,7 @@ class _MoonCalendarState extends State<MoonCalendar> {
     });
   }
 
+  /// Loads CSV data from a given path.
   Future<List<List<dynamic>>> _loadCsvData(String path) async {
     final csvString = await rootBundle.loadString(path);
     // Split the file content by new lines to ensure that each date is a separate entry.
@@ -71,6 +104,7 @@ class _MoonCalendarState extends State<MoonCalendar> {
     return rows;
   }
 
+  /// Parses the moon phase data from CSV into DateTime objects.
   List<DateTime> _parseMoonCsv(List<List<dynamic>> csvData) {
     List<DateTime> moonDates = [];
 
@@ -89,13 +123,14 @@ class _MoonCalendarState extends State<MoonCalendar> {
     return moonDates;
   }
 
-
+  /// Gets the number of days in the current month.
   int _getDaysInMonth() {
     int monthInt = _getMonthInt(widget.month);
     int yearInt = int.parse(widget.year);
     return DateUtils.getDaysInMonth(yearInt, monthInt);
   }
 
+  /// Gets the integer representation of a month.
   int _getMonthInt(String month) {
     return List<String>.of([
       'January',
@@ -113,6 +148,7 @@ class _MoonCalendarState extends State<MoonCalendar> {
     ]).indexOf(month) + 1;
   }
 
+  /// Gets the first day of the week for the current month.
   int _getFirstDayOfWeek() {
     int yearInt = int.parse(widget.year);
     int monthInt = _getMonthInt(widget.month);
@@ -120,8 +156,7 @@ class _MoonCalendarState extends State<MoonCalendar> {
     return (firstOfMonth.weekday % 7);
   }
 
-
-
+  /// Calculates the trailing and leading dates for the calendar grid.
   void _calculateTrailingAndLeadingDates() {
     int yearInt = int.parse(widget.year);
     int monthInt = _getMonthInt(widget.month);
@@ -152,7 +187,7 @@ class _MoonCalendarState extends State<MoonCalendar> {
     });
   }
 
-
+  /// Builds a day item widget for the calendar grid.
   Widget _buildDayItem(int index) {
     // Determine if the index falls in the trailing, current, or leading dates range.
     DateTime currentDate;
@@ -176,7 +211,6 @@ class _MoonCalendarState extends State<MoonCalendar> {
     bool isFullPhase = fullMoonDates.contains(currentDate);
 
     bool isSelectable = _isDateSelectable(currentDate);
-    bool isSelected = selectedDates.contains(currentDate);
 
     TextStyle textStyle = TextStyle(
       fontSize: 24,
@@ -185,17 +219,27 @@ class _MoonCalendarState extends State<MoonCalendar> {
 
     return GestureDetector(
       onTap: isSelectable
-          ? () {
-              setState(() {
-                if (isSelected) {
+        ? () {
+            setState(() {
+              if (widget.selectableDates == null || widget.selectableDates!.isEmpty) {
+                if (selectedDates.contains(currentDate)) {
                   selectedDates.remove(currentDate);
+                  if(selectedDates.isEmpty){
+                    enableForwardNavigation = false;
+                  }
                 } else {
                   selectedDates.add(currentDate);
+                  enableForwardNavigation = true;
                 }
-                widget.onSelection(selectedDates, nextQuestion: false);
-              });
-            }
-          : null,
+              } else {
+                selectedDates.clear();
+                selectedDates.add(currentDate);
+                enableForwardNavigation = true;
+              }
+              widget.onSelection(selectedDates);
+            });
+          }
+        : null,
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(color: Colors.black, width: 1.0),
@@ -233,7 +277,6 @@ class _MoonCalendarState extends State<MoonCalendar> {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     int totalItemCount = trailingDates.length + daysInMonth + leadingDates.length;
@@ -250,8 +293,8 @@ class _MoonCalendarState extends State<MoonCalendar> {
     );
   }
 
+  /// Checks if a given date is selectable.
   bool _isDateSelectable(DateTime date) {
     return widget.selectableDates == null || widget.selectableDates!.contains(date);
   }
-
 }

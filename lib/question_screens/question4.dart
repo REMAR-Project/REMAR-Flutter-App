@@ -21,7 +21,6 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
   List<String> answers = [];
   String questionText = '';
 
-
   final ScrollController _controller = ScrollController();
 
   @override

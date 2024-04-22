@@ -21,14 +21,18 @@ String selectedCrabSpeciesImage='';
 // Select month from question 4
 String month='';
 
-// select question 5
 
-// question 6
+// dates from question 5
+List<DateTime> Q5selectedDates = [];
+
+// dates from question 6
+List<DateTime> Q6selectedDate = []; 
 
 //Select intensity from question 7
 String intensity='';
 
-// question 8
+// select time observed question 8
+String timeObserved ='';
 
 // Select observed berried females from quesiton 9
 String berried='';
@@ -51,3 +55,7 @@ String occupation='';
 
 // Collect additional observations frm question 15
 String additionalObservations='';
+
+// Responses from question 16
+String finalPageResponse='';
+
