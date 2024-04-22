@@ -1,53 +1,91 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:remar_flutter_app/widgets/imports/calendar_components.dart';
+import 'package:remar_flutter_app/widgets/imports/moon_calendar.dart';
+import 'package:remar_flutter_app/global.dart';
 
-class Header extends StatelessWidget {
-  final String month;
-  final String year;
+/// A screen that displays a calendar with moon phases and selectable dates.
+class CalendarScreenQ5 extends StatelessWidget {
+  final EdgeInsets padding;
 
-  const Header({Key? key, required this.month, required this.year}) : super(key: key);
+  /// Constructs a [CalendarScreenQ5] widget.
+  ///
+  /// The [padding] parameter specifies the padding around the calendar screen.
+  const CalendarScreenQ5({
+    Key? key,
+    this.padding = const EdgeInsets.fromLTRB(30.0, 15.0, 30.0, 15.0),
+  }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Text('$month $year', style: const TextStyle(fontSize: 24)),
-    );
+  // Temporary function to retrofit the question into the global variable system
+  void onSelection(List<DateTime> value) {
+    Q5selectedDates = value;
   }
-}
 
-class MoonPhaseKey extends StatelessWidget {
-  const MoonPhaseKey({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(Icons.brightness_3, color: Color.fromARGB(255, 1, 87, 138)), // New moon icon
-        Text('New Moon'),
-        SizedBox(width: 16),
-        Icon(Icons.brightness_7,color: Color.fromARGB(255, 198, 243, 33)), // Full moon icon
-        Text('Full Moon'),
-      ],
-    );
+  Future<String> loadQuestions() async {
+    String jsonString = await rootBundle.loadString('assets/raw_eng/questions2Modified.json');
+    List<dynamic> jsonData = jsonDecode(jsonString);
+    Map<String, dynamic> firstQuestionData = jsonData[4];
+    return firstQuestionData['questionText'];
   }
-}
-
-class DayOfWeekHeaders extends StatelessWidget {
-  static const List<String> daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
-  const DayOfWeekHeaders({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: daysOfWeek
-            .map((day) => Expanded(child: Text(day, textAlign: TextAlign.center)))
-            .toList(),
-      ),
+    return Scaffold(
+      body: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.asset(
+                selectedCrabSpeciesImage,
+                width: 100,
+                height: 125,
+              ),
+              Text(
+                selectedCrabSpecies,
+                style: const TextStyle(fontSize: 24),
+              ),
+            ],
+          ),
+          FutureBuilder<String>(
+            future: loadQuestions(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return QuestionText(questionText: snapshot.data!);
+              } else if (snapshot.hasError) {
+                print(snapshot.error);
+                return const Text('Error loading question');
+              } else {
+                return const CircularProgressIndicator();
+              }
+            },
+          ),
+          Padding(
+            padding: padding,
+            child: Header(month: month, year: year),
+          ),
+          Padding(
+            padding: padding,
+            child: const MoonPhaseKey(),
+          ),
+          Padding(
+            padding: padding,
+            child: const DayOfWeekHeaders(),
+          ),
+          Expanded(
+            child: Padding(
+              padding: padding,
+              child: MoonCalendar(
+                month: month,
+                year: year,
+                onSelection: onSelection,
+              ),
+            ),
+          ),
+        ],
+      )
     );
   }
 }
