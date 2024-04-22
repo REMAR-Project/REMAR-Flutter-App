@@ -23,6 +23,8 @@ class _QuestionAnswerPage15State extends State<QuestionAnswer15Page> {
   late String otherText = '';
   late int otherPosition = 0;
 
+  TextEditingController  textEditingController = TextEditingController();
+
 
   @override
   void initState() {
@@ -32,7 +34,16 @@ class _QuestionAnswerPage15State extends State<QuestionAnswer15Page> {
 
   void loadQuestions() async {
 
-  //  enableForwardNavigation = false;
+     enableForwardNavigation = false;
+
+     if(backwardsNavigation==true) {
+       enableForwardNavigation =true;
+     }
+
+     if(backwardsNavigation==true && additionalObservationsResponse=="Yes") {
+       textEditingController.text = additionalObservations;
+     }
+
 
     // Load the JSON data from the file
     String jsonString = await DefaultAssetBundle.of(context)
@@ -44,13 +55,13 @@ class _QuestionAnswerPage15State extends State<QuestionAnswer15Page> {
 
     // Extract data from the first question (question number 9)
     Map<String, dynamic> firstQuestionData = jsonData[14];
-    print(firstQuestionData);
+
 
 
     // Set question text and answers list
     setState(() {
       questionText = firstQuestionData['description'];
-      print(questionText);
+
       otherText = firstQuestionData['otherText'];
 
       // Load answers from JSON data
@@ -105,11 +116,13 @@ class _QuestionAnswerPage15State extends State<QuestionAnswer15Page> {
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
               child: TextFormField(
+                controller: textEditingController,
                 decoration: const InputDecoration(
                   labelText: 'Type your observation',
                   border: OutlineInputBorder(),
                 ),
                 onChanged: (value) {
+                  additionalObservations = value;
                   // Handle text field changes
                 },
               ),
@@ -126,6 +139,7 @@ class _QuestionAnswerPage15State extends State<QuestionAnswer15Page> {
           selectedAnswer = answer;
           additionalObservations = answer;
           enableForwardNavigation = true;
+          additionalObservationsResponse = answer;
         });
       },
       child: Container(

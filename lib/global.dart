@@ -55,6 +55,7 @@ String occupation='';
 
 // Collect additional observations frm question 15
 String additionalObservations='';
+String additionalObservationsResponse='';
 
 // Responses from question 16
 String finalPageResponse='';

@@ -49,7 +49,7 @@ class _QuestionAnswer16PageState extends State<QuestionAnswer16Page> {
       choiceThreeText = questionData['choiceThreeText'];
 
     });
-    print(choiceThreeText);
+
   }
 
   @override
