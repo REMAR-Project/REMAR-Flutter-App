@@ -7,8 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 class QuestionAnswer7Page extends StatefulWidget {
 
   const QuestionAnswer7Page({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
 
   @override

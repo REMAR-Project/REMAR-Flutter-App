@@ -8,7 +8,7 @@ import 'package:remar_flutter_app/global.dart' as global;
 class QuestionMain extends StatefulWidget {
   final int totalQues;
 
-  const QuestionMain({Key? key, required this.totalQues}) : super(key: key);
+  const QuestionMain({super.key, required this.totalQues});
 
   @override
   State<QuestionMain> createState() => _QuestionMainState();

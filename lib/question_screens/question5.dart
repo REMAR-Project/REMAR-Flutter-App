@@ -8,23 +8,15 @@ import 'package:remar_flutter_app/global.dart';
 
 /// A screen that displays a calendar with moon phases and selectable dates.
 class CalendarScreenQ5 extends StatelessWidget {
-  // final String month;
-  // final String year;
-  // final List<DateTime> selectableDates;
-  //final Function onSelection;
   final EdgeInsets padding;
 
   /// Constructs a [CalendarScreenQ5] widget.
   ///
   /// The [padding] parameter specifies the padding around the calendar screen.
   const CalendarScreenQ5({
-    Key? key,
-    // required this.month,
-    // required this.year,
-    // required this.selectableDates,
-    // required this.onSelection,
+    super.key,
     this.padding = const EdgeInsets.fromLTRB(30.0, 15.0, 30.0, 15.0),
-  }) : super(key: key);
+  });
 
   // Temporary function to retrofit the question into the global variable system
   void onSelection(List<DateTime> value) {
@@ -32,7 +24,6 @@ class CalendarScreenQ5 extends StatelessWidget {
   }
 
   Future<String> loadQuestions() async {
-    //enableForwardNavigation = false;
     String jsonString = await rootBundle.loadString('assets/raw_eng/questions2Modified.json');
     List<dynamic> jsonData = jsonDecode(jsonString);
     Map<String, dynamic> firstQuestionData = jsonData[4];
@@ -64,7 +55,6 @@ class CalendarScreenQ5 extends StatelessWidget {
               if (snapshot.hasData) {
                 return QuestionText(questionText: snapshot.data!);
               } else if (snapshot.hasError) {
-                print(snapshot.error);
                 return const Text('Error loading question');
               } else {
                 return const CircularProgressIndicator();

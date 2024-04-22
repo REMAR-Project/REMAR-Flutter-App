@@ -7,7 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:remar_flutter_app/Data.dart';
 
 class QuestionAnswer16Page extends StatefulWidget {
-  const QuestionAnswer16Page({Key? key}) : super(key: key);
+  const QuestionAnswer16Page({super.key});
 
   @override
   _QuestionAnswer16PageState createState() => _QuestionAnswer16PageState();

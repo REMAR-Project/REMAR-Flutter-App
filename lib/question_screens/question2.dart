@@ -7,8 +7,8 @@ import '../utils/color_res.dart';
 class QuestionAnswer2Page extends StatefulWidget {
 
   const QuestionAnswer2Page({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<QuestionAnswer2Page> createState() => _QuestionAnswer2PageState();

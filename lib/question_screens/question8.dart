@@ -1,8 +1,6 @@
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:remar_flutter_app/global.dart';
-import 'package:remar_flutter_app/utils/color_res.dart';
 
 
 
@@ -10,8 +8,8 @@ class QuestionAnswer8Page extends StatefulWidget {
 
 
   const QuestionAnswer8Page({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
 
   @override

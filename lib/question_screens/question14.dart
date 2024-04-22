@@ -9,8 +9,8 @@ class QuestionAnswer14Page extends StatefulWidget {
 
 
   const QuestionAnswer14Page({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
 
   @override

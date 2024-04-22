@@ -7,8 +7,8 @@ import 'package:remar_flutter_app/global.dart';
 class QuestionAnswer11Page extends StatefulWidget {
 
   const QuestionAnswer11Page({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
 
   @override

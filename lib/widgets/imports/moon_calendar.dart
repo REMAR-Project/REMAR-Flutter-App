@@ -13,12 +13,12 @@ class MoonCalendar extends StatefulWidget {
   final Function onSelection;
 
   const MoonCalendar({
-    Key? key,
+    super.key,
     required this.month,
     required this.year,
     required this.onSelection,
     this.selectableDates,
-  }) : super(key: key);
+  });
 
   @override
   _MoonCalendarState createState() => _MoonCalendarState();

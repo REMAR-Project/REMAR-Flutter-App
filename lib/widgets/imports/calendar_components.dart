@@ -4,7 +4,7 @@ class Header extends StatelessWidget {
   final String month;
   final String year;
 
-  const Header({Key? key, required this.month, required this.year}) : super(key: key);
+  const Header({super.key, required this.month, required this.year});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class MoonPhaseKey extends StatelessWidget {
 class QuestionText extends StatelessWidget {
   final String questionText;
 
-  const QuestionText({Key? key, required this.questionText}) : super(key: key);
+  const QuestionText({super.key, required this.questionText});
 
   @override
   Widget build(BuildContext context) {

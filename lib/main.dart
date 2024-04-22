@@ -29,7 +29,6 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         home: const SplashPage(),
-        // home:  QuestionAnswer3Page(image: crabImage, name: crabName),
       ),
     );
   }
