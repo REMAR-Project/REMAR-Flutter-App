@@ -32,7 +32,7 @@ List<Widget> questionsPagesLongList() {
     const QuestionAnswer13Page(),
     const QuestionAnswer14Page(),
     const QuestionAnswer15Page(),
-   const QuestionAnswer16Page()
+    const QuestionAnswer16Page()
   ];
 }
 
@@ -48,6 +48,7 @@ List<Widget> questionsPagesShortList() {
     const QuestionAnswer13Page(),
     const QuestionAnswer14Page(),
     const QuestionAnswer15Page(),
+    const QuestionAnswer16Page()
   ];
 }
 

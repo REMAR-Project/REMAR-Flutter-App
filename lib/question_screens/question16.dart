@@ -4,7 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:remar_flutter_app/global.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:remar_flutter_app/question_screens/question15.dart';
+import 'package:remar_flutter_app/Data.dart';
 
 class QuestionAnswer16Page extends StatefulWidget {
   const QuestionAnswer16Page({Key? key}) : super(key: key);
@@ -109,10 +109,15 @@ class _QuestionAnswer16PageState extends State<QuestionAnswer16Page> {
           setState(() {
             selectedAnswer = title;
             finalPageResponse = selectedAnswer;
-            if (selectedAnswer == "I WANT TO GO BACK TO CHANGE ANSWERS") {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const QuestionAnswer15Page()),
-              );
+            if(version == 0) {
+              AdvancedData advancedDatadata = AdvancedData();
+                  String jsonData = advancedDatadata.getJsonString();
+                  print(jsonData);
+            }
+            if(version == 1){
+              ShortData shortdata = ShortData();
+              String jsonData = shortdata.getJsonString();
+              print(jsonData);
             }
           });
         },
