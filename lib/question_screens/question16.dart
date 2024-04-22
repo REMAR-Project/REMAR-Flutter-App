@@ -89,8 +89,8 @@ class _QuestionAnswer16PageState extends State<QuestionAnswer16Page> {
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
                     enableForwardNavigation = true;
-                    launch(
-                        'mailto:remar.quest@gmail.com?subject=Question for REMAR');
+                    launchUrl(
+                        'mailto:remar.quest@gmail.com?subject=Question for REMAR' as Uri);
                   },
               ),
             ],

@@ -1,6 +1,10 @@
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:remar_flutter_app/global.dart';
+import 'package:remar_flutter_app/utils/color_res.dart';
+
+
 
 class QuestionAnswer8Page extends StatefulWidget {
 
@@ -18,7 +22,14 @@ class _QuestionAnswerPage8State extends State<QuestionAnswer8Page> {
   String selectedArea = '';
   List<String> answers = [];
   String questionText = '';
-  String whenObserved='';
+  int selectedIndex = -1;
+
+  List<Map<String, String>> options = [
+    {"name": "Only at day", "url": "assets/images/ic_d_day.png"},
+    {"name": "Only at night", "url": "assets/images/ic_d_night.png"},
+    {"name": "At day and night", "url": "assets/images/ic_d_daynight.png"},
+    {"name": "I did not look", "url": "assets/images/ic_d_question.png"},
+  ];
 
   @override
   void initState() {
@@ -28,7 +39,11 @@ class _QuestionAnswerPage8State extends State<QuestionAnswer8Page> {
 
   void loadQuestions() async {
 
-   // enableForwardNavigation = false;
+    enableForwardNavigation = false;
+
+    if(backwardsNavigation==true) {
+      enableForwardNavigation =true;
+    }
 
     // Load the JSON data from the file
     String jsonString = await DefaultAssetBundle.of(context)
@@ -39,20 +54,10 @@ class _QuestionAnswerPage8State extends State<QuestionAnswer8Page> {
 
     // Extract data from the first question (question number 9)
     Map<String, dynamic> firstQuestionData = jsonData[7];
-
-
-
+    print(firstQuestionData);
     // Set question text and answers list
     setState(() {
       questionText = firstQuestionData['description'];
-
-      // Extract answers from the answers map
-      List<dynamic> answerList = firstQuestionData['answers'];
-      print(answers);
-
-
-      // Cast answers to List<String>
-      answers = answerList.map((answer) => answer.toString()).toList();
     });
   }
 
@@ -72,7 +77,7 @@ class _QuestionAnswerPage8State extends State<QuestionAnswer8Page> {
                 height: 125,
               ),
               Text(
-                selectedCrabSpecies ,
+                selectedCrabSpecies,
                 style: const TextStyle(fontSize: 24),
               ),
             ],
@@ -88,13 +93,49 @@ class _QuestionAnswerPage8State extends State<QuestionAnswer8Page> {
             child: SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
               child: Scrollbar(
-                child: ListView.separated(
-                  itemCount: answers.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return buildAnswerButton(answers[index]);
-                  }, separatorBuilder: (BuildContext context, int index) {
-                  return const Divider();
-                },
+                child: GridView.builder(
+                  itemCount: options.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4,
+                    childAspectRatio: 2,
+                  ),
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedIndex = index;
+                          selectedArea = options[selectedIndex]["name"]!;
+                          enableForwardNavigation =true;
+                          print(selectedArea);
+
+                        });
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(1.0),
+                        margin: const EdgeInsets.symmetric(vertical: 1.0),
+                        decoration: BoxDecoration(
+                            color: selectedIndex == index ? ColorRes.greenColor : null,
+                            borderRadius: BorderRadius.circular(25)
+                        ),
+
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              options[index]["name"]!,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Image.asset(options[index]["url"]!,height: 50,width: 50,),
+
+                          ],
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
@@ -105,30 +146,4 @@ class _QuestionAnswerPage8State extends State<QuestionAnswer8Page> {
 
   }
 
-  Widget buildAnswerButton(String answer) {
-    bool isSelected = answer == selectedArea;
-
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          selectedArea = answer;
-          whenObserved = answer;
-          print(whenObserved);
-       //   enableForwardNavigation = false;
-        });
-      },
-      child: Container(
-        color: isSelected ? Colors.green : null,
-        padding: const EdgeInsets.all(1.0),
-        margin: const EdgeInsets.symmetric(vertical: 1.0),
-        child: Text(
-          answer,
-          style: TextStyle(
-            color: isSelected ? Colors.white : Colors.black,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-    );
-  }
 }
