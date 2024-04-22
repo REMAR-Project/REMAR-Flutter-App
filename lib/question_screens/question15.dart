@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:js_util';
 
 import 'package:flutter/material.dart';
 import 'package:remar_flutter_app/global.dart';
@@ -112,7 +113,7 @@ class _QuestionAnswerPage15State extends State<QuestionAnswer15Page> {
               ),
             ),
           const SizedBox(height: 20),
-          if (selectedAnswer == 'Yes')
+          if (selectedAnswer == 'Yes' || additionalObservationsResponse =="Yes")
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
               child: TextFormField(
