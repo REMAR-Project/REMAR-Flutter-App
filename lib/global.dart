@@ -48,7 +48,7 @@ String county='';
 
 // Select protected area from question 13
 String protectedArea='';
-bool isProtectedArea = false;
+String protectedAreaResponse='';
 
 // select occupation from question 14
 String occupation='';
