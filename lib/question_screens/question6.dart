@@ -18,13 +18,13 @@ class CalendarScreenQ6 extends StatelessWidget {
   ///
   /// The [padding] parameter specifies the padding around the calendar screen.
   const CalendarScreenQ6({
-    Key? key,
+    super.key,
     // required this.month,
     // required this.year,
     // required this.selectableDates,
     // required this.onSelection,
     this.padding = const EdgeInsets.fromLTRB(30.0, 15.0, 30.0, 15.0),
-  }) : super(key: key);
+  });
 
   // Temporary function to retrofit the question into the global variable system
   void handleSelection(List<DateTime> value) {

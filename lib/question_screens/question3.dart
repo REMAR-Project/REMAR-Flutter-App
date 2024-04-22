@@ -9,8 +9,8 @@ List<String> yearList = []; // Declaration of yearList
 class QuestionAnswer3Page extends StatefulWidget {
 
   const QuestionAnswer3Page({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
 
   @override

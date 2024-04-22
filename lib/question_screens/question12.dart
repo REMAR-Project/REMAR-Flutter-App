@@ -1,14 +1,13 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:remar_flutter_app/global.dart';
-import 'package:remar_flutter_app/question_screens/questions_utils.dart';
 
 class QuestionAnswer12Page extends StatefulWidget {
 
 
   const QuestionAnswer12Page({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   _QuestionAnswerPage12State createState() => _QuestionAnswerPage12State();

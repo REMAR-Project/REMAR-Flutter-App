@@ -8,8 +8,8 @@ bool isMonthValid = false;
 class QuestionAnswer4Page extends StatefulWidget {
 
   const QuestionAnswer4Page({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
 
   @override

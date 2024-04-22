@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:js_util';
 
 import 'package:flutter/material.dart';
 import 'package:remar_flutter_app/global.dart';
@@ -9,9 +8,9 @@ import 'package:remar_flutter_app/global.dart';
 class QuestionAnswer15Page extends StatefulWidget {
 
   const QuestionAnswer15Page({
-    Key? key,
+    super.key,
 
-  }) : super(key: key);
+  });
 
   @override
   _QuestionAnswerPage15State createState() => _QuestionAnswerPage15State();

@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
                       decoration: BoxDecoration(
                           color: hoveredBox1 ? ColorRes.yellowColor: ColorRes.greenColor,
                           borderRadius:
-                              BorderRadius.circular(hoveredBox1 ? 35 : 25),
+                          BorderRadius.circular(hoveredBox1 ? 35 : 25),
                           boxShadow: [
                             BoxShadow(
                                 color: hoveredBox1
@@ -143,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                       decoration: BoxDecoration(
                           color: hoveredBox2 ? ColorRes.yellowColor: ColorRes.greenColor,
                           borderRadius:
-                              BorderRadius.circular(hoveredBox2 ? 35 : 25),
+                          BorderRadius.circular(hoveredBox2 ? 35 : 25),
                           boxShadow: [
                             BoxShadow(
                                 color: hoveredBox2

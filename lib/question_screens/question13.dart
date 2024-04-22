@@ -1,15 +1,14 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:remar_flutter_app/global.dart';
-import 'package:remar_flutter_app/question_screens/questions_utils.dart';
 
 
 class QuestionAnswer13Page extends StatefulWidget {
 
 
   const QuestionAnswer13Page({
-    Key? key,
-}) : super(key:key);
+    super.key,
+});
 
   @override
   _QuestionAnswerPage13State createState() => _QuestionAnswerPage13State();
@@ -65,12 +64,7 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
 
       questionText = firstQuestionData['question'];
       extraDetailText = firstQuestionData['extraDetailText'];
-      // Extract areas from the answers map
-      List<dynamic> areasList = firstQuestionData['answers']
-          .values
-          .expand((areaList) => areaList as List<dynamic>)
-          .toList();
-      // Cast areas to List<String>
+
       Map<String, dynamic> answerMap = firstQuestionData['answers'];
       List<dynamic> stateList = answerMap[state];
 
@@ -85,7 +79,7 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> displayedAreas = isExpanded ? areas : areas.take(4).toList();
+
 
     return Scaffold(
       body: ListView(
@@ -165,7 +159,7 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
           Container(
             width: 24.0,
             height: 24.0,
-            margin: EdgeInsets.only(right: 8.0),
+            margin: const EdgeInsets.only(right: 8.0),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.black),
               color: selected ? Colors.green : Colors.transparent,
