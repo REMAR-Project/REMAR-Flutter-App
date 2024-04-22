@@ -4,6 +4,7 @@ import 'package:remar_flutter_app/question_screens/question2.dart';
 import 'package:remar_flutter_app/question_screens/question3.dart';
 import 'package:remar_flutter_app/question_screens/question4.dart';
 import 'package:remar_flutter_app/question_screens/question5.dart';
+import 'package:remar_flutter_app/question_screens/question6.dart';
 import 'package:remar_flutter_app/question_screens/question7.dart';
 import 'package:remar_flutter_app/question_screens/question8.dart';
 import 'package:remar_flutter_app/question_screens/question9.dart';
@@ -20,6 +21,8 @@ List<Widget> questionsPagesLongList() {
     const QuestionAnswer2Page(),
     const QuestionAnswer3Page(),
     const QuestionAnswer4Page(),
+    const CalendarScreenQ5(),
+    const CalendarScreenQ6(),
     const QuestionAnswer7Page(),
     const QuestionAnswer8Page(),
     const QuestionAnswer9Page(),
@@ -30,8 +33,6 @@ List<Widget> questionsPagesLongList() {
     const QuestionAnswer14Page(),
     const QuestionAnswer15Page(),
     const QuestionAnswer16Page()
-
-
   ];
 }
 
@@ -40,6 +41,7 @@ List<Widget> questionsPagesShortList() {
     const QuestionAnswer2Page(),
     const QuestionAnswer3Page(),
     const QuestionAnswer4Page(),
+    const CalendarScreenQ5(),
     const QuestionAnswer7Page(),
     const QuestionAnswer11Page(),
     const QuestionAnswer12Page(),

@@ -21,9 +21,10 @@ String selectedCrabSpeciesImage='';
 // Select month from question 4
 String month='';
 
-// select question 5
+List<DateTime> Q5selectedDates = [];
 
 // question 6
+List<DateTime> Q6selectedDate = []; 
 
 //Select intensity from question 7
 String intensity='';
