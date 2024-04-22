@@ -109,11 +109,6 @@ class _QuestionAnswer16PageState extends State<QuestionAnswer16Page> {
           setState(() {
             selectedAnswer = title;
             finalPageResponse = selectedAnswer;
-            if (selectedAnswer == "I WANT TO GO BACK TO CHANGE ANSWERS") {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const QuestionAnswer15Page()),
-              );
-            }
           });
         },
         style: ElevatedButton.styleFrom(
