@@ -255,8 +255,8 @@ class _MoonCalendarState extends State<MoonCalendar> {
             // Show moon phase icons if it's a current month date and has a phase
             if (isCurrentMonthDate && isNewPhase)
               const Positioned(
-                right: 4,
-                top: 4,
+                right: 0,
+                top: 0,
                 child: Icon(
                   Icons.brightness_3,
                   color: Color.fromARGB(255, 1, 87, 138), // New moon color
@@ -264,8 +264,8 @@ class _MoonCalendarState extends State<MoonCalendar> {
               ),
             if (isCurrentMonthDate && isFullPhase)
               const Positioned(
-                right: 4,
-                top: 4,
+                right: 0,
+                top: 0,
                 child: Icon(
                   Icons.brightness_7,
                   color: Color.fromARGB(255, 198, 243, 33), // Full moon color
@@ -281,14 +281,22 @@ class _MoonCalendarState extends State<MoonCalendar> {
   Widget build(BuildContext context) {
     int totalItemCount = trailingDates.length + daysInMonth + leadingDates.length;
     return Expanded(
-      child: GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 7,
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 600), // Set your desired max width here
+          child: SafeArea(
+            top: false,
+            child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 7,
+              ),
+              itemCount: totalItemCount,
+              itemBuilder: (context, index) {
+                return _buildDayItem(index);
+              },
+            ),
+          ),
         ),
-        itemCount: totalItemCount,
-        itemBuilder: (context, index) {
-          return _buildDayItem(index);
-        },
       ),
     );
   }

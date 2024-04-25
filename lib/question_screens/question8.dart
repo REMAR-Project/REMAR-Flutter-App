@@ -91,51 +91,56 @@ class _QuestionAnswerPage8State extends State<QuestionAnswer8Page> {
             child: SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
               child: Scrollbar(
-                child: GridView.builder(
-                  itemCount: options.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4,
-                    childAspectRatio: 2,
-                  ),
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          selectedIndex = index;
-                          selectedArea = options[selectedIndex]["name"]!;
-
-                          timeObserved = selectedArea;
-                          enableForwardNavigation =true;
-
-                        });
-                      },
-                      child: Container(
-                          padding: const EdgeInsets.all(1.0),
-                          margin: const EdgeInsets.symmetric(vertical: 1.0),
-                          decoration: BoxDecoration(
-                            // color: selectedIndex == index ? ColorRes.greenColor : null,
-                          color: selectedIndex == index
-                          ? Colors.green
-                              : (backwardsNavigation && options[index]["name"] == timeObserved ? Colors.green : null),
-                          borderRadius: BorderRadius.circular(25)
+                child: LayoutBuilder(
+                  builder: (BuildContext context, BoxConstraints constraints) {
+                    int crossAxisCount = constraints.maxWidth < 600 ? 2 : 4;
+                    return GridView.builder(
+                      itemCount: options.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: crossAxisCount,
+                        childAspectRatio: 2,
                       ),
-
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            options[index]["name"]!,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedIndex = index;
+                              selectedArea = options[selectedIndex]["name"]!;
+                              timeObserved = selectedArea;
+                              enableForwardNavigation =true;
+                            });
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(1.0),
+                            margin: const EdgeInsets.symmetric(vertical: 1.0),
+                            decoration: BoxDecoration(
+                              color: selectedIndex == index
+                                ? Colors.green
+                                : (backwardsNavigation && options[index]["name"] == timeObserved ? Colors.green : null),
+                                borderRadius: BorderRadius.circular(25)
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Text(
+                                  options[index]["name"]!,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                const SizedBox(height: 10),
+                                Flexible(
+                                  child: Image.asset(
+                                    options[index]["url"]!,
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          const SizedBox(height: 10),
-                          Image.asset(options[index]["url"]!,height: 50,width: 50,),
-
-                        ],
-                      ),
-                    ),
+                        );
+                      },
                     );
                   },
                 ),

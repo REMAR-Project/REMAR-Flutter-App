@@ -26,9 +26,6 @@ class _QuestionMainState extends State<QuestionMain> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const CustomAppBar(),
-          const SizedBox(
-            height: 20,
-          ),
           Expanded(
             child: PageView(
               physics: const NeverScrollableScrollPhysics(),
@@ -42,9 +39,6 @@ class _QuestionMainState extends State<QuestionMain> {
                   ? questionsPagesLongList()
                   : questionsPagesShortList(),
             ),
-          ),
-          const SizedBox(
-            height: 20,
           ),
           CustomBottomNavigationBar(
               pageController: controller,

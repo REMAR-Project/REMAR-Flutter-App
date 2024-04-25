@@ -15,7 +15,7 @@ class CalendarScreenQ5 extends StatelessWidget {
   /// The [padding] parameter specifies the padding around the calendar screen.
   const CalendarScreenQ5({
     super.key,
-    this.padding = const EdgeInsets.fromLTRB(30.0, 15.0, 30.0, 15.0),
+    this.padding = const EdgeInsets.fromLTRB(30.0, 0, 30.0, 0),
   });
 
   // Temporary function to retrofit the question into the global variable system
@@ -40,12 +40,12 @@ class CalendarScreenQ5 extends StatelessWidget {
             children: [
               Image.asset(
                 selectedCrabSpeciesImage,
-                width: 100,
-                height: 125,
+                width: 75,
+                height: 100,
               ),
               Text(
                 selectedCrabSpecies,
-                style: const TextStyle(fontSize: 24),
+                style: const TextStyle(fontSize: 16),
               ),
             ],
           ),
@@ -53,10 +53,13 @@ class CalendarScreenQ5 extends StatelessWidget {
             future: loadQuestions(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
+                print("Displaying Text");
                 return QuestionText(questionText: snapshot.data!);
               } else if (snapshot.hasError) {
+                print("Error loading question text");
                 return const Text('Error loading question');
               } else {
+                print("Waiting on text to load");
                 return const CircularProgressIndicator();
               }
             },
