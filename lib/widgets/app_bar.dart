@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:remar_flutter_app/utils/color_res.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
+  const CustomAppBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +54,7 @@ class CustomAppBar extends StatelessWidget {
                     children: [
                       Image.asset(
                         'assets/images/raster_logo_ufsb.png',
+
                         height: MediaQuery.of(context).size.height * 00.3,
                         width: MediaQuery.of(context).size.width * 00.2,
                       ),
