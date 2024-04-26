@@ -21,127 +21,111 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<BottomStateProvider>(
-      builder: ((context, value, child) => Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(10),
-            width: double.infinity,
+      builder: ((context, value, child) => Container(
+            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10.0),
+            height: 60, // Fixed height to avoid resizing issues
             decoration: const BoxDecoration(
-                border: Border(
-                    top:
-                    BorderSide(color: ColorRes.greenColor, width: 10))),
+              border: Border(
+                top: BorderSide(color: ColorRes.greenColor, width: 5),
+              ),
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    pageController.previousPage(
-                        duration: const Duration(milliseconds: 200),
-                        curve: Curves.easeInOutCubic);
-                    backwardsNavigation = true;
-                  },
-                  child: MouseRegion(
-                    cursor: SystemMouseCursors.click,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Container(
-                          height: 50,
-                          width: 50,
-                          decoration: BoxDecoration(
-                              color: currentPageIndex == 0
-                                  ? Colors.grey
-                                  : ColorRes.greenColor,
-                              borderRadius: BorderRadius.circular(100)),
-                          child: Icon(
+                // Back button and text
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      pageController.previousPage(
+                          duration: const Duration(milliseconds: 200),
+                          curve: Curves.easeInOutCubic);
+                      backwardsNavigation = true;
+                    },
+                    child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
                             Icons.arrow_back_ios_rounded,
                             color: currentPageIndex == 0
-                                ? Colors.black
-                                : Colors.white,
-                            size: 30,
+                                ? Colors.grey
+                                : ColorRes.greenColor,
+                            size: 24, // Reduced size to avoid overflow
                           ),
-                        ),
-
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        RichText(
-                          text: TextSpan(
-                            text: "Press to go back",
-                            style: GoogleFonts.oswald(
-                              color: Colors.black,
-                              fontSize: 22.0,
-                              fontWeight: FontWeight.bold,
+                          const SizedBox(width: 8),
+                          Flexible(
+                            child: FittedBox(
+                              child: Text(
+                                "Press to go back",
+                                style: GoogleFonts.oswald(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
-                RichText(
-                  text: TextSpan(
-                    text: "${currentPageIndex + 1}/$totalQuestions",
+
+                // Page indicator
+                FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    "${currentPageIndex + 1}/$totalQuestions",
                     style: GoogleFonts.oswald(
                       color: Colors.black,
-                      fontSize: 24.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
 
-
-                GestureDetector(
-                  onTap: () {
-                    if(enableForwardNavigation == true) {
-                      pageController.nextPage(
-                          duration: const Duration(milliseconds: 200),
-                          curve: Curves.easeInOutCubic);
-                    }
-                  },
-                  child: MouseRegion(
-                    cursor: SystemMouseCursors.click,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        RichText(
-                          text: TextSpan(
-                            text: "Press to proceed",
-                            style: GoogleFonts.oswald(
-                              color: Colors.black,
-                              fontSize: 22.0,
-                              fontWeight: FontWeight.bold,
+                // Forward button and text
+                Expanded(
+                  child: GestureDetector(
+                    onTap: (){
+                      if(enableForwardNavigation == true) {
+                        pageController.nextPage(
+                            duration: const Duration(milliseconds: 200),
+                            curve: Curves.easeInOutCubic);
+                      }
+                    },
+                    child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Flexible(
+                            child: FittedBox(
+                              child: Text(
+                                "Press to proceed",
+                                style: GoogleFonts.oswald(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          height: 50,
-                          width: 50,
-                          decoration: BoxDecoration(
-                              color: currentPageIndex == totalQuestions
-                                  ? Colors.grey
-                                  : ColorRes.greenColor,
-                              borderRadius: BorderRadius.circular(100)),
-                          child: Icon(
+                          const SizedBox(width: 8),
+                          Icon(
                             Icons.arrow_forward_ios_rounded,
-                            color: currentPageIndex == totalQuestions
-                                ? Colors.black
-                                : Colors.white,
-                            size: 30,
+                            color: currentPageIndex == totalQuestions - 1
+                                ? Colors.grey
+                                : ColorRes.greenColor,
+                            size: 24, // Reduced size to avoid overflow
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ],
             ),
-          ),
-        ],
-      )),
+          )),
     );
   }
 }

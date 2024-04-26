@@ -23,7 +23,7 @@ class CalendarScreenQ6 extends StatelessWidget {
     // required this.year,
     // required this.selectableDates,
     // required this.onSelection,
-    this.padding = const EdgeInsets.fromLTRB(30.0, 15.0, 30.0, 15.0),
+    this.padding = const EdgeInsets.fromLTRB(30.0, 0, 30.0, 0),
   });
 
   // Temporary function to retrofit the question into the global variable system
@@ -44,20 +44,7 @@ class CalendarScreenQ6 extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Image.asset(
-                selectedCrabSpeciesImage,
-                width: 100,
-                height: 125,
-              ),
-              Text(
-                selectedCrabSpecies,
-                style: const TextStyle(fontSize: 24),
-              ),
-            ],
-          ),
+          const SizedBox(height: 20),
           FutureBuilder<String>(
             future: loadQuestions(),
             builder: (context, snapshot) {

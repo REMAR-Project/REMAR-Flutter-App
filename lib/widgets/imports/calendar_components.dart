@@ -8,10 +8,7 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(1.0),
-      child: Text('$month $year', style: const TextStyle(fontSize: 24)),
-    );
+    return Text('$month $year', style: const TextStyle(fontSize: 24));
   }
 }
 
@@ -40,12 +37,12 @@ class QuestionText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.8,
-      height: MediaQuery.of(context).size.height * 0.001,
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
       child: Text(
         questionText,
-        style: const TextStyle(fontSize: 16),
+        style: const TextStyle(fontSize: 14),
+        textAlign: TextAlign.justify,
       ),
     );
   }
@@ -58,13 +55,15 @@ class DayOfWeekHeaders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 2.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: daysOfWeek
-            .map((day) => Expanded(child: Text(day, textAlign: TextAlign.center)))
-            .toList(),
+    return Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 600), // Set your desired max width here
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: daysOfWeek
+              .map((day) => Expanded(child: Text(day, textAlign: TextAlign.center)))
+              .toList(),
+        ),
       ),
     );
   }
