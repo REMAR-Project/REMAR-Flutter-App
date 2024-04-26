@@ -33,7 +33,9 @@ class _HomePageState extends State<HomePage> {
             const CustomAppBar(),
             const SizedBox(
               height: 30,
+
             ),
+
             Text(
               'Choose one of the following options by tapping with fingers.',
               style: GoogleFonts.oswald(
