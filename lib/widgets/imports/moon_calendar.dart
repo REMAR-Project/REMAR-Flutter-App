@@ -274,8 +274,8 @@ class _MoonCalendarState extends State<MoonCalendar> {
                 right: 0,
                 top: 0,
                 child: Icon(
-                  Icons.brightness_3,
-                  color: Color.fromARGB(255, 1, 87, 138), // New moon color
+                  Icons.circle,
+                    color: Color.fromARGB(255, 100, 100, 100) // New moon color
                 ),
               ),
             if (isCurrentMonthDate && isFullPhase)
@@ -283,8 +283,8 @@ class _MoonCalendarState extends State<MoonCalendar> {
                 right: 0,
                 top: 0,
                 child: Icon(
-                  Icons.brightness_7,
-                  color: Color.fromARGB(255, 198, 243, 33), // Full moon color
+                  Icons.circle,
+                  color: Color.fromARGB(255, 255, 255, 0), // Full moon color
                 ),
               ),
           ],

@@ -64,7 +64,7 @@
     "questionType": "DateRangeSelect",
     "questionPicture": "raster_q0_(2:0)",
     "questionTitle": "crab_title_(2:0)",
-    "description": "<b>Touch the day with the STRONGEST andada activity.<br>If you don’t know, you can proceed without selecting a date.<br><br></b>",
+    "description": "Touch the day with the STRONGEST andada activity.<br>If you don’t know, you can proceed without selecting a date.",
     "month": "(4:0)",
     "year": "(3:0)",
     "filterOnQuestion": -1,

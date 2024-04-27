@@ -20,10 +20,10 @@ class MoonPhaseKey extends StatelessWidget {
     return const Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(Icons.brightness_3, color: Color.fromARGB(255, 1, 87, 138)), // New moon icon
+        Icon(Icons.circle, color: Color.fromARGB(255, 100, 100, 100)), // New moon icon
         Text('New Moon'),
         SizedBox(width: 16),
-        Icon(Icons.brightness_7,color: Color.fromARGB(255, 198, 243, 33)), // Full moon icon
+        Icon(Icons.circle, color: Color.fromARGB(255, 255, 255, 0)), // Full moon icon
         Text('Full Moon'),
       ],
     );
