@@ -54,6 +54,7 @@ class CustomAppBar extends StatelessWidget {
                     children: [
                       Image.asset(
                         'assets/images/raster_logo_ufsb.png',
+
                         height: MediaQuery.of(context).size.height * 0.06,
                         width: MediaQuery.of(context).size.width * 0.07,
                       ),
@@ -61,6 +62,7 @@ class CustomAppBar extends StatelessWidget {
                         "assets/images/raster_logo_napier.png",
                         height: MediaQuery.of(context).size.height * 0.06,
                         width: MediaQuery.of(context).size.width * 0.07,
+
                       ),
                     ],
                   )
