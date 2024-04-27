@@ -135,6 +135,7 @@ class _QuestionAnswerPage14State extends State<QuestionAnswer14Page> {
           selectedArea = answer;
           occupation = answer;
           enableForwardNavigation = true;
+          backwardsNavigation = false;
 
 
           Container(

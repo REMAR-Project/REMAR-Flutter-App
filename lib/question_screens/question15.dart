@@ -138,8 +138,9 @@ class _QuestionAnswerPage15State extends State<QuestionAnswer15Page> {
         setState(() {
           selectedAnswer = answer;
           additionalObservations = answer;
-          enableForwardNavigation = true;
           additionalObservationsResponse = answer;
+          enableForwardNavigation = true;
+          backwardsNavigation = false;
         });
       },
       child: Container(

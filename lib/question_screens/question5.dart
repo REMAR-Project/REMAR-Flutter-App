@@ -10,6 +10,8 @@ import 'package:remar_flutter_app/global.dart';
 class CalendarScreenQ5 extends StatelessWidget {
   final EdgeInsets padding;
 
+
+
   /// Constructs a [CalendarScreenQ5] widget.
   ///
   /// The [padding] parameter specifies the padding around the calendar screen.
@@ -24,6 +26,13 @@ class CalendarScreenQ5 extends StatelessWidget {
   }
 
   Future<String> loadQuestions() async {
+
+    enableForwardNavigation = false;
+
+    if(backwardsNavigation==true) {
+      enableForwardNavigation =true;
+    }
+
     String jsonString = await rootBundle.loadString('assets/raw_eng/questions2Modified.json');
     List<dynamic> jsonData = jsonDecode(jsonString);
     Map<String, dynamic> firstQuestionData = jsonData[4];
