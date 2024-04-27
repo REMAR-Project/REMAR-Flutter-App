@@ -117,6 +117,7 @@ class _QuestionAnswerPage11State extends State<QuestionAnswer11Page> {
           selectedArea = answer;
           state = answer;
           enableForwardNavigation = true;
+          backwardsNavigation = false;
 
         });
       },

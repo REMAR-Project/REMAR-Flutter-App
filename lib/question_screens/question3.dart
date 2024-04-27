@@ -113,7 +113,7 @@ class _QuestionAnswerPage3State extends State<QuestionAnswer3Page> {
           selectedArea = answer;
           year = answer;
           enableForwardNavigation = true;
-
+          backwardsNavigation = false;
         });
 
         },

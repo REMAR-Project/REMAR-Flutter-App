@@ -134,6 +134,7 @@ class _QuestionAnswerPage9State extends State<QuestionAnswer9Page> {
           selectedArea = answer;
           berried = answer;
           enableForwardNavigation = true;
+          backwardsNavigation = false;
 
           Container(
             color: isSelected ? Colors.white : null,

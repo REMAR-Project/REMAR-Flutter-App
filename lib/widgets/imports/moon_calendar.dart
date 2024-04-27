@@ -52,18 +52,29 @@ class _MoonCalendarState extends State<MoonCalendar> {
   void initState() {
     super.initState();
     enableForwardNavigation = false;
+
+    if(backwardsNavigation==true) {
+      enableForwardNavigation =true;
+    }
+
+
     // Assumes Q5 if not set
     if (widget.selectableDates == null || widget.selectableDates!.isEmpty) {
       selectedDates = Q5selectedDates.where(_isDateWithinCurrentMonth).toList();
       Q5selectedDates = selectedDates;
+      enableForwardNavigation = true;
     }else{
       if (Q6selectedDate.isNotEmpty && _isDateWithinSelectedDates(Q6selectedDate.first)) {
         selectedDates = Q6selectedDate.where(_isDateWithinCurrentMonth).toList();
+        enableForwardNavigation = true;
       }
       Q6selectedDate = selectedDates;
     }
     if (selectedDates.isNotEmpty) {
       enableForwardNavigation = true;
+    }
+    else if(selectedDates.isEmpty) {
+      enableForwardNavigation = false;
     }
     daysInMonth = _getDaysInMonth();
     firstDayOfWeek = _getFirstDayOfWeek();
@@ -221,20 +232,25 @@ class _MoonCalendarState extends State<MoonCalendar> {
       onTap: isSelectable
         ? () {
             setState(() {
-              if (widget.selectableDates == null || widget.selectableDates!.isEmpty) {
+              if (widget.selectableDates == null || widget.selectableDates!.isEmpty || enableForwardNavigation == true) {
                 if (selectedDates.contains(currentDate)) {
                   selectedDates.remove(currentDate);
                   if(selectedDates.isEmpty){
-                    enableForwardNavigation = false;
+                  enableForwardNavigation = false;
+                  backwardsNavigation = false;
                   }
                 } else {
                   selectedDates.add(currentDate);
                   enableForwardNavigation = true;
+                  backwardsNavigation = false;
+
                 }
               } else {
                 selectedDates.clear();
                 selectedDates.add(currentDate);
                 enableForwardNavigation = true;
+                enableForwardNavigation = true;
+                backwardsNavigation = false;
               }
               widget.onSelection(selectedDates);
             });
@@ -258,8 +274,8 @@ class _MoonCalendarState extends State<MoonCalendar> {
                 right: 0,
                 top: 0,
                 child: Icon(
-                  Icons.brightness_3,
-                  color: Color.fromARGB(255, 1, 87, 138), // New moon color
+                  Icons.circle,
+                    color: Color.fromARGB(255, 100, 100, 100) // New moon color
                 ),
               ),
             if (isCurrentMonthDate && isFullPhase)
@@ -267,8 +283,8 @@ class _MoonCalendarState extends State<MoonCalendar> {
                 right: 0,
                 top: 0,
                 child: Icon(
-                  Icons.brightness_7,
-                  color: Color.fromARGB(255, 198, 243, 33), // Full moon color
+                  Icons.circle,
+                  color: Color.fromARGB(255, 255, 255, 0), // Full moon color
                 ),
               ),
           ],
