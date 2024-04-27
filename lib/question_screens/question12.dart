@@ -115,8 +115,8 @@ class _QuestionAnswerPage12State extends State<QuestionAnswer12Page> {
         setState(() {
           selectedArea = answer;
           county= answer;
-
           enableForwardNavigation = true;
+          backwardsNavigation = false;
 
         });
       },

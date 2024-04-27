@@ -61,6 +61,7 @@ class CustomAppBar extends StatelessWidget {
                         "assets/images/raster_logo_napier.png",
                         height: MediaQuery.of(context).size.height * 00.4,
                         width: MediaQuery.of(context).size.width * 00.2,
+
                       ),
                     ],
                   )
