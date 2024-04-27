@@ -17,7 +17,7 @@
   {
     "questionNumber": 2,
     "questionType": "TwoPictureChoice",
-    "questionText": "<b>Become a citizen scientist</b> and help record mass mating events of commercially important Brazilian mangrove crabs.<br></br><br></br>This information will help to improve Brazilian crab fisheries legislation and fishers' livelihoods.<br></br><br></br>Click on one of the below species to share your observations.",
+    "questionText": "Become a citizen scientist and help record mass mating events of commercially important Brazilian mangrove crabs.This information will help to improve Brazilian crab fisheries legislation and fishers' livelihoods.<br></br><br></br>Click on one of the below species to share your observations.",
     "choiceOneTitle": "Ucides cordatus",
     "choiceOnePicture": "raster_q0_0",
     "choiceTwoTitle": "Cardisoma guanhumi",
@@ -60,7 +60,7 @@
     "questionType": "DateRangeSelect",
     "questionPicture": "raster_q0_(2:0)",
     "questionTitle": "crab_title_(2:0)",
-    "questionText": "<b>Touch the day with the STRONGEST andada activity.<br>If you don’t know, you can proceed without selecting a date.",
+    "questionText": "Touch the day with the STRONGEST andada activity.If you don’t know, you can proceed without selecting a date.",
     "month": "(4:0)",
     "year": "(3:0)",
     "filterOnQuestion": -1,

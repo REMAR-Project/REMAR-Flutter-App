@@ -8,10 +8,6 @@ import 'package:remar_flutter_app/global.dart';
 
 /// A screen that displays a calendar with moon phases and selectable dates.
 class CalendarScreenQ6 extends StatelessWidget {
-  // final String month;
-  // final String year;
-  // final List<DateTime> selectableDates;
-  // final Function onSelection;
   final EdgeInsets padding;
 
   /// Constructs a [CalendarScreenQ6] widget.
@@ -19,10 +15,6 @@ class CalendarScreenQ6 extends StatelessWidget {
   /// The [padding] parameter specifies the padding around the calendar screen.
   const CalendarScreenQ6({
     super.key,
-    // required this.month,
-    // required this.year,
-    // required this.selectableDates,
-    // required this.onSelection,
     this.padding = const EdgeInsets.fromLTRB(30.0, 0, 30.0, 0),
   });
 
@@ -32,6 +24,15 @@ class CalendarScreenQ6 extends StatelessWidget {
   }
 
   Future<String> loadQuestions() async {
+
+    enableForwardNavigation = false;
+
+    if(backwardsNavigation==true) {
+      enableForwardNavigation =true;
+    }
+
+
+
     //enableForwardNavigation = false;
     String jsonString = await rootBundle.loadString('assets/raw_eng/questions2Modified.json');
     List<dynamic> jsonData = jsonDecode(jsonString);

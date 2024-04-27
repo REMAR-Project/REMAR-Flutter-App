@@ -116,7 +116,6 @@ class _QuestionAnswerPage7State extends State<QuestionAnswer7Page> {
           selectedArea = answer;
           intensity = answer;
           enableForwardNavigation = true;
-
         });
       },
       child: Container(
