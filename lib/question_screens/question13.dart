@@ -132,8 +132,8 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
                 selectedArea = answers as String;
                 protectedArea = answers as String;
 
-
-
+                enableForwardNavigation = true;
+                backwardsNavigation = false;
               });
             },
             child: Container(

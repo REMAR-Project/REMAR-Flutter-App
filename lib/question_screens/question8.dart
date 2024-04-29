@@ -107,7 +107,8 @@ class _QuestionAnswerPage8State extends State<QuestionAnswer8Page> {
                               selectedIndex = index;
                               selectedArea = options[selectedIndex]["name"]!;
                               timeObserved = selectedArea;
-                              enableForwardNavigation =true;
+                              enableForwardNavigation = true;
+                              backwardsNavigation = false;
                             });
                           },
                           child: Container(

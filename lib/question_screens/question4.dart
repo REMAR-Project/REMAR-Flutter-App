@@ -31,7 +31,6 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
 
   void loadQuestions() async {
 
-
     enableForwardNavigation = false;
 
     if(backwardsNavigation==true) {
@@ -135,6 +134,7 @@ class _QuestionAnswerPage4State extends State<QuestionAnswer4Page> {
           validateMonth(month);
           if(isMonthValid == true) {
             enableForwardNavigation = true;
+            backwardsNavigation = false;
           }
 
           Container(
