@@ -131,7 +131,9 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
                 isExpanded = true;
                 selectedArea = answers as String;
                 protectedArea = answers as String;
-                enableForwardNavigation = true;
+
+
+
               });
             },
             child: Container(
@@ -151,7 +153,13 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
           // Update the flag based on the selected answer
           displayAnswers = selectedAnswer == "Yes";
           protectedAreaResponse = title;
-          enableForwardNavigation = true;
+
+          if(selectedAnswer=="No" || selectedAnswer=="I don't know") {
+            enableForwardNavigation = true;
+          }
+
+
+
         });
       },
       child: Row(
@@ -184,6 +192,9 @@ class _QuestionAnswerPage13State extends State<QuestionAnswer13Page> {
         setState(() {
           selectedArea = answer;
           protectedArea = selectedArea;
+          if(selectedAnswer=="Yes" && selectedAnswer!="") {
+            enableForwardNavigation = true;
+          }
 
         });
       },
